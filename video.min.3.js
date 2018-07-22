@@ -9013,7 +9013,14 @@ function(a) {
                     font: h + "px " + v
                 };
             ! function() {
-                for (var c, d, h = 0; h < b.length; h++) d = b[h], c = new k(a, d, i), e.appendChild(c.div), m(a, c, g, f), d.displayState = c.div, f.push(l.getSimpleBoxPosition(c))
+                for (var c, d, h = 0; h < b.length; h++) {
+					d = b[h], 
+					c = new k(a, d, i),
+					e.appendChild(c.div),
+					m(a, c, g, f),
+					d.displayState = c.div,
+					f.push(l.getSimpleBoxPosition(c))					
+				}
             }()
         } else
             for (var j = 0; j < b.length; j++) e.appendChild(b[j].displayState)
