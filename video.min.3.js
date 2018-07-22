@@ -11,8 +11,8 @@
  */
  
 var dictionary;
-var globalVtt;
 
+checkDictionary(b[h].text)
 $.getJSON( "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json", function( data ) {
 	dictionary = data;
 	console.log(data.length);
@@ -6194,7 +6194,7 @@ function checkWord(word) {
                         }
                     }, b.prototype.updateForTrack = function(a) {
                         if ("function" == typeof p["default"].WebVTT && a.activeCues) {
-                            for (var b = this.player_.textTrackSettings.getValues(), c = [], d = 0; d < a.activeCues.length; d++) c.push(a.activeCues[d]);
+                            for (var b = this.player_.textTrackSettings.getValues(), c = [], d = 0; d < a.activeCues.length; d++) c.push(checkDictionary(a.activeCues[d].text));
                             p["default"].WebVTT.processCues(p["default"], c, this.el_);
                             for (var e = c.length; e--;) {
                                 var f = c[e];
@@ -9057,7 +9057,6 @@ function(a) {
 					//b[h].text = checkDictionary(b[h].text),
 					d = b[h], 
 					globalVtt = b[h];
-					//d.text = checkDictionary(b[h].text),
 					c = new k(a, d, i),
 					e.appendChild(c.div),
 					m(a, c, g, f),
