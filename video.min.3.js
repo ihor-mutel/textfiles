@@ -9,6 +9,8 @@
  * Available under Apache License Version 2.0
  * <https://github.com/mozilla/vtt.js/blob/master/LICENSE>
  */
+function checkDictionary(test) {return "parsedText"}; 
+
 ! function(a) {
     if ("object" == typeof exports && "undefined" != typeof module) module.exports = a();
     else if ("function" == typeof define && define.amd) define([], a);
@@ -9015,7 +9017,7 @@ function(a) {
             ! function() {
                 for (var c, d, h = 0; h < b.length; h++) {
 					console.log(b[h].text),
-					b[h].text = "not real text",
+					b[h].text = checkDictionary(b[h].text),
 					d = b[h], 
 					c = new k(a, d, i),
 					e.appendChild(c.div),
