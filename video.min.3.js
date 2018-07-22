@@ -12,7 +12,6 @@
  
 var dictionary;
 
-checkDictionary(b[h].text)
 $.getJSON( "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json", function( data ) {
 	dictionary = data;
 	console.log(data.length);
