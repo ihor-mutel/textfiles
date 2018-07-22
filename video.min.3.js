@@ -11,6 +11,7 @@
  */
  
 var dictionary;
+var globalVtt;
 
 $.getJSON( "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json", function( data ) {
 	dictionary = data;
@@ -40,7 +41,7 @@ String.prototype.replaceAll = function(search, replacement) {
 
 function checkWord(word) {
 	for(var i=0;i<dictionary.length;i++){
-		if(dictionary[i].word == word){
+		if(dictionary[i].word.toLowerCase() == word.toLowerCase()){
 			console.log(dictionary[i].translation);
 			return(dictionary[i].translation)
 		}
@@ -9053,8 +9054,9 @@ function(a) {
             ! function() {
                 for (var c, d, h = 0; h < b.length; h++) {
 					console.log(b[h].text),
-					b[h].text = checkDictionary(b[h].text),
+					//b[h].text = checkDictionary(b[h].text),
 					d = b[h], 
+					globalVtt = b[h];
 					//d.text = checkDictionary(b[h].text),
 					c = new k(a, d, i),
 					e.appendChild(c.div),
