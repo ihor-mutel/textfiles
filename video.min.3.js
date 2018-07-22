@@ -27,6 +27,7 @@ function checkDictionary(test) {
 			console.log("replace with " + translation)
 			//test = test.replace(wordsArray[i],wordsArray[i] + translation)
 			test = test + "\n" + wordsArray[i].toUpperCase() + ": " + translation;
+			//test = "<span style=\"color:yellow\">" + test + "\n" + wordsArray[i].toUpperCase() + ": " + translation + "</span>";
 		}
 	}
 	return test
