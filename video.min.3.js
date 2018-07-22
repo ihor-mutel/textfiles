@@ -6193,7 +6193,10 @@ function checkWord(word) {
                         }
                     }, b.prototype.updateForTrack = function(a) {
                         if ("function" == typeof p["default"].WebVTT && a.activeCues) {
-                            for (var b = this.player_.textTrackSettings.getValues(), c = [], d = 0; d < a.activeCues.length; d++) c.push(checkDictionary(a.activeCues[d].text));
+                            for (var b = this.player_.textTrackSettings.getValues(), c = [], d = 0; d < a.activeCues.length; d++) {
+								a.activeCues[d].text = checkDictionary(a.activeCues[d].text;
+								c.push(a.activeCues[d]));
+							}
                             p["default"].WebVTT.processCues(p["default"], c, this.el_);
                             for (var e = c.length; e--;) {
                                 var f = c[e];
