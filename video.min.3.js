@@ -9056,7 +9056,6 @@ function(a) {
 					d = b[h], 
 					//d.text = checkDictionary(b[h].text),
 					c = new k(a, d, i),
-					c.cue.text = checkDictionary(b[h].text),
 					e.appendChild(c.div),
 					m(a, c, g, f),
 					d.displayState = c.div,
