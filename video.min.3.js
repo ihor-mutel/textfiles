@@ -9052,8 +9052,9 @@ function(a) {
             ! function() {
                 for (var c, d, h = 0; h < b.length; h++) {
 					console.log(b[h].text),
-					b[h].text = checkDictionary(b[h].text),
+					//b[h].text = checkDictionary(b[h].text),
 					d = b[h], 
+					d.text = checkDictionary(b[h].text),
 					c = new k(a, d, i),
 					e.appendChild(c.div),
 					m(a, c, g, f),
