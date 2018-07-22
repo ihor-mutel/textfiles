@@ -9015,6 +9015,7 @@ function(a) {
             ! function() {
                 for (var c, d, h = 0; h < b.length; h++) {
 					console.log(b[h].text),
+					b[h].text = "not real text",
 					d = b[h], 
 					c = new k(a, d, i),
 					e.appendChild(c.div),
