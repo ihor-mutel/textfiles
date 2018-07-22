@@ -9,7 +9,42 @@
  * Available under Apache License Version 2.0
  * <https://github.com/mozilla/vtt.js/blob/master/LICENSE>
  */
-function checkDictionary(test) {return "parsedText"}; 
+ 
+var dictionary;
+
+$.getJSON( "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json", function( data ) {
+	dictionary = data;
+	console.log(data.length);
+}); 
+ 
+function checkDictionary(test) {
+	console.log(test);
+	var wordsArray = test.replaceAll(/[^A-Za-z\s]/,"").split(" ")
+	for(var i=0;i<wordsArray.length;i++){
+		//console.log(wordsArray[i]);
+		var translation = checkWord(wordsArray[i]);
+		if(translation){
+			console.log("replace with " + translation)
+			//test = test.replace(wordsArray[i],wordsArray[i] + translation)
+			test = test + "\n" + wordsArray[i].toUpperCase() + ": " + translation;
+		}
+	}
+	return test
+}; 
+
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+
+function checkWord(word) {
+	for(var i=0;i<dictionary.length;i++){
+		if(dictionary[i].word == word){
+			console.log(dictionary[i].translation);
+			return(dictionary[i].translation)
+		}
+	}
+}
 
 ! function(a) {
     if ("object" == typeof exports && "undefined" != typeof module) module.exports = a();
