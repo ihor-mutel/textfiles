@@ -102,6 +102,8 @@ function getSelectionText() {
 function checkDictionary(word,firstCall) {
 	if (firstCall){
 			debugger;
+			console.log("CHANGE I CURRENT SUBS===================")
+			console.log(word)
 			iCurrentSubs = word
 	}
 
@@ -413,7 +415,7 @@ String.prototype.replaceAll = function(search, replacement) {
             a.C.appendChild(f);
         a.F && a.F.parentNode != f && (g.Td(a.F),
         f.appendChild(a.F));
-		b.text = checkDictionary(b.text,true);
+		checkDictionary(b.text,true);
         c = (k = g.w(b.text)) ? b.text.split("\n") : [b.text];
         for (e = 0; e < c.length; e++) {
             var l = c[e];
