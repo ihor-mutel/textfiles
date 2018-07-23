@@ -24,10 +24,14 @@ function checkDictionary(test) {
 		//console.log(wordsArray[i]);
 		var translation = checkWord(wordsArray[i]);
 		if(translation){
-			console.log("replace with " + translation)
-			//test = test.replace(wordsArray[i],wordsArray[i] + translation)
-			test = test + "\n" + wordsArray[i].toUpperCase() + "- " + translation;
-			//test = "<span style=\"color:yellow\">" + test + "\n" + wordsArray[i].toUpperCase() + ": " + translation + "</span>";
+			var translationMessage = "\n" + wordsArray[i].toUpperCase() + ": " + translation;
+			if(!test.includes(translationMessage)){
+				console.log("replace with " + translation)
+				//test = test.replace(wordsArray[i],wordsArray[i] + translation)
+				test = test + translationMessage;
+				console.log(test)
+				//test = "<span style=\"color:yellow\">" + test + "\n" + wordsArray[i].toUpperCase() + ": " + translation + "</span>";
+			}
 		}
 	}
 	return test
