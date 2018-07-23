@@ -1,10 +1,13 @@
-//window.onload = function() {
-	alert("ONLOAD")
-	var dictionary;
+window.onload = function() {
+	console.log("ONLOAD")
 	var iPlayerContainer = $('#player-container')
+	if(!window.jQuery)	{
+		addjQuery();
+	}
+}	
+	var dictionary;
 	var iCurrentSubs;
-	addjQuery();
-
+	
 	// ADD jQuery
 	function addjQuery(){
 		var script = document.createElement('script');
@@ -15,8 +18,9 @@
 	}
 
 
+	
 	// get dictionary
-
+	
 	$.getJSON( "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json", function( data ) {
 		dictionary = data;
 		console.log("Dictionary was downloaded");
@@ -145,7 +149,7 @@
 		var target = this;
 		return target.replace(new RegExp(search, 'g'), replacement);
 	};
-//}
+
 
 (function(g) {
     var window = this;
