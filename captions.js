@@ -70,8 +70,17 @@
 		iSub.style.textAlign = "center";
 		// iSub.style.left = (iPlayerContainer.css('width').replace("px","") / 4.7) + "px";
 		iSub.style.left = 0;
+		try{
 		iSub.style.width = iPlayerContainer.css('width');
 		iSub.style.top = (iPlayerContainer.css('height').replace("px","") / 1.38) + "px";
+			}
+	catch(err) {
+		if(!iPlayerContainer){
+		var iPlayerContainer = $(iPlayerElementName)
+		}
+		
+	}
+		
 		
 		
 		iPlayerContainer[0].appendChild(iSub);
