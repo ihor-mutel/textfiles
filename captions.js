@@ -27,6 +27,7 @@ function getRemoteDictionary(){
 try {
 	getRemoteDictionary();
 } catch (err) {
+	console.log(err);
     if (!window.jQuery) {
         addjQuery();
     }
