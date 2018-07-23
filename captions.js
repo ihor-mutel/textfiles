@@ -52,22 +52,23 @@ function showSubtitles(word) {
     // iSub.style.left = (iPlayerContainer.css('width').replace("px","") / 4.7) + "px";
     iSub.style.left = 0;
 	
-    try {
+    // try {
         iSub.style.width = iPlayerContainer.css('width');
         iSub.style.top = (iPlayerContainer.css('height').replace("px", "") / 1.38) + "px";
-    } catch (err) {
+    // } catch (err) {
         if (!iPlayerContainer) {
             var iPlayerContainer = $(iPlayerElementName)
         }
 
-    }
+    // }
 
     iPlayerContainer[0].appendChild(iSub);
 }
 
 // check selection
-try {
-    iPlayerContainer.click(function(event) {
+
+function addClickListener(){
+	    iPlayerContainer.click(function(event) {
         var text = getSelectionText().trim().replace(/ /g, '+');
         if (text != '') {
             console.log(encodeURIComponent(text));
@@ -81,9 +82,15 @@ try {
             })
         }
     });
+	
+}
+
+try {
+	addClickListener();
 } catch (err) {
     if (!iPlayerContainer) {
         var iPlayerContainer = $(iPlayerElementName)
+		addClickListener();
     }
 
 }
