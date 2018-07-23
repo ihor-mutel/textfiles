@@ -3,7 +3,8 @@ var iPlayerElementName = '#player-container'
 var dictionary;
 var iCurrentSubs;
 
-// ADD jQuery
+// add jQuery
+
 function addjQuery() {
     var script = document.createElement('script');
     script.src = 'https://code.jquery.com/jquery-1.11.0.min.js';
@@ -87,6 +88,8 @@ function addClickListener() {
 
 }
 
+// conver translation object into string
+
 function cleanTranslations(data) {
     var translation = ""
     for (var i = 0; i < data.translate.length; i++) {
@@ -114,6 +117,7 @@ function cleanTranslations(data) {
     return uniqueTranslations
 }
 
+// add or delete word from dictionary
 
 function toggleDictionary(data, word) {
     if (checkWord(word)) {
@@ -135,6 +139,7 @@ function toggleDictionary(data, word) {
     checkDictionary(iCurrentSubs, false)
 }
 
+// get selected text
 
 function getSelectionText() {
     var text = "";
@@ -146,7 +151,7 @@ function getSelectionText() {
     return text;
 }
 
-// check word in dictionary
+// check if word in dictionary
 
 function checkDictionary(word, firstCall) {
     if (firstCall) {
