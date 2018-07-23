@@ -18,25 +18,25 @@ $.getJSON( "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_4150921
 	console.log(data.length);
 }); 
  
-function checkDictionary(test) {
-	//console.log(test);
-	var wordsArray = test.replaceAll(/[^A-Za-z\s\'\-]/,"").split(" ")
+function checkDictionary(word) {
+	//console.log(word);
+	var wordsArray = word.replaceAll(/[^A-Za-z\s\'\-]/,"").split(" ")
 	for(var i=0;i<wordsArray.length;i++){
 		//console.log(wordsArray[i]);
 		var translation = checkWord(wordsArray[i]);
 		if(translation){
 			var translationMessage = "\n" + wordsArray[i].toUpperCase() + ": " + translation;
-			if(!test.includes(translationMessage)){
-				console.log(test)
+			if(!word.includes(translationMessage)){
+				console.log(word)
 				console.log("replace with " + translation)
-				//test = test.replace(wordsArray[i],wordsArray[i] + translation)
-				test = test + translationMessage;
-				//console.log(test)
-				//test = "<span style=\"color:yellow\">" + test + "\n" + wordsArray[i].toUpperCase() + ": " + translation + "</span>";
+				//test = word.replace(wordsArray[i],wordsArray[i] + translation)
+				word = word + translationMessage;
+				//console.log(word)
+				//word = "<span style=\"color:yellow\">" + word + "\n" + wordsArray[i].toUpperCase() + ": " + translation + "</span>";
 			}
 		}
 	}
-	return test
+	return word
 }; 
 
 String.prototype.replaceAll = function(search, replacement) {
