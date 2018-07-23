@@ -53,18 +53,18 @@ function showSubtitles(word) {
     // iSub.style.left = (iPlayerContainer.css('width').replace("px","") / 4.7) + "px";
     iSub.style.left = 0;
 	
-
-        iSub.style.width = $(iPlayerElementName).css('width');
-        iSub.style.top = ($(iPlayerElementName).css('height').replace("px", "") / 1.38) + "px";
+    iSub.style.width = $(iPlayerElementName).css('width');
+    iSub.style.top = ($(iPlayerElementName).css('height').replace("px", "") / 1.38) + "px";
 
 
     $(iPlayerElementName)[0].appendChild(iSub);
+	addClickListener();
 }
 
 // check selection
 
 function addClickListener(){
-	    $(iPlayerElementName).click(function(event) {
+	    $("$iblock").click(function(event) {
         var text = getSelectionText().trim().replace(/ /g, '+');
         if (text != '') {
             console.log(encodeURIComponent(text));
@@ -81,16 +81,16 @@ function addClickListener(){
 	
 }
 
-try {
-	addClickListener();
-} catch (err) {
-	console.log(err)
-    if (!iPlayerContainer) {
-        var iPlayerContainer = $(iPlayerElementName)
-		addClickListener();
-    }
+// try {
+	// addClickListener();
+// } catch (err) {
+	// console.log(err)
+    // if (!iPlayerContainer) {
+        // var iPlayerContainer = $(iPlayerElementName)
+		// addClickListener();
+    // }
 
-}
+// }
 
 function cleanTranslations(data) {
     var translation = ""
