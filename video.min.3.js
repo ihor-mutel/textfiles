@@ -14,22 +14,23 @@ var dictionary;
 
 $.getJSON( "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json", function( data ) {
 	dictionary = data;
+	console.log("Dictionary was downloaded");
 	console.log(data.length);
 }); 
  
 function checkDictionary(test) {
-	console.log(test);
+	//console.log(test);
 	var wordsArray = test.replaceAll(/[^A-Za-z\s\'\-]/,"").split(" ")
 	for(var i=0;i<wordsArray.length;i++){
 		//console.log(wordsArray[i]);
 		var translation = checkWord(wordsArray[i]);
 		if(translation){
-			var translationMessage = "\n" + wordsArray[i].toUpperCase() + ": " + translation;
+			var translationMessage = "<span style=\"color:yellow\">"+"\n" + wordsArray[i].toUpperCase() + ": " + translation + "</span>";
 			if(!test.includes(translationMessage)){
 				console.log("replace with " + translation)
 				//test = test.replace(wordsArray[i],wordsArray[i] + translation)
 				test = test + translationMessage;
-				console.log(test)
+				//console.log(test)
 				//test = "<span style=\"color:yellow\">" + test + "\n" + wordsArray[i].toUpperCase() + ": " + translation + "</span>";
 			}
 		}
@@ -45,7 +46,7 @@ String.prototype.replaceAll = function(search, replacement) {
 function checkWord(word) {
 	for(var i=0;i<dictionary.length;i++){
 		if(dictionary[i].word.toLowerCase() == word.toLowerCase()){
-			console.log(dictionary[i].translation);
+			//console.log(dictionary[i].translation);
 			return(dictionary[i].translation)
 		}
 	}
