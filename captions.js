@@ -5,16 +5,16 @@
 	var dictionary;
 	var iCurrentSubs;
 	
-window.onload = function() {
-	console.log("ONLOAD")
-	if(!iPlayerContainer){
-		var iPlayerContainer = $(iPlayerElementName)
-	}
+// window.onload = function() {
+	// console.log("ONLOAD")
+	// if(!iPlayerContainer){
+		// var iPlayerContainer = $(iPlayerElementName)
+	// }
 
-	if(!window.jQuery)	{
-		addjQuery();
-	}
-}	
+	// if(!window.jQuery)	{
+		// addjQuery();
+	// }
+// }	
 	
 	// ADD jQuery
 	function addjQuery(){
@@ -78,7 +78,7 @@ window.onload = function() {
 	}
 
 	// check selection
-		
+	try{	
 	iPlayerContainer.click(function(event){
 			var text = getSelectionText().trim().replace(/ /g,'+');
 			if (text!='') {
@@ -93,7 +93,12 @@ window.onload = function() {
 			})
 	}
 	});	
-
+	catch(err){
+		if(!iPlayerContainer){
+		var iPlayerContainer = $(iPlayerElementName)
+		}
+		
+	}
 		function cleanTranslations(data){
 		var translation = ""
 		for(var i= 0;i<data.translate.length;i++){
