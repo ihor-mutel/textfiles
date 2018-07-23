@@ -22,6 +22,7 @@ try {
         console.log(data.length);
     });
 } catch (err) {
+	console.log(err);
     if (!window.jQuery) {
         addjQuery();
     }
@@ -88,6 +89,7 @@ function addClickListener(){
 try {
 	addClickListener();
 } catch (err) {
+	console.log(err)
     if (!iPlayerContainer) {
         var iPlayerContainer = $(iPlayerElementName)
 		addClickListener();
