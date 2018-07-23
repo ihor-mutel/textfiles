@@ -25,8 +25,9 @@ function checkDictionary(test) {
 		//console.log(wordsArray[i]);
 		var translation = checkWord(wordsArray[i]);
 		if(translation){
-			var translationMessage = "<span style=\"color:yellow\">"+"\n" + wordsArray[i].toUpperCase() + ": " + translation + "</span>";
+			var translationMessage = "\n" + wordsArray[i].toUpperCase() + ": " + translation;
 			if(!test.includes(translationMessage)){
+				console.log(test)
 				console.log("replace with " + translation)
 				//test = test.replace(wordsArray[i],wordsArray[i] + translation)
 				test = test + translationMessage;
