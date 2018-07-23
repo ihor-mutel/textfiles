@@ -10,13 +10,47 @@ $.getJSON( "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_4150921
 	console.log("Dictionary was downloaded");
 	console.log(data.length);
 }); 
- 
+
+
+
+
+
+
+
+function showSubtitles(word){
+	
+	
+	var iblock = document.getElementsByClassName('iblock');
+
+	while(iblock[0]) {
+		iblock[0].parentNode.removeChild(iblock[0]);
+	}
+
+	var iSub = document.createElement('div');
+	var iPlayer = document.getElementById('player-container')
+	
+	iSub.id = 'iblock';
+	iSub.className = 'iblock';
+	iSub.innerText = word;
+	iSub.style.position = "absolute";
+	iSub.style.zIndex = "9999";
+	iSub.style.color = "white";
+	iSub.style.left = ($('#player-container').css('width').replace("px","") / 4.7) + "px";
+	iSub.style.top = ($('#player-container').css('height').replace("px","") / 1.38) + "px";
+	
+	iPlayer.appendChild(iSub);
+}
+
 function checkDictionary(word) {
 	//console.log(word);
+	showSubtitles(word)
 	var wordsArray = word.replaceAll(/[^A-Za-z\s\'\-]/,"").split(" ")
 	for(var i=0;i<wordsArray.length;i++){
 		//console.log(wordsArray[i]);
 		var translation = checkWord(wordsArray[i]);
+		
+		
+
 		if(translation){
 			var translationMessage = "\n" + wordsArray[i].toUpperCase() + ": " + translation;
 			if(!word.includes(translationMessage)){
@@ -324,11 +358,11 @@ function checkWord(word) {
             if (0 < e || 0 == a.D.length || !b.D) {
                 if (0 < e || 0 != a.D.length) {
                     var m = g.Md("BR");
-                    f.appendChild(m)
+                    //f.appendChild(m)
                 }
-                f.appendChild(g.Od("\u00a0"));
+                //f.appendChild(g.Od("\u00a0"));
                 a.F = g.Od("\u00a0");
-                f.appendChild(a.F)
+                //f.appendChild(a.F)
             }
             l && (m = a.F,
             m.parentNode && m.parentNode.insertBefore(k ? g.Od(l) : l, m))
