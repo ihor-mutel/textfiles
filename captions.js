@@ -3,7 +3,6 @@ window.onload = function() {
 	if(!iPlayerContainer){
 		var iPlayerContainer = $('#player-container')
 	}
-	
 
 	if(!window.jQuery)	{
 		addjQuery();
@@ -11,7 +10,7 @@ window.onload = function() {
 }	
 	var dictionary;
 	var iCurrentSubs;
-	
+	var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
 	// ADD jQuery
 	function addjQuery(){
 		var script = document.createElement('script');
@@ -25,7 +24,7 @@ window.onload = function() {
 	
 	// get dictionary
 	
-	$.getJSON( "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json", function( data ) {
+	$.getJSON( dictionaryLink, function( data ) {
 		dictionary = data;
 		console.log("Dictionary was downloaded");
 		console.log(data.length);
