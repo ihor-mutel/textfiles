@@ -19,14 +19,14 @@ $.getJSON( "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_4150921
  
 function checkDictionary(test) {
 	console.log(test);
-	var wordsArray = test.replaceAll(/[^A-Za-z\s]/,"").split(" ")
+	var wordsArray = test.replaceAll(/[^A-Za-z\s\'\-]/,"").split(" ")
 	for(var i=0;i<wordsArray.length;i++){
 		//console.log(wordsArray[i]);
 		var translation = checkWord(wordsArray[i]);
 		if(translation){
 			console.log("replace with " + translation)
 			//test = test.replace(wordsArray[i],wordsArray[i] + translation)
-			test = test + "\n" + wordsArray[i].toUpperCase() + ": " + translation;
+			test = test + "\n" + wordsArray[i].toUpperCase() + "- " + translation;
 			//test = "<span style=\"color:yellow\">" + test + "\n" + wordsArray[i].toUpperCase() + ": " + translation + "</span>";
 		}
 	}
