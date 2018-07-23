@@ -52,10 +52,10 @@ function checkWord(word) {
 		}
 	}
 }
-function preEditDiv (c){
-	console.log(c);
-	return c
-}
+// function preEditDiv (c){
+	// console.log(c);
+	// return c
+// }
 
 
 // $(".vjs-text-track-display").click(function(event){
@@ -9107,7 +9107,7 @@ function(a) {
 					d = b[h], 
 					globalVtt = b[h];
 					c = new k(a, d, i),
-					c = preEditDiv(c),
+					// c = preEditDiv(c),
 					e.appendChild(c.div),
 					m(a, c, g, f),
 					d.displayState = c.div,
