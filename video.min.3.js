@@ -52,6 +52,47 @@ function checkWord(word) {
 		}
 	}
 }
+function preEditDiv (c){
+	console.log(c);
+	return c
+}
+
+
+// $(".vjs-text-track-display").click(function(event){
+		// var text = getSelectionText().trim().replace(/ /g,'+');
+		// //console.log(text);
+		// if (text!='') {
+		// var xPosition = event.clientX;
+		// var yPosition = event.clientY;
+			// //showWindow(xPosition,yPosition);
+			// console.log(encodeURIComponent(text));
+			// // $.ajax('https://json2jsonp.com/?url=https://api.lingualeo.com/gettranslates?word=' + text.replace(/\+/g,'%20').replace(/\ /g,'%20'), {
+			// $.ajax('https://json2jsonp.com/?url=https://api.lingualeo.com/gettranslates?word=' + encodeURIComponent(text), {
+				// contentType: 'application/json',
+				// dataType: 'jsonp',
+				// success : function(data){
+				// //showTranslation(data,text);
+				// console.log(data);
+				// console.log(text);
+				// },
+			// });
+				
+		// }
+    // });
+
+
+// function getSelectionText() {
+    // var text = "";
+    // if (window.getSelection) {
+        // text = window.getSelection().toString();
+    // } else if (document.selection && document.selection.type != "Control") {
+        // text = document.selection.createRange().text;
+    // }
+    // return text;
+// }
+
+
+
 
 ! function(a) {
     if ("object" == typeof exports && "undefined" != typeof module) module.exports = a();
@@ -9066,6 +9107,7 @@ function(a) {
 					d = b[h], 
 					globalVtt = b[h];
 					c = new k(a, d, i),
+					c.div = preEditDiv(e.appendChild(c.div),
 					e.appendChild(c.div),
 					m(a, c, g, f),
 					d.displayState = c.div,
