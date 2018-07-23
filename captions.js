@@ -28,12 +28,22 @@ window.onload = function() {
 
 	
 	// get dictionary
-	
-	$.getJSON( dictionaryLink, function( data ) {
+	try {
+			$.getJSON( dictionaryLink, function( data ) {
 		dictionary = data;
 		console.log("Dictionary was downloaded");
 		console.log(data.length);
 	}); 
+	}
+	catch(err) {
+			if(!window.jQuery)	{
+		addjQuery();
+	}
+	} 
+	// finally {
+		// finallyCode - Block of code to be executed regardless of the try / catch result
+	// }
+
 
 
 	// show subtitles
@@ -56,10 +66,13 @@ window.onload = function() {
 		iSub.style.zIndex = "9999";
 		iSub.style.color = "white";
 		iSub.style.fontSize = "1.3em";
-		iSub.style.backgroundColor = "black";
+		iSub.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
 		iSub.style.textAlign = "center";
-		iSub.style.left = (iPlayerContainer.css('width').replace("px","") / 4.7) + "px";
+		// iSub.style.left = (iPlayerContainer.css('width').replace("px","") / 4.7) + "px";
+		iSub.style.left = 0;
+		iSub.style.width = iPlayerContainer.css('width');
 		iSub.style.top = (iPlayerContainer.css('height').replace("px","") / 1.38) + "px";
+		
 		
 		iPlayerContainer[0].appendChild(iSub);
 	}
@@ -81,6 +94,35 @@ window.onload = function() {
 	}
 	});	
 
+		function cleanTranslations(data){
+		var translation = ""
+		for(var i= 0;i<data.translate.length;i++){
+
+			translation += ","+data.translate[i].value.trim();
+			
+		}
+		var translations = translation.split(",")
+
+		var uniqueTranslations = [];
+		$.each(translations, function(i, el){
+			if($.inArray(el, uniqueTranslations) === -1) uniqueTranslations.push(el);
+		});
+
+		uniqueTranslations.clean("")
+
+		uniqueTranslations.sort(function(a, b){
+		  return b.length - a.length;
+		});
+
+		uniqueTranslations.sort(function(a, b){
+		  return a.length - b.length;
+		});
+		uniqueTranslations = uniqueTranslations.slice(0,3);
+		return uniqueTranslations
+	}
+
+
+	
 
 	function toggleDictionary(data,word){
 		if(checkWord(word)){
@@ -88,12 +130,12 @@ window.onload = function() {
 				// debugger;
 				var index = dictionary.indexOf(element);
 				dictionary.splice(index, 1);
-				console.log("Remove fom dictionary");
+				console.log("Remove from dictionary");
 				checkDictionary(iCurrentSubs,false)
 				return
 		}
 		var translation = {word: word, 
-		translation: data.translate[0].value}
+		translation: cleanTranslations(data)}
 		console.log("add into dictionary")
 		console.log(translation);
 		dictionary.push(translation);
@@ -116,7 +158,7 @@ window.onload = function() {
 	function checkDictionary(word,firstCall) {
 		if (firstCall){
 				debugger;
-				console.log("CHANGE I CURRENT SUBS===================")
+				console.log("=======CHANGE iCURRENT SUBS=======")
 				console.log(word)
 				iCurrentSubs = word
 		}
@@ -150,14 +192,20 @@ window.onload = function() {
 	}
 
 
-
-
-
 	String.prototype.replaceAll = function(search, replacement) {
 		var target = this;
 		return target.replace(new RegExp(search, 'g'), replacement);
 	};
-
+	
+	Array.prototype.clean = function(deleteValue) {
+	  for (var i = 0; i < this.length; i++) {
+		if (this[i] == deleteValue) {         
+		  this.splice(i, 1);
+		  i--;
+		}
+	  }
+	  return this;
+	};
 
 (function(g) {
     var window = this;
