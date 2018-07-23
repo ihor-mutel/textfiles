@@ -1,149 +1,150 @@
-var dictionary;
-var iPlayerContainer = $('#player-container')
-var iCurrentSubs;
-//addjQuery();
-window.onload = addjQuery;
-// ADD jQuery
-function addjQuery(){
-	var script = document.createElement('script');
-	script.src = 'https://code.jquery.com/jquery-1.11.0.min.js';
-	script.type = 'text/javascript';
-	document.getElementsByTagName('head')[0].appendChild(script)
-	console.log("jquery added");
-}
+window.onload = function() {
+	var dictionary;
+	var iPlayerContainer = $('#player-container')
+	var iCurrentSubs;
+	addjQuery();
 
-
-// get dictionary
-
-$.getJSON( "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json", function( data ) {
-	dictionary = data;
-	console.log("Dictionary was downloaded");
-	console.log(data.length);
-}); 
-
-
-// show subtitles
-
-function showSubtitles(word){
-		
-	var iblock = document.getElementsByClassName('iblock');
-
-	while(iblock[0]) {
-		iblock[0].parentNode.removeChild(iblock[0]);
+	// ADD jQuery
+	function addjQuery(){
+		var script = document.createElement('script');
+		script.src = 'https://code.jquery.com/jquery-1.11.0.min.js';
+		script.type = 'text/javascript';
+		document.getElementsByTagName('head')[0].appendChild(script)
+		console.log("jquery added");
 	}
 
-	var iSub = document.createElement('div');
-	//var iPlayer = document.getElementById('player-container')
-	
-	iSub.id = 'iblock';
-	iSub.className = 'iblock';
-	iSub.innerText = word;
-	iSub.style.position = "absolute";
-	iSub.style.zIndex = "9999";
-	iSub.style.color = "white";
-	iSub.style.fontSize = "1.3em";
-	iSub.style.backgroundColor = "black";
-	iSub.style.textAlign = "center";
-	iSub.style.left = (iPlayerContainer.css('width').replace("px","") / 4.7) + "px";
-	iSub.style.top = (iPlayerContainer.css('height').replace("px","") / 1.38) + "px";
-	
-	iPlayerContainer[0].appendChild(iSub);
-}
 
-// check selection
-	
-iPlayerContainer.click(function(event){
-		var text = getSelectionText().trim().replace(/ /g,'+');
-		if (text!='') {
-			console.log(encodeURIComponent(text));
-			$.ajax('https://json2jsonp.com/?url=https://api.lingualeo.com/gettranslates?word=' + encodeURIComponent(text), {
-				contentType: 'application/json',
-				dataType: 'jsonp',
-				success : function(data){
-				console.log(data);
-				toggleDictionary(data,text);
-			}
-		})
-}
-});	
+	// get dictionary
+
+	$.getJSON( "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json", function( data ) {
+		dictionary = data;
+		console.log("Dictionary was downloaded");
+		console.log(data.length);
+	}); 
 
 
-function toggleDictionary(data,word){
-	if(checkWord(word)){
-		var element = checkWord(word);
-			// debugger;
-			var index = dictionary.indexOf(element);
-			dictionary.splice(index, 1);
-			console.log("Remove fom dictionary");
-			checkDictionary(iCurrentSubs,false)
-			return
-	}
-	var translation = {word: word, 
-	translation: data.translate[0].value}
-	console.log("add into dictionary")
-	console.log(translation);
-	dictionary.push(translation);
-	checkDictionary(iCurrentSubs,false)
-}
+	// show subtitles
 
-
-function getSelectionText() {
-    var text = "";
-    if (window.getSelection) {
-        text = window.getSelection().toString();
-    } else if (document.selection && document.selection.type != "Control") {
-        text = document.selection.createRange().text.replaceAll(/[^A-Za-z\s\'\-]/,"");
-    }
-    return text;
-}
-
-// check word in dictionary
-
-function checkDictionary(word,firstCall) {
-	if (firstCall){
-			debugger;
-			console.log("CHANGE I CURRENT SUBS===================")
-			console.log(word)
-			iCurrentSubs = word
-	}
-
-	var wordsArray = word.replaceAll("\n"," ").replaceAll(/[^A-Za-z\s\'\-]/,"").split(" ")
-	for(var i=0;i<wordsArray.length;i++){
-		var entry = checkWord(wordsArray[i]);
-		// debugger;
-		if(entry){
-			var translation = entry.translation
-			var translationMessage = "\n" + wordsArray[i].toUpperCase() + ": " + translation;
-			if(!word.includes(translationMessage)){
-				console.log(word)
-				console.log("replace with " + translation)
-				word = word + translationMessage;
-			}
+	function showSubtitles(word){
 			
-		}
-	}
-	showSubtitles(word)
-	return word
-}; 
+		var iblock = document.getElementsByClassName('iblock');
 
-function checkWord(word) {
-	// debugger;
-	for(var i=0;i<dictionary.length;i++){
-		if(dictionary[i].word.trim().toLowerCase() == word.trim().toLowerCase()){
-			return(dictionary[i])
+		while(iblock[0]) {
+			iblock[0].parentNode.removeChild(iblock[0]);
+		}
+
+		var iSub = document.createElement('div');
+		//var iPlayer = document.getElementById('player-container')
+		
+		iSub.id = 'iblock';
+		iSub.className = 'iblock';
+		iSub.innerText = word;
+		iSub.style.position = "absolute";
+		iSub.style.zIndex = "9999";
+		iSub.style.color = "white";
+		iSub.style.fontSize = "1.3em";
+		iSub.style.backgroundColor = "black";
+		iSub.style.textAlign = "center";
+		iSub.style.left = (iPlayerContainer.css('width').replace("px","") / 4.7) + "px";
+		iSub.style.top = (iPlayerContainer.css('height').replace("px","") / 1.38) + "px";
+		
+		iPlayerContainer[0].appendChild(iSub);
+	}
+
+	// check selection
+		
+	iPlayerContainer.click(function(event){
+			var text = getSelectionText().trim().replace(/ /g,'+');
+			if (text!='') {
+				console.log(encodeURIComponent(text));
+				$.ajax('https://json2jsonp.com/?url=https://api.lingualeo.com/gettranslates?word=' + encodeURIComponent(text), {
+					contentType: 'application/json',
+					dataType: 'jsonp',
+					success : function(data){
+					console.log(data);
+					toggleDictionary(data,text);
+				}
+			})
+	}
+	});	
+
+
+	function toggleDictionary(data,word){
+		if(checkWord(word)){
+			var element = checkWord(word);
+				// debugger;
+				var index = dictionary.indexOf(element);
+				dictionary.splice(index, 1);
+				console.log("Remove fom dictionary");
+				checkDictionary(iCurrentSubs,false)
+				return
+		}
+		var translation = {word: word, 
+		translation: data.translate[0].value}
+		console.log("add into dictionary")
+		console.log(translation);
+		dictionary.push(translation);
+		checkDictionary(iCurrentSubs,false)
+	}
+
+
+	function getSelectionText() {
+		var text = "";
+		if (window.getSelection) {
+			text = window.getSelection().toString();
+		} else if (document.selection && document.selection.type != "Control") {
+			text = document.selection.createRange().text.replaceAll(/[^A-Za-z\s\'\-]/,"");
+		}
+		return text;
+	}
+
+	// check word in dictionary
+
+	function checkDictionary(word,firstCall) {
+		if (firstCall){
+				debugger;
+				console.log("CHANGE I CURRENT SUBS===================")
+				console.log(word)
+				iCurrentSubs = word
+		}
+
+		var wordsArray = word.replaceAll("\n"," ").replaceAll(/[^A-Za-z\s\'\-]/,"").split(" ")
+		for(var i=0;i<wordsArray.length;i++){
+			var entry = checkWord(wordsArray[i]);
+			// debugger;
+			if(entry){
+				var translation = entry.translation
+				var translationMessage = "\n" + wordsArray[i].toUpperCase() + ": " + translation;
+				if(!word.includes(translationMessage)){
+					console.log(word)
+					console.log("replace with " + translation)
+					word = word + translationMessage;
+				}
+				
+			}
+		}
+		showSubtitles(word)
+		return word
+	}; 
+
+	function checkWord(word) {
+		// debugger;
+		for(var i=0;i<dictionary.length;i++){
+			if(dictionary[i].word.trim().toLowerCase() == word.trim().toLowerCase()){
+				return(dictionary[i])
+			}
 		}
 	}
+
+
+
+
+
+	String.prototype.replaceAll = function(search, replacement) {
+		var target = this;
+		return target.replace(new RegExp(search, 'g'), replacement);
+	};
 }
-
-
-
-
-
-String.prototype.replaceAll = function(search, replacement) {
-    var target = this;
-    return target.replace(new RegExp(search, 'g'), replacement);
-};
-
 
 (function(g) {
     var window = this;
