@@ -112,10 +112,10 @@ function checkDictionary(word,firstCall) {
 
 	//console.log(word);
 	//showSubtitles(word)
-	var wordsArray = word.replaceAll(/[^A-Za-z\s\'\-]/,"").split(" ")
+	var wordsArray = word.replaceAll("\n"," ").replaceAll(/[^A-Za-z\s\'\-]/,"").split(" ")
 	for(var i=0;i<wordsArray.length;i++){
 		//console.log(wordsArray[i]);
-		var translation = checkWord(wordsArray[i]);
+		var translation = checkWord(wordsArray[i]).translation;
 		debugger;
 		if(translation){
 			var translationMessage = "\n" + wordsArray[i].toUpperCase() + ": " + translation;
@@ -138,7 +138,7 @@ function checkWord(word) {
 	for(var i=0;i<dictionary.length;i++){
 		if(dictionary[i].word.toLowerCase() == word.toLowerCase()){
 			//console.log(dictionary[i].translation);
-			return(dictionary[i].translation)
+			return(dictionary[i])
 		}
 	}
 }
