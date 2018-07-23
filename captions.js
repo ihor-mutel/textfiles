@@ -1,6 +1,10 @@
 window.onload = function() {
 	console.log("ONLOAD")
-	var iPlayerContainer = $('#player-container')
+	if(!iPlayerContainer){
+		var iPlayerContainer = $('#player-container')
+	}
+	
+
 	if(!window.jQuery)	{
 		addjQuery();
 	}
