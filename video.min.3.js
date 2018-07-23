@@ -9107,7 +9107,7 @@ function(a) {
 					d = b[h], 
 					globalVtt = b[h];
 					c = new k(a, d, i),
-					c.div = preEditDiv(e.appendChild(c.div),
+					c = preEditDiv(c),
 					e.appendChild(c.div),
 					m(a, c, g, f),
 					d.displayState = c.div,
