@@ -16,8 +16,8 @@ function addjQuery() {
 
 // get dictionary
 
-function getRemoteDictionary(){	
-	    $.getJSON(dictionaryLink, function(data) {
+function getRemoteDictionary() {
+    $.getJSON(dictionaryLink, function(data) {
         dictionary = data;
         console.log("Dictionary was downloaded");
         console.log(data.length);
@@ -25,13 +25,13 @@ function getRemoteDictionary(){
 }
 
 try {
-	getRemoteDictionary();
+    getRemoteDictionary();
 } catch (err) {
-	console.log(err);
+    console.log(err);
     if (!window.jQuery) {
         addjQuery();
     }
-		getRemoteDictionary();
+    getRemoteDictionary();
 }
 
 // show subtitles
@@ -58,19 +58,19 @@ function showSubtitles(word) {
     iSub.style.textAlign = "center";
     // iSub.style.left = (iPlayerContainer.css('width').replace("px","") / 4.7) + "px";
     iSub.style.left = 0;
-	
+
     iSub.style.width = $(iPlayerElementName).css('width');
     iSub.style.top = ($(iPlayerElementName).css('height').replace("px", "") / 1.38) + "px";
 
 
     $(iPlayerElementName)[0].appendChild(iSub);
-	addClickListener();
+    addClickListener();
 }
 
 // check selection
 
-function addClickListener(){
-	    $("$iblock").click(function(event) {
+function addClickListener() {
+    $("$iblock").click(function(event) {
         var text = getSelectionText().trim().replace(/ /g, '+');
         if (text != '') {
             console.log(encodeURIComponent(text));
@@ -84,7 +84,7 @@ function addClickListener(){
             })
         }
     });
-	
+
 }
 
 function cleanTranslations(data) {
