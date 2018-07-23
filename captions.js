@@ -71,7 +71,7 @@ function showSubtitles(word) {
 // check selection
 
 function addClickListener() {
-    $("$iblock").click(function(event) {
+    $("#iblock").click(function(event) {
         var text = getSelectionText().trim().replace(/ /g, '+');
         if (text != '') {
             console.log(encodeURIComponent(text));
