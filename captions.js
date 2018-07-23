@@ -1,16 +1,21 @@
+
+
+	var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
+	var iPlayerElementName = '#player-container'
+	var dictionary;
+	var iCurrentSubs;
+	
 window.onload = function() {
 	console.log("ONLOAD")
 	if(!iPlayerContainer){
-		var iPlayerContainer = $('#player-container')
+		var iPlayerContainer = $(iPlayerElementName)
 	}
 
 	if(!window.jQuery)	{
 		addjQuery();
 	}
 }	
-	var dictionary;
-	var iCurrentSubs;
-	var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
+	
 	// ADD jQuery
 	function addjQuery(){
 		var script = document.createElement('script');
