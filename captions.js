@@ -1,4 +1,5 @@
-document.onload = function() {
+window.onload = function() {
+	alert("ONLOAD")
 	var dictionary;
 	var iPlayerContainer = $('#player-container')
 	var iCurrentSubs;
