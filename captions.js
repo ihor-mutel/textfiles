@@ -15,17 +15,22 @@ function addjQuery() {
 
 
 // get dictionary
-try {
-    $.getJSON(dictionaryLink, function(data) {
+
+function getRemoteDictionary(){	
+	    $.getJSON(dictionaryLink, function(data) {
         dictionary = data;
         console.log("Dictionary was downloaded");
         console.log(data.length);
     });
+}
+
+try {
+	getRemoteDictionary();
 } catch (err) {
-	console.log(err);
     if (!window.jQuery) {
         addjQuery();
     }
+		getRemoteDictionary();
 }
 
 // show subtitles
@@ -80,17 +85,6 @@ function addClickListener(){
     });
 	
 }
-
-// try {
-	// addClickListener();
-// } catch (err) {
-	// console.log(err)
-    // if (!iPlayerContainer) {
-        // var iPlayerContainer = $(iPlayerElementName)
-		// addClickListener();
-    // }
-
-// }
 
 function cleanTranslations(data) {
     var translation = ""
