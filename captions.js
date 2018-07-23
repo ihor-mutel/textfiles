@@ -1,7 +1,8 @@
 var dictionary;
 var iPlayerContainer = $('#player-container')
 var iCurrentSubs;
-
+//addjQuery();
+window.onload = addjQuery;
 // ADD jQuery
 function addjQuery(){
 	var script = document.createElement('script');
@@ -10,7 +11,7 @@ function addjQuery(){
 	document.getElementsByTagName('head')[0].appendChild(script)
 	console.log("jquery added");
 }
-addjQuery();
+
 
 // get dictionary
 
@@ -69,20 +70,13 @@ iPlayerContainer.click(function(event){
 
 function toggleDictionary(data,word){
 	if(checkWord(word)){
-		//for(var i=0;i<dictionary.length;i++){	
 		var element = checkWord(word);
-			//if(dictionary[i].word.toLowerCase() == word.toLowerCase()){
-			//console.log(dictionary[i].translation);
-			debugger;
+			// debugger;
 			var index = dictionary.indexOf(element);
 			dictionary.splice(index, 1);
 			console.log("Remove fom dictionary");
-			//dictionary.slice(i);
-			//console.log(i);
 			checkDictionary(iCurrentSubs,false)
 			return
-			//}
-		//}
 	}
 	var translation = {word: word, 
 	translation: data.translate[0].value}
@@ -107,25 +101,21 @@ function getSelectionText() {
 
 function checkDictionary(word,firstCall) {
 	if (firstCall){
+			debugger;
 			iCurrentSubs = word
 	}
 
-	//console.log(word);
-	//showSubtitles(word)
 	var wordsArray = word.replaceAll("\n"," ").replaceAll(/[^A-Za-z\s\'\-]/,"").split(" ")
 	for(var i=0;i<wordsArray.length;i++){
-		//console.log(wordsArray[i]);
-		var translation = checkWord(wordsArray[i]).translation;
-		debugger;
-		if(translation){
+		var entry = checkWord(wordsArray[i]);
+		// debugger;
+		if(entry){
+			var translation = entry.translation
 			var translationMessage = "\n" + wordsArray[i].toUpperCase() + ": " + translation;
 			if(!word.includes(translationMessage)){
 				console.log(word)
 				console.log("replace with " + translation)
-				//test = word.replace(wordsArray[i],wordsArray[i] + translation)
 				word = word + translationMessage;
-				//console.log(word)
-				//word = "<span style=\"color:yellow\">" + word + "\n" + wordsArray[i].toUpperCase() + ": " + translation + "</span>";
 			}
 			
 		}
@@ -135,9 +125,9 @@ function checkDictionary(word,firstCall) {
 }; 
 
 function checkWord(word) {
+	// debugger;
 	for(var i=0;i<dictionary.length;i++){
-		if(dictionary[i].word.toLowerCase() == word.toLowerCase()){
-			//console.log(dictionary[i].translation);
+		if(dictionary[i].word.trim().toLowerCase() == word.trim().toLowerCase()){
 			return(dictionary[i])
 		}
 	}
