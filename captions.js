@@ -93,7 +93,8 @@
 			})
 	}
 	});	
-	catch(err){
+	}
+	catch(err) {
 		if(!iPlayerContainer){
 		var iPlayerContainer = $(iPlayerElementName)
 		}
