@@ -1,4 +1,4 @@
-window.onload = function() {
+//window.onload = function() {
 	alert("ONLOAD")
 	var dictionary;
 	var iPlayerContainer = $('#player-container')
@@ -145,7 +145,7 @@ window.onload = function() {
 		var target = this;
 		return target.replace(new RegExp(search, 'g'), replacement);
 	};
-}
+//}
 
 (function(g) {
     var window = this;
