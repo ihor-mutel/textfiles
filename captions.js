@@ -30,6 +30,7 @@ function getRemoteDictionary() {
         if (!localStorage.dictionary) {
             console.log("USE REMOTE DICTIONARY")
             dictionary = data;
+			setStorageDictionary(dictionary);
         }
         console.log("Dictionary was downloaded");
         console.log(data.length);
