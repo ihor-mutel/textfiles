@@ -1,7 +1,7 @@
 var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
 var iPlayerElementName = '#player-container'
 var iCurrentSubs;
-
+var dictionary;
 // add jQuery
 
 function addjQuery() {
@@ -17,18 +17,18 @@ function addjQuery() {
 // get dictionary
 
 function getRemoteDictionary() {
-	var dictionaryRemote;
+
     $.getJSON(dictionaryLink, function(data) {
-        dictionaryRemote = data;
+        dictionary = data;
         console.log("Dictionary was downloaded");
         console.log(data.length);
     });
-	if(!localStorage.dictionary){
-		console.log("remote dictionary was saved to local storage")
-		localStorage.dictionary = dictionaryRemote
-	}else {
-		console.log("dictionary is already in local storage")
-	}
+	// if(!localStorage.dictionary){
+		// console.log("remote dictionary was saved to local storage")
+		// localStorage.dictionary = dictionaryRemote
+	// }else {
+		// console.log("dictionary is already in local storage")
+	// }
 }
 
 try {
@@ -129,7 +129,7 @@ function toggleDictionary(data, word) {
     if (checkWord(word)) {
         var element = checkWord(word);
         // debugger;
-        var index = localStorage.dictionary.indexOf(element);
+        var index = dictionary.indexOf(element);
         localStorage.dictionary.splice(index, 1);
         console.log("Remove from dictionary");
         checkDictionary(iCurrentSubs, false)
@@ -141,7 +141,7 @@ function toggleDictionary(data, word) {
     }
     console.log("add into dictionary")
     console.log(translation);
-    localStorage.dictionary.push(translation);
+    dictionary.push(translation);
     checkDictionary(iCurrentSubs, false)
 }
 
@@ -188,9 +188,9 @@ function checkDictionary(word, firstCall) {
 
 function checkWord(word) {
     // debugger;
-    for (var i = 0; i < localStorage.dictionary.length; i++) {
-        if (localStorage.dictionary[i].word.trim().toLowerCase() == word.trim().toLowerCase()) {
-            return (localStorage.dictionary[i])
+    for (var i = 0; i < dictionary.length; i++) {
+        if (dictionary[i].word.trim().toLowerCase() == word.trim().toLowerCase()) {
+            return (dictionary[i])
         }
     }
 }
