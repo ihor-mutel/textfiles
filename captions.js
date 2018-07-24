@@ -63,7 +63,7 @@ function showSubtitles(word) {
     iSub.style.position = "absolute";
     iSub.style.zIndex = "2147483647";
     iSub.style.color = "white";
-    iSub.style.fontSize = "1.3em";
+    iSub.style.fontFamily= "Roboto, Arial, sans-serif";
     iSub.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
     iSub.style.textAlign = "center";
     // iSub.style.left = (iPlayerContainer.css('width').replace("px","") / 4.7) + "px";
@@ -75,10 +75,12 @@ function showSubtitles(word) {
 		iSub.style.left = 0;
 		iSub.style.top = (screen.height / 1.38) + "px";
 		console.log("You entered fullscreen");
+		iSub.style.fontSize = "24px";
 	} else {
 		iSub.style.left = 0;
 		iSub.style.width = $(iPlayerElementName).css('width');
 		iSub.style.top = ($(iPlayerElementName).css('height').replace("px", "") / 1.38) + "px";
+		iSub.style.fontSize = "1.3em";
 	}
 
 
@@ -86,6 +88,7 @@ function showSubtitles(word) {
     $(iPlayerElementName)[0].appendChild(iSub);
     addClickListener();
 }
+
 
 // check selection
 
