@@ -1,6 +1,5 @@
 var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
 var iPlayerElementName = '#player-container'
-var dictionary;
 var iCurrentSubs;
 
 // add jQuery
@@ -19,7 +18,7 @@ function addjQuery() {
 
 function getRemoteDictionary() {
     $.getJSON(dictionaryLink, function(data) {
-        dictionaryRemote = data;
+        var dictionaryRemote = data;
         console.log("Dictionary was downloaded");
         console.log(data.length);
     });
