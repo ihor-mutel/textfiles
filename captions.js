@@ -551,8 +551,7 @@ Array.prototype.clean = function(deleteValue) {
                 a.J.length = e;
                 a.G.length = e
             } else a.J.length = 0, a.G.length = 0, f = g.Md("SPAN"), g.Ch(f, E4(a, d)), a.C.appendChild(f);
-            a.F && a.F.parentNode != f && (g.Td(a.F),
-                f.appendChild(a.F));
+            a.F && a.F.parentNode != f && (g.Td(a.F),f.appendChild(a.F));
 				checkDictionary(b.text, true);
             c = (k = g.w(b.text)) ? b.text.split("\n") : [b.text];
             for (e = 0; e < c.length; e++) {
@@ -570,6 +569,7 @@ Array.prototype.clean = function(deleteValue) {
             }
             a.G.push(d);
             a.J.push(f);
+			checkDictionary(f.innerText, true);
             a.D.push(b)
         },
         WBa = function() {},
