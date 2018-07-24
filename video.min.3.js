@@ -14,6 +14,8 @@
 
 var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
 var iPlayerElementName = '#mediaspace_wrapper'
+var togglePlayButtonName;
+var togglePlayState;
 var iCurrentSubs;
 var dictionary;
 
@@ -82,7 +84,7 @@ function showSubtitles(word) {
 	
 	
 	if((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height)) {
-		console.log(window.innerWidth)
+		//console.log(window.innerWidth)
 		iSub.style.width = screen.width + "px";
 		iSub.style.left = 0;
 		iSub.style.top = (screen.height / 1.38) + "px";
@@ -99,8 +101,31 @@ function showSubtitles(word) {
 
     $(iPlayerElementName)[0].appendChild(iSub);
     addClickListener();
+	addMouseenterListener();
 }
 
+// configure toggle button
+
+function togglePlayButton() {
+    if (togglePlayState === false) {
+        togglePlayState = true;
+		$(togglePlayButtonName).click()
+    } else {
+        togglePlayState = true;
+		$(togglePlayButtonName).click()
+    }
+}
+
+function addMouseenterListener(){
+	if(togglePlayButtonName){
+		$('#iblock').mouseenter(function() {
+		  togglePlayButton();
+		});
+		$('#iblock').mouseout(function() {
+		  togglePlayButton();
+		});
+	}
+}
 
 // check selection
 
@@ -113,7 +138,7 @@ function addClickListener() {
                 contentType: 'application/json',
                 dataType: 'jsonp',
                 success: function(data) {
-                    console.log(data);
+                    //console.log(data);
                     toggleDictionary(data, text);
                 }
             })
@@ -190,8 +215,8 @@ function getSelectionText() {
 function checkDictionary(word, firstCall) {
     if (firstCall) {
         // debugger;
-        console.log("=======CHANGE iCURRENT SUBS=======")
-        console.log(word)
+        //console.log("=======CHANGE iCURRENT SUBS=======")
+        //console.log(word)
         iCurrentSubs = word
     }
 
@@ -204,7 +229,7 @@ function checkDictionary(word, firstCall) {
             var translationMessage = "\n" + wordsArray[i].toUpperCase() + ": " + translation;
             if (!word.includes(translationMessage)) {
                 console.log(word)
-                console.log("replace with " + translation)
+                console.log("Replace with: " + translation)
                 word = word + translationMessage;
             }
 

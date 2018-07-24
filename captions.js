@@ -2,7 +2,7 @@
 
 var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
 var iPlayerElementName = '#player-container'
-vat togglePlayButtonName = '.ytp-play-button'
+var togglePlayButtonName = '.ytp-play-button'
 var togglePlayState;
 var iCurrentSubs;
 var dictionary;
