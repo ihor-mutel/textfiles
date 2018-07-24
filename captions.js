@@ -1,7 +1,10 @@
+// entry point checkDictionary(text, true)
+
 var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
 var iPlayerElementName = '#player-container'
 var iCurrentSubs;
 var dictionary;
+
 // add jQuery
 
 function addjQuery() {
@@ -107,7 +110,7 @@ function cleanTranslations(data) {
 
     var uniqueTranslations = [];
     $.each(translations, function(i, el) {
-        if ($.inArray(el, uniqueTranslations) === -1) uniqueTranslations.push(el);
+        if ($.inArray(el.trim(), uniqueTranslations) === -1) uniqueTranslations.push(el.trim());
     });
 
     uniqueTranslations.clean("")
