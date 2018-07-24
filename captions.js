@@ -26,6 +26,8 @@ function getRemoteDictionary() {
 	if(!localStorage.dictionary){
 		console.log("remote dictionary was saved to local storage")
 		localStorage.dictionary = dictionaryRemote
+	}else {
+		console.log("dictionary is alredy in local storage")
 	}
 }
 
