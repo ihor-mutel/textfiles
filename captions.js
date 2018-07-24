@@ -2,6 +2,8 @@
 
 var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
 var iPlayerElementName = '#player-container'
+vat togglePlayButtonName = '.ytp-play-button'
+var togglePlayState;
 var iCurrentSubs;
 var dictionary;
 
@@ -87,8 +89,31 @@ function showSubtitles(word) {
 
     $(iPlayerElementName)[0].appendChild(iSub);
     addClickListener();
+	addMouseenterListener();
 }
 
+// configure toggle button
+
+function togglePlayButton() {
+    if (togglePlayState === false) {
+        togglePlayState = true;
+		$(togglePlayButtonName).click()
+    } else {
+        togglePlayState = true;
+		$(togglePlayButtonName).click()
+    }
+}
+
+function addMouseenterListener(){
+	if(togglePlayButtonName){
+		$('#iblock').mouseenter(function() {
+		  togglePlayButton();
+		});
+		$('#iblock').mouseout(function() {
+		  togglePlayButton();
+		});
+	}
+}
 
 // check selection
 
