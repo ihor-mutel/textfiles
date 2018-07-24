@@ -131,7 +131,7 @@ function toggleDictionary(data, word) {
         // debugger;
         var index = dictionary.indexOf(element);
         dictionary.splice(index, 1);
-        console.log("Remove from dictionary");
+        console.log("Remove from dictionary index: " + index);
         checkDictionary(iCurrentSubs, false)
         return
     }
