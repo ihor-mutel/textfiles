@@ -22,15 +22,18 @@ function addjQuery() {
 // get dictionary
 
 function getRemoteDictionary() {
+	var remoteDictionary;
+			$.getJSON(dictionaryLink, function(data) {
+			remoteDictionary = data;
+			console.log("Dictionary was downloaded");
+			console.log(data.length);
+		});
+	
 	if(localStorage.dictionary.length>0){
 		dictionary = getLocalStorageDictionary();
 		console.log("GET DICTIONARY FROM LOCAL STORAGE");
 	}else {
-		$.getJSON(dictionaryLink, function(data) {
-			dictionary = data;
-			console.log("Dictionary was downloaded");
-			console.log(data.length);
-		});
+		dictionary = remoteDictionary
 	}
 	// if(!localStorage.dictionary){
 		// console.log("remote dictionary was saved to local storage")
