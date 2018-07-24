@@ -22,16 +22,12 @@ function addjQuery() {
 // get dictionary
 
 function getRemoteDictionary() {
-	if(localStorage.dictionary.length>0){
-		dictionary = getLocalStorageDictionary();
-		console.log("GET DICTIONARY FROM LOCAL STORAGE");
-	}else {
-		$.getJSON(dictionaryLink, function(data) {
-			dictionary = data;
-			console.log("Dictionary was downloaded");
-			console.log(data.length);
-		});
-	}
+
+    $.getJSON(dictionaryLink, function(data) {
+        dictionary = data;
+        console.log("Dictionary was downloaded");
+        console.log(data.length);
+    });
 	// if(!localStorage.dictionary){
 		// console.log("remote dictionary was saved to local storage")
 		// localStorage.dictionary = dictionaryRemote
@@ -39,19 +35,6 @@ function getRemoteDictionary() {
 		// console.log("dictionary is already in local storage")
 	// }
 }
-
-function setStorageDictionary(dictionary){
-	localStorage.setItem('dictionary', JSON.stringify(dictionary));
-}
-
-function getLocalStorageDictionary(){
-	var retrievedObject = localStorage.getItem('dictionary');
-	return JSON.parse(retrievedObject);	
-}
-
-
-
-
 
 try {
     getRemoteDictionary();
@@ -123,8 +106,6 @@ function togglePlayButton() {
 
 function addMouseenterListener(){
 	if(togglePlayButtonName){
-		togglePlayState = false;
-		
 		$('#iblock').mouseenter(function() {
 		  togglePlayButton();
 		});
@@ -154,7 +135,7 @@ function addClickListener() {
 
 }
 
-// convert translation object into string
+// conver translation object into string
 
 function cleanTranslations(data) {
     var translation = ""
