@@ -130,7 +130,7 @@ function toggleDictionary(data, word) {
         var element = checkWord(word);
         // debugger;
         var index = dictionary.indexOf(element);
-        localStorage.dictionary.splice(index, 1);
+        dictionary.splice(index, 1);
         console.log("Remove from dictionary");
         checkDictionary(iCurrentSubs, false)
         return
