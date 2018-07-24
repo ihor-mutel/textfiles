@@ -135,7 +135,7 @@ function addClickListener() {
 
 }
 
-// conver translation object into string
+// convert translation object into string
 
 function cleanTranslations(data) {
     var translation = ""
