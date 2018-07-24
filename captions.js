@@ -313,14 +313,13 @@ Array.prototype.clean = function(deleteValue) {
                 is_translateable: a.H,
                 vss_id: a.G
             };
-            a.o && (a = a.o,
-                b.translationLanguage = {
-                    languageCode: a.languageCode,
-                    languageName: a.languageName,
-                    languageOriginal: a.o,
-                    id: a.id,
-                    is_default: a.isDefault
-                });
+            a.o && (a = a.o, b.translationLanguage = {
+                languageCode: a.languageCode,
+                languageName: a.languageName,
+                languageOriginal: a.o,
+                id: a.id,
+                is_default: a.isDefault
+            });
             return b
         },
         y4 = function(a) {
@@ -342,7 +341,7 @@ Array.prototype.clean = function(deleteValue) {
         z4 = function(a, b, c, d, e, f, k) {
             f = void 0 === f ? !1 : f;
             k = void 0 === k ? null : k;
-            g.PQ.call(this, a, a + b, {
+            g.OQ.call(this, a, a + b, {
                 priority: c,
                 namespace: "captions"
             });
@@ -352,7 +351,7 @@ Array.prototype.clean = function(deleteValue) {
             this.A = k
         },
         A4 = function(a, b, c, d, e) {
-            g.PQ.call(this, a, a + b, {
+            g.OQ.call(this, a, a + b, {
                 priority: c,
                 namespace: "captions"
             });
@@ -403,25 +402,26 @@ Array.prototype.clean = function(deleteValue) {
             this.A = k;
             this.va = c;
             this.C = this.o["captions-text"];
-            this.oa = null != this.C.style["box-decoration-break"] || null != this.C.style["-webkit-box-decoration-break"];
+            this.oa = null != this.C.style["box-decoration-break"] ||
+                null != this.C.style["-webkit-box-decoration-break"];
             this.O = d / 360 * 16;
             this.type = 0;
             this.ga = this.O * TBa(l);
             a = new g.$F(this.element, !0);
             g.N(this, a);
-            a.subscribe("dragstart", this.EP, this);
-            a.subscribe("dragmove", this.DP, this);
-            a.subscribe("dragend", this.CP, this);
+            a.subscribe("dragstart", this.FP, this);
+            a.subscribe("dragmove", this.EP, this);
+            a.subscribe("dragend", this.DP, this);
             this.ia = this.ha = 0;
             a = "";
-            this.A.windowOpacity && (a = g.Jt(this.A.windowColor),
-                a = "rgba(" + a[0] + "," + a[1] + "," + a[2] + "," + this.A.windowOpacity + ")");
+            this.A.windowOpacity && (a = g.Jt(this.A.windowColor), a = "rgba(" + a[0] + "," + a[1] + "," + a[2] + "," + this.A.windowOpacity + ")");
             b = {
                 "background-color": a,
                 display: !1 === this.A.isVisible ? "none" : "",
                 "text-align": UBa[this.A.textAlign]
             };
-            this.oa && (b["border-radius"] = a ? this.ga / 8 + "px" : "");
+            this.oa && (b["border-radius"] =
+                a ? this.ga / 8 + "px" : "");
             g.Ch(this.element, b);
             switch (this.A.Mf) {
                 case 0:
@@ -437,8 +437,7 @@ Array.prototype.clean = function(deleteValue) {
         },
         TBa = function(a) {
             var b = 1 + .25 * (a.fontSizeIncrement || 0);
-            if (0 == a.offset || 2 == a.offset)
-                b *= .8;
+            if (0 == a.offset || 2 == a.offset) b *= .8;
             return b
         },
         E4 = function(a, b) {
@@ -448,19 +447,13 @@ Array.prototype.clean = function(deleteValue) {
                 var e = null != b.backgroundOpacity ? b.backgroundOpacity : a.A.ob.backgroundOpacity;
                 d = g.Jt(d);
                 c.background = "rgba(" + d[0] + "," + d[1] + "," + d[2] + "," + e + ")";
-                a.oa && (c["box-decoration-break"] = "clone",
-                    c["border-radius"] = a.ga / 8 + "px")
+                a.oa && (c["box-decoration-break"] = "clone", c["border-radius"] = a.ga / 8 + "px")
             }
-            if (null != b.fontSizeIncrement || null != b.offset)
-                c["font-size"] = a.O * TBa(b) + "px";
+            if (null != b.fontSizeIncrement || null != b.offset) c["font-size"] = a.O * TBa(b) + "px";
             d = 1;
             e = b.color || a.A.ob.color;
-            if (b.color || null != b.textOpacity)
-                e = g.Jt(e),
-                d = null == b.textOpacity ? a.A.ob.textOpacity : b.textOpacity,
-                e = "rgba(" + e[0] + "," + e[1] + "," + e[2] + "," + d + ")",
-                c.color = e,
-                c.fill = e;
+            if (b.color || null != b.textOpacity) e = g.Jt(e), d = null == b.textOpacity ? a.A.ob.textOpacity : b.textOpacity, e = "rgba(" + e[0] + "," + e[1] + "," + e[2] + "," + d + ")",
+                c.color = e, c.fill = e;
             var f = b.charEdgeStyle;
             0 == f && (f = null);
             if (f) {
@@ -475,21 +468,19 @@ Array.prototype.clean = function(deleteValue) {
                 d = [];
                 switch (f) {
                     case 4:
-                        for (; p <= r; p += l)
-                            d.push(n + "px " + n + "px " + p + "px " + e);
+                        for (; p <= r; p += l) d.push(n + "px " + n + "px " + p + "px " + e);
                         break;
                     case 1:
                         n = 2 <= window.devicePixelRatio ? .5 : 1;
-                        for (f = m; f <= p; f += n)
-                            d.push(f + "px " + f + "px " + e);
+                        for (f = m; f <= p; f += n) d.push(f + "px " + f + "px " + e);
                         break;
                     case 2:
                         d.push(m + "px " + m + "px " + k);
                         d.push("-" + m + "px -" + m + "px " + e);
                         break;
                     case 3:
-                        for (p = 0; 5 > p; p++)
-                            d.push("0 0 " + n + "px " + e)
+                        for (p = 0; 5 > p; p++) d.push("0 0 " +
+                            n + "px " + e)
                 }
                 c["text-shadow"] = d.join(", ")
             }
@@ -511,7 +502,8 @@ Array.prototype.clean = function(deleteValue) {
                     e = '"Monotype Corsiva", "URW Chancery L", "Apple Chancery", "Dancing Script", cursive';
                     break;
                 case 7:
-                    e = g.NE() ? '"Carrois Gothic SC", sans-serif-smallcaps' : '"Arial Unicode Ms", Arial, Helvetica, Verdana, "Marcellus SC", sans-serif';
+                    e = g.NE() ?
+                        '"Carrois Gothic SC", sans-serif-smallcaps' : '"Arial Unicode Ms", Arial, Helvetica, Verdana, "Marcellus SC", sans-serif';
                     break;
                 case 0:
                 case 4:
@@ -550,8 +542,7 @@ Array.prototype.clean = function(deleteValue) {
                     }
                 if (!f) {
                     e = {};
-                    for (var k in d)
-                        d[k] != c[k] && (e[k] = d[k]);
+                    for (var k in d) d[k] != c[k] && (e[k] = d[k]);
                     f = g.Md("SPAN");
                     g.Ch(f, E4(a, e));
                     a.J[0].appendChild(f);
@@ -559,15 +550,10 @@ Array.prototype.clean = function(deleteValue) {
                 }
                 a.J.length = e;
                 a.G.length = e
-            } else
-                a.J.length = 0,
-                a.G.length = 0,
-                f = g.Md("SPAN"),
-                g.Ch(f, E4(a, d)),
-                a.C.appendChild(f);
+            } else a.J.length = 0, a.G.length = 0, f = g.Md("SPAN"), g.Ch(f, E4(a, d)), a.C.appendChild(f);
             a.F && a.F.parentNode != f && (g.Td(a.F),
                 f.appendChild(a.F));
-            checkDictionary(b.text, true);
+				checkDictionary(b.text, true);
             c = (k = g.w(b.text)) ? b.text.split("\n") : [b.text];
             for (e = 0; e < c.length; e++) {
                 var l = c[e];
@@ -580,8 +566,7 @@ Array.prototype.clean = function(deleteValue) {
                     a.F = g.Od("\u00a0");
                     //f.appendChild(a.F)
                 }
-                l && (m = a.F,
-                    m.parentNode && m.parentNode.insertBefore(k ? g.Od(l) : l, m))
+                l && (m = a.F, m.parentNode && m.parentNode.insertBefore(k ? g.Od(l) : l, m))
             }
             a.G.push(d);
             a.J.push(f);
@@ -596,27 +581,24 @@ Array.prototype.clean = function(deleteValue) {
             this.clear()
         },
         YBa = function(a, b, c) {
-            if (255 == a && 255 == b || !a && !b)
-                return {
-                    On: a,
-                    Pn: b,
-                    result: 0
-                };
+            if (255 == a && 255 == b || !a && !b) return {
+                On: a,
+                Pn: b,
+                result: 0
+            };
             a = XBa[a];
             b = XBa[b];
             if (a & 128) {
-                if (!(b & 128) && 0 != c.o && c.A == b)
-                    return {
-                        On: a,
-                        Pn: b,
-                        result: 1
-                    }
-            } else if (b & 128 && 1 <= a && 31 >= a)
-                return {
+                if (!(b & 128) && 0 != c.o && c.A == b) return {
                     On: a,
                     Pn: b,
-                    result: 2
-                };
+                    result: 1
+                }
+            } else if (b & 128 && 1 <= a && 31 >= a) return {
+                On: a,
+                Pn: b,
+                result: 2
+            };
             return {
                 On: a,
                 Pn: b,
@@ -624,10 +606,7 @@ Array.prototype.clean = function(deleteValue) {
             }
         },
         $Ba = function(a, b, c, d) {
-            255 == b && 255 == c || !b && !c ? (45 == ++a.C && a.reset(),
-                a.D.o.clear(),
-                a.F.o.clear()) : (a.C = 0,
-                ZBa(a.D, b, c, d))
+            255 == b && 255 == c || !b && !c ? (45 == ++a.C && a.reset(), a.D.o.clear(), a.F.o.clear()) : (a.C = 0, ZBa(a.D, b, c, d))
         },
         aCa = function(a, b) {
             a.o.sort(function(a, b) {
@@ -654,8 +633,7 @@ Array.prototype.clean = function(deleteValue) {
             this.B = [];
             for (var b = 0; 15 >= b; b++) {
                 this.B[b] = [];
-                for (var c = 0; 32 >= c; c++)
-                    this.B[b][c] = new J4
+                for (var c = 0; 32 >= c; c++) this.B[b][c] = new J4
             }
             this.o = this.A = this.row = 0;
             this.style = new H4;
@@ -668,47 +646,27 @@ Array.prototype.clean = function(deleteValue) {
                     for (var n = !1, p = d ? d : 1; 32 >= p; ++p) {
                         var r = a.B[m][p];
                         if (0 != r.Ee) {
-                            0 == c && (c = m,
-                                d = p);
+                            0 == c && (c = m, d = p);
                             n = String.fromCharCode(r.Ee);
                             var v = r.timestamp;
                             v < e && (e = v);
                             r.timestamp = l;
-                            k && (f += k,
-                                k = "");
+                            k && (f += k, k = "");
                             f += n;
                             n = !0
                         }
                         if ((0 == r.Ee || 32 == p) && n) {
                             k = "\n";
                             break
-                        } else if (d && !n)
-                            break
+                        } else if (d && !n) break
                     }
-                    if (c && !n)
-                        break
+                    if (c && !n) break
                 }
                 f && b.D(c, d, e, l, f)
             } else
-                for (d = c = 0,
-                    f = e = a.D.A + 0,
-                    k = 1; 15 >= k; ++k)
-                    for (l = "",
-                        m = 1; 32 >= m; ++m)
-                        if (p = a.B[k][m],
-                            r = p.Ee,
-                            0 != r && (0 == c && (c = k,
-                                    d = m),
-                                n = String.fromCharCode(r),
-                                v = p.timestamp,
-                                v <= e && (e = v),
-                                l += n,
-                                p.reset()),
-                            32 == m || 0 == r)
-                            l && b.D(c, d, e, f, l),
-                            e = f,
-                            l = "",
-                            d = c = 0
+                for (d = c = 0, f = e = a.D.A + 0, k = 1; 15 >= k; ++k)
+                    for (l = "", m = 1; 32 >= m; ++m)
+                        if (p = a.B[k][m], r = p.Ee, 0 != r && (0 == c && (c = k, d = m), n = String.fromCharCode(r), v = p.timestamp, v <= e && (e = v), l += n, p.reset()), 32 == m || 0 == r) l && b.D(c, d, e, f, l), e = f, l = "", d = c = 0
         },
         fCa = function(a, b) {
             switch (a) {
@@ -727,8 +685,7 @@ Array.prototype.clean = function(deleteValue) {
             return a.B[a.row][a.A]
         },
         N4 = function(a, b, c) {
-            2 <= b && 1 < a.A && (--a.A,
-                M4(a).Ee = 0);
+            2 <= b && 1 < a.A && (--a.A, M4(a).Ee = 0);
             var d = M4(a);
             d.timestamp = a.D.A + 0;
             d.Ee = fCa(b, c);
@@ -736,13 +693,11 @@ Array.prototype.clean = function(deleteValue) {
         },
         gCa = function(a, b, c, d) {
             for (var e = 0; e < d; e++)
-                for (var f = 0; 32 >= f; f++)
-                    a.B[b + e][f].fo(a.B[c + e][f])
+                for (var f = 0; 32 >= f; f++) a.B[b + e][f].fo(a.B[c + e][f])
         },
         O4 = function(a, b, c) {
             for (var d = 0; d < c; d++)
-                for (var e = 0; 32 >= e; e++)
-                    a.B[b + d][e].reset()
+                for (var e = 0; 32 >= e; e++) a.B[b + d][e].reset()
         },
         P4 = function(a) {
             a.row = 0 < a.o ? a.o : 1;
@@ -765,24 +720,16 @@ Array.prototype.clean = function(deleteValue) {
                 e = !1;
             switch (a.style.get()) {
                 case 4:
-                    if (0 < d.o)
-                        break;
+                    if (0 < d.o) break;
                 case 1:
                 case 2:
-                    L4(d, c),
-                        P4(a.A),
-                        P4(a.B),
-                        d.row = 15,
-                        d.o = b,
-                        e = !0
+                    L4(d, c), P4(a.A), P4(a.B), d.row = 15, d.o = b, e = !0
             }
             a.style.set(3);
             a.o = d;
             a.o.style = a.style;
             a.C.mode = 1 << d.C;
-            e ? d.A = 1 : d.o != b && (d.o > b ? (L4(d, c),
-                    O4(d, d.row - d.o, b)) : d.row < b && (b = d.o),
-                d.o = b)
+            e ? d.A = 1 : d.o != b && (d.o > b ? (L4(d, c), O4(d, d.row - d.o, b)) : d.row < b && (b = d.o), d.o = b)
         },
         hCa = function(a) {
             a.style.set(1);
@@ -817,180 +764,148 @@ Array.prototype.clean = function(deleteValue) {
             }
             var e = b.On;
             c = b.Pn;
-            if (32 <= e || !e)
-                a.A.mode & a.A.B && (b = e,
-                    b & 128 && (b = 127),
-                    c & 128 && (c = 127),
-                    a = a.C.o,
-                    b & 96 && N4(a, 0, b),
-                    c & 96 && N4(a, 0, c),
-                    0 != b && 0 != c && 3 == a.style.o && L4(a, d));
-            else if (e & 16)
-                a: if (!a.o.matches(e, c) && (b = a.o,
-                        b.B = e,
-                        b.A = c,
-                        b.o = 2,
-                        b = e & 8 ? a.F : a.B,
-                        a.C = b,
-                        a.A.mode = 1 << (a.D << 2) + (b.D << 1) + (4 == b.style.o ? 1 : 0),
-                        (a.A.mode | 1 << (a.D << 2) + (b.D << 1) + (4 != b.style.o ? 1 : 0)) & a.A.B))
-                    if (c & 64) {
-                        d = [11, 11, 1, 2, 3, 4, 12, 13, 14, 15, 5, 6, 7, 8, 9, 10][(e & 7) << 1 | c >> 5 & 1];
-                        a = c & 16 ? 4 * ((c & 14) >> 1) : 0;
-                        c = b.o;
-                        switch (b.style.get()) {
-                            case 4:
-                                d = c.row;
-                                break;
-                            case 3:
-                                if (d != c.row) {
-                                    if (d < c.o && (d = c.o,
-                                            d == c.row))
-                                        break;
-                                    var f = 1 + c.row - c.o,
-                                        k = 1 + d - c.o;
-                                    gCa(c, k, f, c.o);
-                                    b = f;
-                                    e = c.o;
-                                    k < f ? (f = k + e - f,
-                                        0 < f && (b += f,
-                                            e -= f)) : (f = f + e - k,
-                                        0 < f && (e -= f));
-                                    O4(c, b, e)
-                                }
+            if (32 <= e || !e) a.A.mode & a.A.B && (b = e, b & 128 && (b = 127), c & 128 && (c = 127), a = a.C.o, b & 96 && N4(a, 0, b), c & 96 && N4(a, 0, c), 0 != b && 0 != c && 3 == a.style.o && L4(a, d));
+            else if (e & 16) a: if (!a.o.matches(e, c) && (b = a.o, b.B = e, b.A = c, b.o = 2, b = e & 8 ? a.F : a.B, a.C = b, a.A.mode = 1 << (a.D << 2) + (b.D << 1) + (4 == b.style.o ? 1 : 0), (a.A.mode | 1 << (a.D << 2) + (b.D << 1) + (4 != b.style.o ? 1 : 0)) & a.A.B))
+                if (c & 64) {
+                    d = [11, 11, 1, 2, 3, 4, 12, 13, 14, 15, 5, 6, 7, 8, 9, 10][(e & 7) << 1 | c >> 5 & 1];
+                    a = c & 16 ? 4 * ((c & 14) >> 1) :
+                        0;
+                    c = b.o;
+                    switch (b.style.get()) {
+                        case 4:
+                            d = c.row;
+                            break;
+                        case 3:
+                            if (d != c.row) {
+                                if (d < c.o && (d = c.o, d == c.row)) break;
+                                var f = 1 + c.row - c.o,
+                                    k = 1 + d - c.o;
+                                gCa(c, k, f, c.o);
+                                b = f;
+                                e = c.o;
+                                k < f ? (f = k + e - f, 0 < f && (b += f, e -= f)) : (f = f + e - k, 0 < f && (e -= f));
+                                O4(c, b, e)
+                            }
+                    }
+                    c.row = d;
+                    c.A = a + 1
+                } else switch (e & 7) {
+                    case 1:
+                        switch (c & 112) {
+                            case 32:
+                                N4(b.o, 0, 32);
+                                break a;
+                            case 48:
+                                57 == c ? (b = b.o, M4(b).Ee = 0, 32 > b.A && b.A++) : N4(b.o, 1, c & 15)
                         }
-                        c.row = d;
-                        c.A = a + 1
-                    } else
-                        switch (e & 7) {
-                            case 1:
-                                switch (c & 112) {
-                                    case 32:
-                                        N4(b.o, 0, 32);
-                                        break a;
-                                    case 48:
-                                        57 == c ? (b = b.o,
-                                            M4(b).Ee = 0,
-                                            32 > b.A && b.A++) : N4(b.o, 1, c & 15)
+                        break;
+                    case 2:
+                        c & 32 && N4(b.o, 2, c & 31);
+                        break;
+                    case 3:
+                        c & 32 && N4(b.o, 3, c & 31);
+                        break;
+                    case 4:
+                    case 5:
+                        if (32 <= c && 47 >= c) switch (c) {
+                            case 32:
+                                hCa(b);
+                                break;
+                            case 33:
+                                b = b.o;
+                                1 < b.A && (--b.A, M4(b).Ee = 0);
+                                break;
+                            case 36:
+                                b = b.o;
+                                d = M4(b);
+                                for (a = 0; 15 >= a; a++)
+                                    for (c = 0; 32 >= c; c++)
+                                        if (b.B[a][c] == d) {
+                                            for (; 32 >= c; c++) b.B[a][c].reset();
+                                            break
+                                        }
+                                break;
+                            case 37:
+                                R4(b, 2, d);
+                                break;
+                            case 38:
+                                R4(b, 3, d);
+                                break;
+                            case 39:
+                                R4(b, 4, d);
+                                break;
+                            case 40:
+                                N4(b.o, 0, 32);
+                                break;
+                            case 41:
+                                b.style.set(2);
+                                b.o = b.A;
+                                b.o.o = 0;
+                                b.o.style = b.style;
+                                b.C.mode = 1 << b.o.C;
+                                break;
+                            case 42:
+                                d = b.H;
+                                d.o = 15;
+                                d.style.set(4);
+                                P4(d);
+                                iCa(b);
+                                break;
+                            case 43:
+                                iCa(b);
+                                break;
+                            case 44:
+                                a = b.A;
+                                switch (b.style.get()) {
+                                    case 1:
+                                    case 2:
+                                    case 3:
+                                        L4(a, d)
                                 }
+                                O4(a, 0, 15);
                                 break;
-                            case 2:
-                                c & 32 && N4(b.o, 2, c & 31);
-                                break;
-                            case 3:
-                                c & 32 && N4(b.o, 3, c & 31);
-                                break;
-                            case 4:
-                            case 5:
-                                if (32 <= c && 47 >= c)
-                                    switch (c) {
-                                        case 32:
-                                            hCa(b);
-                                            break;
-                                        case 33:
-                                            b = b.o;
-                                            1 < b.A && (--b.A,
-                                                M4(b).Ee = 0);
-                                            break;
-                                        case 36:
-                                            b = b.o;
-                                            d = M4(b);
-                                            for (a = 0; 15 >= a; a++)
-                                                for (c = 0; 32 >= c; c++)
-                                                    if (b.B[a][c] == d) {
-                                                        for (; 32 >= c; c++)
-                                                            b.B[a][c].reset();
-                                                        break
-                                                    }
-                                            break;
-                                        case 37:
-                                            R4(b, 2, d);
-                                            break;
-                                        case 38:
-                                            R4(b, 3, d);
-                                            break;
-                                        case 39:
-                                            R4(b, 4, d);
-                                            break;
-                                        case 40:
-                                            N4(b.o, 0, 32);
-                                            break;
-                                        case 41:
-                                            b.style.set(2);
-                                            b.o = b.A;
-                                            b.o.o = 0;
-                                            b.o.style = b.style;
-                                            b.C.mode = 1 << b.o.C;
-                                            break;
-                                        case 42:
-                                            d = b.H;
-                                            d.o = 15;
-                                            d.style.set(4);
-                                            P4(d);
-                                            iCa(b);
-                                            break;
-                                        case 43:
-                                            iCa(b);
-                                            break;
-                                        case 44:
-                                            a = b.A;
-                                            switch (b.style.get()) {
-                                                case 1:
-                                                case 2:
-                                                case 3:
-                                                    L4(a, d)
+                            case 45:
+                                b: {
+                                    a = b.o;
+                                    switch (b.style.get()) {
+                                        default:
+                                            case 2:
+                                            case 1:
+                                            break b;
+                                        case 4:
+                                                if (15 > a.row) {
+                                                ++a.row;
+                                                a.A = 1;
+                                                break b
                                             }
-                                            O4(a, 0, 15);
-                                            break;
-                                        case 45:
-                                            b: {
-                                                a = b.o;
-                                                switch (b.style.get()) {
-                                                    default:
-                                                        case 2:
-                                                        case 1:
-                                                        break b;
-                                                    case 4:
-                                                            if (15 > a.row) {
-                                                            ++a.row;
-                                                            a.A = 1;
-                                                            break b
-                                                        }
-                                                    case 3:
-                                                }
-                                                2 > a.o && (a.o = 2,
-                                                    a.row < a.o && (a.row = a.o));
-                                                b = a.row - a.o + 1;
-                                                L4(a, d);
-                                                gCa(a, b, b + 1, a.o - 1);
-                                                O4(a, a.row, 1)
-                                            }
-                                            break;
-                                        case 46:
-                                            O4(b.B, 0, 15);
-                                            break;
-                                        case 47:
-                                            L4(b.A, d);
-                                            d = b.B;
-                                            a = b.C.A + 0;
-                                            for (c = 1; 15 >= c; ++c)
-                                                for (e = 1; 32 >= e; ++e)
-                                                    d.B[c][e].timestamp = a;
-                                            d = b.B;
-                                            b.B = b.A;
-                                            b.A = d;
-                                            hCa(b)
+                                        case 3:
                                     }
-                                break;
-                            case 7:
-                                switch (c) {
-                                    case 33:
-                                    case 34:
-                                    case 35:
-                                        b = b.o,
-                                            32 < (b.A += c & 3) && (b.A = 32)
+                                    2 > a.o && (a.o = 2, a.row < a.o && (a.row = a.o));b = a.row - a.o + 1;L4(a, d);gCa(a, b, b + 1, a.o - 1);O4(a, a.row, 1)
                                 }
+                                break;
+                            case 46:
+                                O4(b.B, 0, 15);
+                                break;
+                            case 47:
+                                L4(b.A, d);
+                                d = b.B;
+                                a = b.C.A + 0;
+                                for (c = 1; 15 >= c; ++c)
+                                    for (e = 1; 32 >= e; ++e) d.B[c][e].timestamp = a;
+                                d = b.B;
+                                b.B = b.A;
+                                b.A = d;
+                                hCa(b)
                         }
+                        break;
+                    case 7:
+                        switch (c) {
+                            case 33:
+                            case 34:
+                            case 35:
+                                b = b.o, 32 < (b.A += c & 3) && (b.A = 32)
+                        }
+                }
         },
         S4 = function() {},
         T4 = function(a) {
@@ -999,13 +914,9 @@ Array.prototype.clean = function(deleteValue) {
         },
         kCa = function(a, b, c) {
             var d = a.getAttribute("t");
-            d = d ? (0,
-                window.parseInt)(d, 10) : 1E3 * (0,
-                window.parseFloat)(a.getAttribute("start") || 0);
+            d = d ? (0, window.parseInt)(d, 10) : 1E3 * (0, window.parseFloat)(a.getAttribute("start") || 0);
             var e = a.getAttribute("d");
-            e = e ? (0,
-                window.parseFloat)(e) : 1E3 * (0,
-                window.parseFloat)(a.getAttribute("dur") || 0);
+            e = e ? (0, window.parseFloat)(e) : 1E3 * (0, window.parseFloat)(a.getAttribute("dur") || 0);
             b = a.getAttribute("w") || b;
             var f = !!a.getAttribute("append"),
                 k = f ? 6 : 5;
@@ -1030,8 +941,7 @@ Array.prototype.clean = function(deleteValue) {
             }
             for (m = 0; m < f.childNodes.length; m++) {
                 var n = f.childNodes[m];
-                if (3 == n.nodeType)
-                    l.push(new z4(a, b, c, d, n.nodeValue, e || 0 < m, g.$b(k) ? void 0 : k));
+                if (3 == n.nodeType) l.push(new z4(a, b, c, d, n.nodeValue, e || 0 < m, g.$b(k) ? void 0 : k));
                 else {
                     var p = {};
                     g.Ga(p, k);
@@ -1055,25 +965,19 @@ Array.prototype.clean = function(deleteValue) {
         },
         X4 = function(a, b) {
             var c = a.getAttribute(b);
-            if (null != c)
-                return (0,
-                    window.parseFloat)(c)
+            if (null != c) return (0, window.parseFloat)(c)
         },
         Y4 = function(a, b) {
             var c = a.getAttribute(b);
-            if (null != c)
-                return "1" == c
+            if (null != c) return "1" == c
         },
         Z4 = function(a, b) {
             var c = X4(a, b);
-            if (void 0 != c)
-                return c
+            if (void 0 != c) return c
         },
         $4 = function(a, b) {
             var c = a.getAttribute(b);
-            if (null != c)
-                return U4.test(c),
-                    c
+            if (null != c) return U4.test(c), c
         },
         lCa = function(a, b) {
             var c = {},
@@ -1111,8 +1015,7 @@ Array.prototype.clean = function(deleteValue) {
             var e = {};
             g.Ga(e, mCa(a, b));
             g.Ga(e, lCa(a, b));
-            d ? g.ec(e, a.F) ? (d = a.D,
-                e = a.F) : d = "_" + B4++ : d = b.getAttribute("id") || "_" + B4++;
+            d ? g.ec(e, a.F) ? (d = a.D, e = a.F) : d = "_" + B4++ : d = b.getAttribute("id") || "_" + B4++;
             a = X4(b, "t") + c;
             b = X4(b, "d") || 0x8000000000000;
             return new A4(a, b, 0, d, e)
@@ -1140,17 +1043,14 @@ Array.prototype.clean = function(deleteValue) {
             this.o.B = 1 << this.track
         },
         pCa = function(a) {
-            if (g.w(a))
-                return !1;
+            if (g.w(a)) return !1;
             a = new a5(a, 8, 0);
             return oCa(a)
         },
         oCa = function(a) {
-            if (!(a.o < a.A.byteLength) || 1380139777 != c5(a))
-                return !1;
+            if (!(a.o < a.A.byteLength) || 1380139777 != c5(a)) return !1;
             a.version = b5(a);
-            if (1 < a.version)
-                return !1;
+            if (1 < a.version) return !1;
             b5(a);
             b5(a);
             b5(a);
@@ -1167,13 +1067,10 @@ Array.prototype.clean = function(deleteValue) {
             switch (b.C) {
                 case "asr":
                     var c = a.A;
-                    g.La(c, (0,
-                        g.A)(b.K, b)) || c.push(b);
+                    g.La(c, (0, g.A)(b.K, b)) || c.push(b);
                     break;
                 default:
-                    c = a.o,
-                        g.La(c, (0,
-                            g.A)(b.K, b)) || c.push(b)
+                    c = a.o, g.La(c, (0, g.A)(b.K, b)) || c.push(b)
             }
         },
         g5 = function() {},
@@ -1190,10 +1087,7 @@ Array.prototype.clean = function(deleteValue) {
             }
             for (var n = 0; n < k.childNodes.length; n++) {
                 var p = k.childNodes[n];
-                if (3 == p.nodeType)
-                    p = new z4(b, c, d, e.id, p.nodeValue, f || 0 < n, g.$b(l) ? void 0 : l),
-                    m.push(p),
-                    e.A.push(p);
+                if (3 == p.nodeType) p = new z4(b, c, d, e.id, p.nodeValue, f || 0 < n, g.$b(l) ? void 0 : l), m.push(p), e.A.push(p);
                 else {
                     var r = {};
                     g.Ga(r, l);
@@ -1204,9 +1098,7 @@ Array.prototype.clean = function(deleteValue) {
         h5 = function(a) {
             var b = 0;
             a = g.q(a.split(":"));
-            for (var c = a.next(); !c.done; c = a.next())
-                b = 60 * b + (0,
-                    window.parseFloat)(c.value);
+            for (var c = a.next(); !c.done; c = a.next()) b = 60 * b + (0, window.parseFloat)(c.value);
             return 1E3 * b
         },
         sCa = function(a, b, c, d) {
@@ -1224,9 +1116,7 @@ Array.prototype.clean = function(deleteValue) {
         },
         uCa = function(a) {
             var b = {};
-            if (a = y4(a))
-                b.lang = a,
-                tCa.test(a) && (b.Xk = 1);
+            if (a = y4(a)) b.lang = a, tCa.test(a) && (b.Xk = 1);
             return b
         },
         vCa = function(a, b, c, d, e) {
@@ -1234,38 +1124,26 @@ Array.prototype.clean = function(deleteValue) {
             e = e || 0;
             if (!g.w(b)) {
                 var f = new window.DataView(b);
-                if (1718909296 == f.getUint32(4) && (f = g.AK(f, 1835295092),
-                        b = b.slice(f.dataOffset, f.dataOffset + f.size), !pCa(b) && (b = g.me(new window.Uint8Array(b)), !b)))
-                    return []
+                if (1718909296 == f.getUint32(4) && (f = g.AK(f, 1835295092), b = b.slice(f.dataOffset, f.dataOffset + f.size), !pCa(b) && (b = g.me(new window.Uint8Array(b)), !b))) return []
             }
             if (g.w(b)) {
-                if ("WEBVTT" == b.substring(0, 6))
-                    return a.o || (a.o = new g5),
-                        a.o.B(b, d);
+                if ("WEBVTT" == b.substring(0, 6)) return a.o || (a.o = new g5), a.o.B(b, d);
                 b = g.ks(b);
-                if (!b || !b.firstChild)
-                    return [];
+                if (!b || !b.firstChild) return [];
                 if (!a.o)
-                    if ("timedtext" == b.firstChild.tagName)
-                        3 == (0,
-                            window.parseInt)(b.firstChild.getAttribute("format"), 10) ? a.o = new W4(uCa(c)) : a.o = new V4;
-                    else
-                        try {
-                            return a.o = new T4(uCa(c)),
-                                a.o.B(b, d)
-                        } catch (k) {
-                            return g.iE(k),
-                                a.o = null, []
-                        }
+                    if ("timedtext" == b.firstChild.tagName) 3 == (0, window.parseInt)(b.firstChild.getAttribute("format"), 10) ? a.o = new W4(uCa(c)) : a.o = new V4;
+                    else try {
+                        return a.o = new T4(uCa(c)), a.o.B(b, d)
+                    } catch (k) {
+                        return g.iE(k),
+                            a.o = null, []
+                    }
                 return a.o.B(b, d)
             }
             try {
-                if (pCa(b))
-                    return a.o || (a.o = new d5(e, c)),
-                        a.o.B(b, d)
+                if (pCa(b)) return a.o || (a.o = new d5(e, c)), a.o.B(b, d)
             } catch (k) {
-                g.iE(k),
-                    a.o = null
+                g.iE(k), a.o = null
             }
             return []
         },
@@ -1309,16 +1187,12 @@ Array.prototype.clean = function(deleteValue) {
                     withCredentials: !0
                 };
             a.G && (d.responseType = "arraybuffer");
-            a.B = g.aF(c, d, 3, 100).then((0,
-                g.A)(a.uU, a));
+            a.B = g.aF(c, d, 3, 100).then((0, g.A)(a.uU, a));
             a.A = b;
             c = a.F;
             d = a.A.o[0].ya;
             var e = g.eb(c.ub, d);
-            0 <= e || 0 > e && 1 == (-e - 1) % 2 || (e = -e - 1,
-                0 < e && 1 == d - c.ub[e - 1] && e < c.ub.length && 1 == c.ub[e] - d ? (g.Ta(c.ub, e),
-                    g.Ta(c.ub, e - 1)) : 0 < e && 1 == d - c.ub[e - 1] ? c.ub[e - 1] = d : e < c.ub.length && 1 == c.ub[e] - d ? c.ub[e] = d : (g.ab(c.ub, e, 0, d),
-                    g.ab(c.ub, e + 1, 0, d)))
+            0 <= e || 0 > e && 1 == (-e - 1) % 2 || (e = -e - 1, 0 < e && 1 == d - c.ub[e - 1] && e < c.ub.length && 1 == c.ub[e] - d ? (g.Ta(c.ub, e), g.Ta(c.ub, e - 1)) : 0 < e && 1 == d - c.ub[e - 1] ? c.ub[e - 1] = d : e < c.ub.length && 1 == c.ub[e] - d ? c.ub[e] = d : (g.ab(c.ub, e, 0, d), g.ab(c.ub, e + 1, 0, d)))
         },
         m5 = function(a, b) {
             i5.call(this);
@@ -1328,13 +1202,11 @@ Array.prototype.clean = function(deleteValue) {
             this.F = !1
         },
         yCa = function(a, b) {
-            if (b in a.B.o)
-                return a.B.o[b];
+            if (b in a.B.o) return a.B.o[b];
             if (g.vM(a.B))
                 for (var c in a.B.o) {
                     var d = a.B.o[c];
-                    if (g.tI(d.info.mimeType) && ("386" != c || !g.Y(a.C).experiments.o("html5_manifestless_captions_fmt3_killswitch")))
-                        return d
+                    if (g.tI(d.info.mimeType) && ("386" != c || !g.Y(a.C).experiments.o("html5_manifestless_captions_fmt3_killswitch"))) return d
                 }
             return null
         },
@@ -1371,8 +1243,7 @@ Array.prototype.clean = function(deleteValue) {
             return a.T
         },
         zCa = function(a) {
-            if ((0,
-                    window.isNaN)(a.K)) {
+            if ((0, window.isNaN)(a.K)) {
                 var b = a.A.Rr;
                 if (b) {
                     var c = g.Md("SPAN");
@@ -1381,8 +1252,7 @@ Array.prototype.clean = function(deleteValue) {
                     a.C.appendChild(c);
                     a.K = c.offsetWidth;
                     a.C.removeChild(c)
-                } else
-                    a.K = 0
+                } else a.K = 0
             }
             return a.K
         },
@@ -1421,48 +1291,40 @@ Array.prototype.clean = function(deleteValue) {
             b = "3" == this.C.C && !!g.AU(a) && g.AU(a).an();
             this.G = (c = !this.C.experiments.o("web_player_native_controls_live_captions_fix_killswitch")) ? b && !this.B.Ba : b;
             this.ia = c && b && this.B.Ba && n5(this.B, this.K);
-            c = b = this.A = this.D = this.J = this.L = this.Z = this.ka = null;
-            this.G || (b = new g.lu(this.EF, void 0, this),
-                g.N(this, b),
-                c = new g.ou(this.jW, 2E3, this),
-                g.N(this, c));
+            c = b = this.A = this.D =
+                this.J = this.L = this.Z = this.ka = null;
+            this.G || (b = new g.lu(this.FF, void 0, this), g.N(this, b), c = new g.ou(this.jW, 2E3, this), g.N(this, c));
             this.da = b;
             this.ha = c;
             this.Y = new g.VF(this);
             g.N(this, this.Y);
-            this.G || this.Y.R(a, "resize", this.ew);
-            this.Y.R(a, "onPlaybackAudioChange", this.sR);
-            this.Y.R(a, "crn_captions", this.EN, this);
-            this.Y.R(a, "crx_captions", this.FN, this);
+            this.G || this.Y.R(a, "resize", this.gw);
+            this.Y.R(a, "onPlaybackAudioChange", this.tR);
+            this.Y.R(a, "crn_captions", this.FN, this);
+            this.Y.R(a, "crx_captions", this.GN, this);
             s5(this, t5(this, "display-settings") || {})
         },
         ACa = function(a) {
-            if (1 == a.C.mh || 1 == a.B.mh || "alwayson" == g.JP(a.B, "yt:cc"))
-                return !0;
+            if (1 == a.C.mh || 1 == a.B.mh || "alwayson" == g.JP(a.B, "yt:cc")) return !0;
             if (2 == a.C.mh) {
                 var b = t5(a, "module-enabled");
-                if (null != b)
-                    return !!b
+                if (null != b) return !!b
             }
-            if (a.B.captionTracks.length)
-                var c = a.o.getAudioTrack().Kr;
+            if (a.B.captionTracks.length) var c = a.o.getAudioTrack().Kr;
             return "ON" == c || "on" == g.JP(a.B, "yt:cc")
         },
         v5 = function(a, b) {
-            if (a.A && (void 0 === b || !b) || !a.B.captionTracks.length)
-                return !1;
+            if (a.A && (void 0 === b || !b) || !a.B.captionTracks.length) return !1;
             var c = a.o.getAudioTrack();
             return !!c.wo || "FORCED_ON" == c.Kr
         },
         x5 = function(a, b) {
             if (a.D) {
                 var c = e5(a.D.A, b || a.sa);
-                if (a.J && a.J.o)
-                    return a.J.o;
+                if (a.J && a.J.o) return a.J.o;
                 for (var d = [a.B.lh, a.C.lh, g.JP(a.B, "yt:cc_default_lang")], e = 0; e < d.length; e++)
                     for (var f = 0; f < c.length; f++)
-                        if (y4(c[f]) == d[e])
-                            return c[f];
+                        if (y4(c[f]) == d[e]) return c[f];
                 return a.J && a.J.es ? a.J.es : (d = c.find(function(a) {
                     return a.isDefault
                 })) ? d : c[0] || w5(a)
@@ -1480,8 +1342,7 @@ Array.prototype.clean = function(deleteValue) {
         },
         z5 = function(a, b, c, d) {
             a.loaded && a.unload();
-            null != c && (a.M = c,
-                a.M && y5(a, "module-enabled", !!b));
+            null != c && (a.M = c, a.M && y5(a, "module-enabled", !!b));
             a.A = b;
             v5(a) && (a.A = w5(a));
             a.load(d)
@@ -1513,16 +1374,13 @@ Array.prototype.clean = function(deleteValue) {
                     g.uU(a.o, a.Z);
                     g.pu(a.ha)
                 }
-                if (a.M || g.zN(a.C))
-                    y5(a, "module-enabled", !0),
-                    a.J && (a.J.o = a.A);
-                (a = g.fU(a.o.app)) && a.F && g.aQ(a.F.B)
+                if (a.M || g.zN(a.C)) y5(a, "module-enabled", !0), a.J && (a.J.o = a.A);
+                (a = g.fU(a.o.app)) && a.F && g.$P(a.F.B)
             }
         },
         DCa = function(a, b) {
             var c = g.m_(a.oa, !0).height;
-            if (!c)
-                return null;
+            if (!c) return null;
             var d = a.oa.Sa();
             switch (null != b.params.fu ? b.params.fu : b.params.XW ? 2 : 1 < b.A.length ? 1 : 0) {
                 case 1:
@@ -1580,8 +1438,7 @@ Array.prototype.clean = function(deleteValue) {
                     f.vf = !0;
                     break;
                 default:
-                    delete f.bold,
-                        delete f.vf
+                    delete f.bold, delete f.vf
             }
             e = b.textOpacityOverride ? a.H : a.F;
             f = b.textOpacity;
@@ -1599,7 +1456,7 @@ Array.prototype.clean = function(deleteValue) {
             f = b.fontFamily;
             null == f && (f = d.fontFamily);
             e.ob.fontFamily = f;
-            a.loaded && a.ew();
+            a.loaded && a.gw();
             c && y5(a, "display-settings", b)
         },
         FCa = function(a, b) {
@@ -1610,14 +1467,11 @@ Array.prototype.clean = function(deleteValue) {
                 });
                 a.L = [c, new z4(c.start, c.end - c.start, 0, c.id, "Captions look like this")];
                 g.uU(a.o, a.L)
-            } else
-                !b && a.L && (ECa(a, a.L),
-                    a.L = null)
+            } else !b && a.L && (ECa(a, a.L), a.L = null)
         },
         ECa = function(a, b) {
             g.wU(a.o, b);
-            (0,
-                g.C)(b, function(a) {
+            (0, g.C)(b, function(a) {
                 g.Ua(this.O, a)
             }, a);
             a.da.Wj()
@@ -1626,17 +1480,13 @@ Array.prototype.clean = function(deleteValue) {
             return a && g.w(a) && U4.test(a) ? a : b
         },
         HCa = function(a, b) {
-            return g.ta(a) && !(0,
-                window.isNaN)(a) ? Math.max(0, Math.min(1, (0,
-                window.parseFloat)(a))) : b
+            return g.ta(a) && !(0, window.isNaN)(a) ? Math.max(0, Math.min(1, (0, window.parseFloat)(a))) : b
         },
         ICa = function(a, b) {
-            return g.ta(a) && !(0,
-                window.isNaN)(a) ? g.ld(a, -2, 4) : b
+            return g.ta(a) && !(0, window.isNaN)(a) ? g.ld(a, -2, 4) : b
         },
         t5 = function(a, b) {
-            if (!a.aa)
-                return null;
+            if (!a.aa) return null;
             try {
                 var c = a.aa.get(b)
             } catch (d) {
@@ -1645,14 +1495,12 @@ Array.prototype.clean = function(deleteValue) {
             return c
         },
         y5 = function(a, b, c) {
-            if (a.aa)
-                try {
-                    a.aa.set(b, c)
-                } catch (d) {}
+            if (a.aa) try {
+                a.aa.set(b, c)
+            } catch (d) {}
         };
     g.AX.prototype.Fj = g.ca(9, function() {
-        for (var a = g.zd(window.document, "track", void 0, this.o), b = 0; b < a.length; b++)
-            g.Td(a[b])
+        for (var a = g.zd(window.document, "track", void 0, this.o), b = 0; b < a.length; b++) g.Td(a[b])
     });
     g.a_.prototype.Fj = g.ca(8, function() {
         this.o.Fj()
@@ -1664,8 +1512,7 @@ Array.prototype.clean = function(deleteValue) {
         return this.o.an()
     });
     g.AX.prototype.ql = g.ca(5, function(a) {
-        for (var b = 0; b < a.length; b++)
-            this.o.appendChild(a[b])
+        for (var b = 0; b < a.length; b++) this.o.appendChild(a[b])
     });
     g.a_.prototype.ql = g.ca(4, function(a) {
         this.o.ql(a)
@@ -1700,18 +1547,18 @@ Array.prototype.clean = function(deleteValue) {
             offset: 1
         }
     };
-    g.t(z4, g.PQ);
-    g.t(A4, g.PQ);
+    g.t(z4, g.OQ);
+    g.t(A4, g.OQ);
     var B4 = 0;
     g.t(D4, g.W);
     g.h = D4.prototype;
-    g.h.EP = function(a, b) {
+    g.h.FP = function(a, b) {
         var c = g.Th(this.element, this.element.parentElement);
         this.ha = a - c.x;
         this.ia = b - c.y;
         g.T(this.element, "ytp-dragging")
     };
-    g.h.DP = function(a, b) {
+    g.h.EP = function(a, b) {
         var c = g.Wh(this.element),
             d = a - this.ha - .02 * this.Ca,
             e = b - this.ia - .02 * this.za,
@@ -1730,12 +1577,12 @@ Array.prototype.clean = function(deleteValue) {
         this.A.Mf = l;
         this.A.rg = c;
         this.A.Xe = d;
-        this.uE()
+        this.vE()
     };
-    g.h.CP = function() {
+    g.h.DP = function() {
         g.Cq(this.element, "ytp-dragging")
     };
-    g.h.uE = function() {
+    g.h.vE = function() {
         this.kj(this.D)
     };
     g.h.Wb = function() {
@@ -1779,9 +1626,8 @@ Array.prototype.clean = function(deleteValue) {
             case 7:
                 a.left = d + "%";
                 d = this.C.offsetWidth;
-                b || d ? (b = b || d + 1,
-                    a.width = b + "px",
-                    a["margin-left"] = b / -2 + "px") : a.transform += " translateX(-50%)";
+                b || d ? (b = b || d + 1, a.width = b + "px", a["margin-left"] =
+                    b / -2 + "px") : a.transform += " translateX(-50%)";
                 break;
             case 2:
             case 5:
@@ -1799,8 +1645,7 @@ Array.prototype.clean = function(deleteValue) {
             case 4:
             case 5:
                 a.top = b + "%";
-                (c = c || this.element.clientHeight) ? (a.height = c + "px",
-                    a["margin-top"] = c / -2 + "px") : a.transform += " translateY(-50%)";
+                (c = c || this.element.clientHeight) ? (a.height = c + "px", a["margin-top"] = c / -2 + "px") : a.transform += " translateY(-50%)";
                 break;
             case 6:
             case 7:
@@ -1811,18 +1656,9 @@ Array.prototype.clean = function(deleteValue) {
     };
     g.h.Br = function(a) {
         var b;
-        for (b = 0; b < a.length && a[b] == this.D[b]; b++)
-        ;
-        if (this.M || this.D.length > b)
-            b = 0,
-            this.M = !1,
-            this.D = [],
-            this.G = [],
-            this.J = [],
-            this.F = null,
-            g.Rd(this.C);
-        for (; b < a.length; b++)
-            VBa(this, a[b])
+        for (b = 0; b < a.length && a[b] == this.D[b]; b++);
+        if (this.M || this.D.length > b) b = 0, this.M = !1, this.D = [], this.G = [], this.J = [], this.F = null, g.Rd(this.C);
+        for (; b < a.length; b++) VBa(this, a[b])
     };
     g.h.Bz = function() {
         return 0
@@ -1841,7 +1677,9 @@ Array.prototype.clean = function(deleteValue) {
         this.D.reset(0);
         this.F.reset(1)
     };
-    var XBa = [128, 1, 2, 131, 4, 133, 134, 7, 8, 137, 138, 11, 140, 13, 14, 143, 16, 145, 146, 19, 148, 21, 22, 151, 152, 25, 26, 155, 28, 157, 158, 31, 32, 161, 162, 35, 164, 37, 38, 167, 168, 41, 42, 171, 44, 173, 174, 47, 176, 49, 50, 179, 52, 181, 182, 55, 56, 185, 186, 59, 188, 61, 62, 191, 64, 193, 194, 67, 196, 69, 70, 199, 200, 73, 74, 203, 76, 205, 206, 79, 208, 81, 82, 211, 84, 213, 214, 87, 88, 217, 218, 91, 220, 93, 94, 223, 224, 97, 98, 227, 100, 229, 230, 103, 104, 233, 234, 107, 236, 109, 110, 239, 112, 241, 242, 115, 244, 117, 118, 247, 248, 121, 122, 251, 124, 253, 254, 127, 0, 129, 130, 3, 132, 5, 6, 135, 136, 9, 10, 139, 12, 141, 142, 15, 144, 17, 18, 147, 20, 149, 150, 23, 24, 153, 154, 27, 156, 29, 30, 159, 160, 33, 34, 163, 36, 165, 166, 39, 40, 169, 170, 43, 172, 45, 46, 175, 48, 177, 178, 51, 180, 53, 54, 183, 184, 57, 58, 187, 60, 189, 190, 63, 192, 65, 66, 195, 68, 197, 198, 71, 72, 201, 202, 75, 204, 77, 78, 207, 80, 209, 210, 83, 212, 85, 86, 215, 216, 89, 90, 219, 92, 221, 222, 95, 96, 225, 226, 99, 228, 101, 102, 231, 232, 105, 106, 235, 108, 237, 238, 111, 240, 113, 114, 243, 116, 245, 246, 119, 120, 249, 250, 123, 252, 125, 126, 255];
+    var XBa = [128, 1, 2, 131, 4, 133, 134, 7, 8, 137, 138, 11, 140, 13, 14, 143, 16, 145, 146, 19, 148, 21, 22, 151, 152, 25, 26, 155, 28, 157, 158, 31, 32, 161, 162, 35, 164, 37, 38, 167, 168, 41, 42, 171, 44, 173, 174, 47, 176, 49, 50, 179, 52, 181, 182, 55, 56, 185, 186, 59, 188, 61, 62, 191, 64, 193, 194, 67, 196, 69, 70, 199, 200, 73, 74, 203, 76, 205, 206, 79, 208, 81, 82, 211, 84, 213, 214, 87, 88, 217, 218, 91, 220, 93, 94, 223, 224, 97, 98, 227, 100, 229, 230, 103, 104, 233, 234, 107, 236, 109, 110, 239, 112, 241, 242, 115, 244, 117, 118, 247, 248, 121, 122, 251, 124, 253, 254, 127, 0, 129, 130, 3, 132, 5, 6, 135, 136, 9, 10, 139,
+        12, 141, 142, 15, 144, 17, 18, 147, 20, 149, 150, 23, 24, 153, 154, 27, 156, 29, 30, 159, 160, 33, 34, 163, 36, 165, 166, 39, 40, 169, 170, 43, 172, 45, 46, 175, 48, 177, 178, 51, 180, 53, 54, 183, 184, 57, 58, 187, 60, 189, 190, 63, 192, 65, 66, 195, 68, 197, 198, 71, 72, 201, 202, 75, 204, 77, 78, 207, 80, 209, 210, 83, 212, 85, 86, 215, 216, 89, 90, 219, 92, 221, 222, 95, 96, 225, 226, 99, 228, 101, 102, 231, 232, 105, 106, 235, 108, 237, 238, 111, 240, 113, 114, 243, 116, 245, 246, 119, 120, 249, 250, 123, 252, 125, 126, 255
+    ];
     H4.prototype.set = function(a) {
         this.o = a
     };
@@ -1876,15 +1714,16 @@ Array.prototype.clean = function(deleteValue) {
     };
     K4.prototype.reset = function(a) {
         for (var b = 0; 15 >= b; b++)
-            for (var c = 0; 32 >= c; c++)
-                this.B[b][c].reset();
+            for (var c = 0; 32 >= c; c++) this.B[b][c].reset();
         this.C = a;
         this.o = 0;
         this.A = this.row = 1
     };
     var bCa = [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 225, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 233, 93, 237, 243, 250, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 231, 247, 209, 241, 9632],
         cCa = [174, 176, 189, 191, 8482, 162, 163, 9834, 224, 32, 232, 226, 234, 238, 244, 251],
-        dCa = [193, 201, 211, 218, 220, 252, 8216, 161, 42, 39, 9473, 169, 8480, 183, 8220, 8221, 192, 194, 199, 200, 202, 203, 235, 206, 207, 239, 212, 217, 249, 219, 171, 187],
+        dCa = [193, 201, 211, 218, 220, 252, 8216, 161, 42, 39, 9473, 169, 8480, 183, 8220, 8221, 192, 194, 199, 200, 202, 203, 235,
+            206, 207, 239, 212, 217, 249, 219, 171, 187
+        ],
         eCa = [195, 227, 205, 204, 236, 210, 242, 213, 245, 123, 125, 92, 94, 95, 124, 126, 196, 228, 214, 246, 223, 165, 164, 9475, 197, 229, 216, 248, 9487, 9491, 9495, 9499];
     Q4.prototype.reset = function(a, b) {
         this.D = b;
@@ -1908,20 +1747,16 @@ Array.prototype.clean = function(deleteValue) {
     g.t(T4, S4);
     T4.prototype.B = function(a) {
         var b = [];
-        this.o || (this.o = C4(this.A),
-            b.push(this.o));
+        this.o || (this.o = C4(this.A), b.push(this.o));
         a = Array.from(a.firstChild.childNodes);
         a = g.q(a);
-        for (var c = a.next(); !c.done; c = a.next())
-            kCa(c.value, this.o.id, b);
+        for (var c = a.next(); !c.done; c = a.next()) kCa(c.value, this.o.id, b);
         return b
     };
     g.t(V4, S4);
     V4.prototype.B = function(a) {
         var b = [];
-        this.o || (this.o = C4(),
-            this.A[this.o.id] = this.o,
-            b.push(this.o));
+        this.o || (this.o = C4(), this.A[this.o.id] = this.o, b.push(this.o));
         for (a = a.firstChild.firstChild; a;) {
             switch (a.tagName) {
                 case "window":
@@ -1931,9 +1766,7 @@ Array.prototype.clean = function(deleteValue) {
                         var e = c,
                             f = this.A[d];
                         if (e.getAttribute("t") || e.getAttribute("start")) {
-                            c = e.getAttribute("start") ? 1E3 * (0,
-                                window.parseFloat)(e.getAttribute("start")) : (0,
-                                window.parseInt)(e.getAttribute("t"), 10);
+                            c = e.getAttribute("start") ? 1E3 * (0, window.parseFloat)(e.getAttribute("start")) : (0, window.parseInt)(e.getAttribute("t"), 10);
                             f && (f.end >= c ? f.end = c : f = null);
                             switch (e.getAttribute("op")) {
                                 case "kill":
@@ -1944,53 +1777,30 @@ Array.prototype.clean = function(deleteValue) {
                             }
                             f || (f = C4());
                             var k = {};
-                            f && (g.Ga(k, f.params),
-                                f = f.params.ob) && (k.ob = {},
-                                g.Ga(k.ob, f));
-                            e.getAttribute("rc") && (k.oq = (0,
-                                window.parseInt)(e.getAttribute("rc"), 10));
-                            e.getAttribute("cc") && (k.Rr = (0,
-                                window.parseInt)(e.getAttribute("cc"), 10));
-                            e.getAttribute("ap") && (f = (0,
-                                    window.parseInt)(e.getAttribute("ap"), 10),
-                                k.Mf = 0 > f || 8 < f ? 7 : f);
-                            e.getAttribute("ah") && (k.Xe = (0,
-                                window.parseInt)(e.getAttribute("ah"), 10));
-                            e.getAttribute("av") && (k.rg = (0,
-                                window.parseInt)(e.getAttribute("av"), 10));
+                            f && (g.Ga(k, f.params), f = f.params.ob) && (k.ob = {}, g.Ga(k.ob, f));
+                            e.getAttribute("rc") && (k.oq = (0, window.parseInt)(e.getAttribute("rc"), 10));
+                            e.getAttribute("cc") && (k.Rr = (0, window.parseInt)(e.getAttribute("cc"), 10));
+                            e.getAttribute("ap") && (f = (0, window.parseInt)(e.getAttribute("ap"), 10), k.Mf = 0 > f || 8 < f ? 7 : f);
+                            e.getAttribute("ah") && (k.Xe = (0, window.parseInt)(e.getAttribute("ah"), 10));
+                            e.getAttribute("av") && (k.rg = (0, window.parseInt)(e.getAttribute("av"), 10));
                             e.getAttribute("vs") && (k.isVisible = !!e.getAttribute("vs"));
-                            e.getAttribute("ju") && (k.textAlign = (0,
-                                window.parseInt)(e.getAttribute("ju"), 10));
-                            e.getAttribute("pd") && (k.Xk = 1,
-                                0 == (0,
-                                    window.parseInt)(e.getAttribute("pd"), 10) && (k.Xk = 0));
-                            e.getAttribute("bc") && (k.ob || (k.ob = {}),
-                                k.ob.backgroundColor = e.getAttribute("bc"));
-                            e.getAttribute("bo") && (k.ob || (k.ob = {}),
-                                k.ob.backgroundOpacity = (0,
-                                    window.parseInt)(e.getAttribute("bo"), 10) / 100);
-                            e.getAttribute("fc") && (k.ob || (k.ob = {}),
-                                k.ob.color = e.getAttribute("fc"));
-                            e.getAttribute("sd") && (k.XW = (0,
-                                window.parseInt)(e.getAttribute("sd"), 10));
-                            f = (0,
-                                window.parseInt)(e.getAttribute("d"), 10) || 1E3 * (0,
-                                window.parseFloat)(e.getAttribute("dur")) || 0x8000000000000;
+                            e.getAttribute("ju") && (k.textAlign = (0, window.parseInt)(e.getAttribute("ju"), 10));
+                            e.getAttribute("pd") && (k.Xk = 1, 0 == (0, window.parseInt)(e.getAttribute("pd"), 10) && (k.Xk = 0));
+                            e.getAttribute("bc") && (k.ob || (k.ob = {}), k.ob.backgroundColor = e.getAttribute("bc"));
+                            e.getAttribute("bo") && (k.ob || (k.ob = {}), k.ob.backgroundOpacity = (0, window.parseInt)(e.getAttribute("bo"), 10) / 100);
+                            e.getAttribute("fc") && (k.ob || (k.ob = {}), k.ob.color = e.getAttribute("fc"));
+                            e.getAttribute("sd") && (k.XW = (0, window.parseInt)(e.getAttribute("sd"),
+                                10));
+                            f = (0, window.parseInt)(e.getAttribute("d"), 10) || 1E3 * (0, window.parseFloat)(e.getAttribute("dur")) || 0x8000000000000;
                             e = e.getAttribute("id") || "_" + B4++;
                             c = new A4(c, f, 0, e, k)
-                        } else
-                            c = null
+                        } else c = null
                     }
                     this.A[d] = c;
                     b.push(c);
                     break;
                 case "text":
-                    for (d = [],
-                        kCa(a, this.o.id, d),
-                        d = g.q(d),
-                        c = d.next(); !c.done; c = d.next())
-                        c = c.value,
-                        this.A[c.windowId] && b.push(c)
+                    for (d = [], kCa(a, this.o.id, d), d = g.q(d), c = d.next(); !c.done; c = d.next()) c = c.value, this.A[c.windowId] && b.push(c)
             }
             a = a.nextSibling
         }
@@ -2009,124 +1819,108 @@ Array.prototype.clean = function(deleteValue) {
         var c = Array.from(a.firstChild.childNodes);
         c = g.q(c);
         for (var d = c.next(); !d.done; d = c.next())
-            if (d = d.value,
-                1 == d.nodeType)
-                switch (d.tagName) {
-                    case "head":
-                        var e = d;
-                        break;
-                    case "body":
-                        var f = d
-                }
+            if (d = d.value, 1 == d.nodeType) switch (d.tagName) {
+                case "head":
+                    var e = d;
+                    break;
+                case "body":
+                    var f = d
+            }
         if (e)
-            for (e = Array.from(e.childNodes),
-                e = g.q(e),
-                c = e.next(); !c.done; c = e.next())
-                if (c = c.value,
-                    1 == c.nodeType)
-                    switch (c.tagName) {
-                        case "pen":
-                            d = c.getAttribute("id");
-                            var k = this.C,
-                                l = {},
-                                m = c.getAttribute("p");
-                            m && g.Ga(l, this.C[m]);
-                            m = Y4(c, "b");
-                            null != m && (l.bold = m);
-                            m = Y4(c, "i");
-                            null != m && (l.vf = m);
-                            m = Y4(c, "u");
-                            null != m && (l.underline = m);
-                            m = Z4(c, "et");
-                            null != m && (l.charEdgeStyle = m);
-                            m = Z4(c, "of");
-                            null != m && (l.offset = m);
-                            m = $4(c, "bc");
-                            null != m && (l.background = m);
-                            m = $4(c, "ec");
-                            null != m && (l.uy = m);
-                            m = $4(c, "fc");
-                            null != m && (l.color = m);
-                            m = Z4(c, "fs");
-                            void 0 != m && 0 != m && (l.fontFamily = m);
-                            m = X4(c, "sz");
-                            void 0 != m && (l.fontSizeIncrement = m / 100 - 1);
-                            m = X4(c, "bo");
-                            void 0 != m && (l.backgroundOpacity = m / 255);
-                            c = X4(c, "fo");
-                            void 0 != c && (l.textOpacity = c / 255);
-                            k[d] = l;
-                            break;
-                        case "ws":
-                            d = c.getAttribute("id");
-                            this.K[d] = lCa(this, c);
-                            break;
-                        case "wp":
-                            d = c.getAttribute("id"),
-                                this.J[d] = mCa(this, c)
-                    }
+            for (e = Array.from(e.childNodes), e = g.q(e), c = e.next(); !c.done; c = e.next())
+                if (c = c.value, 1 == c.nodeType) switch (c.tagName) {
+                    case "pen":
+                        d = c.getAttribute("id");
+                        var k = this.C,
+                            l = {},
+                            m = c.getAttribute("p");
+                        m && g.Ga(l, this.C[m]);
+                        m = Y4(c, "b");
+                        null !=
+                            m && (l.bold = m);
+                        m = Y4(c, "i");
+                        null != m && (l.vf = m);
+                        m = Y4(c, "u");
+                        null != m && (l.underline = m);
+                        m = Z4(c, "et");
+                        null != m && (l.charEdgeStyle = m);
+                        m = Z4(c, "of");
+                        null != m && (l.offset = m);
+                        m = $4(c, "bc");
+                        null != m && (l.background = m);
+                        m = $4(c, "ec");
+                        null != m && (l.uy = m);
+                        m = $4(c, "fc");
+                        null != m && (l.color = m);
+                        m = Z4(c, "fs");
+                        void 0 != m && 0 != m && (l.fontFamily = m);
+                        m = X4(c, "sz");
+                        void 0 != m && (l.fontSizeIncrement = m / 100 - 1);
+                        m = X4(c, "bo");
+                        void 0 != m && (l.backgroundOpacity = m / 255);
+                        c = X4(c, "fo");
+                        void 0 != c && (l.textOpacity = c / 255);
+                        k[d] = l;
+                        break;
+                    case "ws":
+                        d = c.getAttribute("id");
+                        this.K[d] = lCa(this, c);
+                        break;
+                    case "wp":
+                        d = c.getAttribute("id"), this.J[d] = mCa(this, c)
+                }
         if (f) {
             e = b;
             c = [];
             f = Array.from(f.childNodes);
             f = g.q(f);
             for (d = f.next(); !d.done; d = f.next())
-                if (d = d.value,
-                    1 == d.nodeType)
-                    switch (d.tagName) {
-                        case "w":
-                            this.o = nCa(this, d, e, !1);
-                            (d = this.H[this.o.id]) && d.end > this.o.start && (d.end = this.o.start);
-                            this.H[this.o.id] = this.o;
-                            c.push(this.o);
-                            break;
-                        case "p":
-                            var n = e;
-                            k = [];
-                            l = d.getAttribute("w") || this.D;
-                            m = !!Y4(d, "a");
-                            n = (X4(d, "t") || 0) + n;
-                            var p = X4(d, "d") || 5E3;
-                            m || (!this.G && this.A && this.A.windowId == l && this.A.end > n && (this.A.end = n),
-                                this.A && "\n" == this.A.text && (this.A.text = ""));
-                            var r = m ? 6 : 5,
-                                v = this.C[d.getAttribute("p")],
-                                D = d.childNodes;
-                            D.length && (this.G = null != d.getAttribute("d"));
-                            for (var H = 0; H < D.length; H++) {
-                                var L = D[H];
-                                0 < H && (m = !0);
-                                var S = void 0;
-                                1 == L.nodeType && (S = L);
-                                if (S && "s" == S.tagName) {
-                                    var ha = S;
-                                    L = n;
-                                    S = p;
-                                    var Za = l,
-                                        jb = m,
-                                        $c = r,
-                                        Bf = ha.textContent ? ha.textContent : "",
-                                        nb = this.C[ha.getAttribute("p")];
-                                    ha = X4(ha, "t") || 0;
-                                    L = new z4(L + ha, S - ha, $c, Za, Bf, jb, nb)
-                                } else
-                                    L = new z4(n, p, r, l, L.textContent || "", m, v);
-                                k.push(L);
-                                this.A = L
-                            }
-                            if (0 < k.length)
-                                for (k[0].windowId == this.D && (this.o = nCa(this, d, e, !0),
-                                        c.push(this.o)),
-                                    d = g.q(k),
-                                    k = d.next(); !k.done; k = d.next())
-                                    k = k.value,
-                                    k.windowId = this.o.id,
-                                    this.o.A.push(k),
-                                    c.push(k)
-                    }
+                if (d = d.value, 1 == d.nodeType) switch (d.tagName) {
+                    case "w":
+                        this.o = nCa(this, d, e, !1);
+                        (d = this.H[this.o.id]) && d.end > this.o.start && (d.end = this.o.start);
+                        this.H[this.o.id] = this.o;
+                        c.push(this.o);
+                        break;
+                    case "p":
+                        var n = e;
+                        k = [];
+                        l = d.getAttribute("w") || this.D;
+                        m = !!Y4(d, "a");
+                        n = (X4(d, "t") || 0) + n;
+                        var p = X4(d, "d") || 5E3;
+                        m || (!this.G && this.A && this.A.windowId == l &&
+                            this.A.end > n && (this.A.end = n), this.A && "\n" == this.A.text && (this.A.text = ""));
+                        var r = m ? 6 : 5,
+                            v = this.C[d.getAttribute("p")],
+                            D = d.childNodes;
+                        D.length && (this.G = null != d.getAttribute("d"));
+                        for (var H = 0; H < D.length; H++) {
+                            var L = D[H];
+                            0 < H && (m = !0);
+                            var S = void 0;
+                            1 == L.nodeType && (S = L);
+                            if (S && "s" == S.tagName) {
+                                var ha = S;
+                                L = n;
+                                S = p;
+                                var Za = l,
+                                    jb = m,
+                                    $c = r,
+                                    Bf = ha.textContent ? ha.textContent : "",
+                                    nb = this.C[ha.getAttribute("p")];
+                                ha = X4(ha, "t") || 0;
+                                L = new z4(L + ha, S - ha, $c, Za, Bf, jb, nb)
+                            } else L = new z4(n, p, r, l, L.textContent || "", m, v);
+                            k.push(L);
+                            this.A =
+                                L
+                        }
+                        if (0 < k.length)
+                            for (k[0].windowId == this.D && (this.o = nCa(this, d, e, !0), c.push(this.o)), d = g.q(k), k = d.next(); !k.done; k = d.next()) k = k.value, k.windowId = this.o.id, this.o.A.push(k), c.push(k)
+                }
             e = c
-        } else
-            e = [];
+        } else e = [];
         return e
     };
     g.t(a5, WBa);
@@ -2151,19 +1945,17 @@ Array.prototype.clean = function(deleteValue) {
         a = new a5(a, a.byteLength, this.A);
         if (oCa(a)) {
             for (; a.o < a.A.byteLength;)
-                for (0 == a.version ? a.C = c5(a) * (1E3 / 45) : 1 == a.version && (a.C = 4294967296 * c5(a) + c5(a)),
-                    a.F = b5(a); 0 < a.F; a.F--) {
+                for (0 == a.version ? a.C = c5(a) * (1E3 / 45) : 1 == a.version && (a.C = 4294967296 * c5(a) + c5(a)), a.F = b5(a); 0 < a.F; a.F--) {
                     var b = b5(a),
                         c = b5(a),
                         d = b5(a);
-                    b & 4 && (b & 3) == this.track && (0 == this.track || 1 == this.track) && (b = this.o,
-                        b.o.push({
-                            time: a.C,
-                            type: this.track,
-                            my: c,
-                            oy: d,
-                            order: b.o.length
-                        }))
+                    b & 4 && (b & 3) == this.track && (0 == this.track || 1 == this.track) && (b = this.o, b.o.push({
+                        time: a.C,
+                        type: this.track,
+                        my: c,
+                        oy: d,
+                        order: b.o.length
+                    }))
                 }
             aCa(this.o, a);
             return a.B
@@ -2193,15 +1985,12 @@ Array.prototype.clean = function(deleteValue) {
                     };
                     H = g.q(H ? H.split(" ") : []);
                     for (var L = H.next(); !L.done; L = H.next())
-                        if (L = L.value.split(":"),
-                            2 == L.length) {
+                        if (L = L.value.split(":"), 2 == L.length) {
                             var S = L[1];
                             switch (L[0]) {
                                 case "line":
                                     L = S.split(",");
-                                    L[0].endsWith("%") && (D = L[0],
-                                        l.rg = Number.parseInt(D, 10),
-                                        2 == L.length && (v = L[1].trim()));
+                                    L[0].endsWith("%") && (D = L[0], l.rg = Number.parseInt(D, 10), 2 == L.length && (v = L[1].trim()));
                                     break;
                                 case "position":
                                     L = S.split(",");
@@ -2222,19 +2011,17 @@ Array.prototype.clean = function(deleteValue) {
                                     }
                             }
                         }
-                    D || (l.rg = 100,
-                        v || (v = "end"));
-                    if (!r)
-                        switch (l.textAlign) {
-                            case 0:
-                                l.Xe = 0;
-                                break;
-                            case 1:
-                                l.Xe = 100;
-                                break;
-                            default:
-                                l.Xe = 50
-                        }
+                    D || (l.rg = 100, v || (v = "end"));
+                    if (!r) switch (l.textAlign) {
+                        case 0:
+                            l.Xe = 0;
+                            break;
+                        case 1:
+                            l.Xe = 100;
+                            break;
+                        default:
+                            l.Xe = 50
+                    }
                     r = 0;
                     switch (v) {
                         case "center":
@@ -2259,7 +2046,8 @@ Array.prototype.clean = function(deleteValue) {
                         default:
                             switch (l.textAlign) {
                                 case 0:
-                                    r += 0;
+                                    r +=
+                                        0;
                                     break;
                                 case 2:
                                     r += 1;
@@ -2274,28 +2062,12 @@ Array.prototype.clean = function(deleteValue) {
                     r = p;
                     p = f;
                     f = {};
-                    if (0 > p.indexOf("<") && 0 > p.indexOf("&"))
-                        k = sCa(m, n, 5, r),
-                        n = new z4(m, n, 5, k.id, p, !1, g.$b(f) ? void 0 : f),
-                        c.push(k),
-                        c.push(n),
-                        k.A.push(n);
+                    if (0 > p.indexOf("<") && 0 > p.indexOf("&")) k = sCa(m, n, 5, r), n = new z4(m, n, 5, k.id, p, !1, g.$b(f) ? void 0 : f), c.push(k), c.push(n), k.A.push(n);
                     else
-                        for (v = p.split(LCa),
-                            1 == v.length ? (p = 5,
-                                r = sCa(m, n, p, r)) : (D = p = 6,
-                                r = Object.assign({
-                                    Rr: 32
-                                }, r),
-                                r = new A4(m, n, D, "_" + B4++, r)),
-                            c.push(r),
-                            D = m,
-                            l = 0; l < v.length; l++)
-                            H = v[l],
-                            0 == l % 2 ? (L = g.ks("<html>" + H + "</html>"),
-                                L.getElementsByTagName("parsererror").length ? (S = L.createElement("span"),
-                                    S.appendChild(L.createTextNode(H))) : S = L.firstChild,
-                                rCa(this, D, n - (D - m), p, r, 0 < l, S, f, c)) : D = h5(H) + k
+                        for (v = p.split(LCa), 1 == v.length ? (p = 5, r = sCa(m, n, p, r)) : (D = p = 6, r = Object.assign({
+                                Rr: 32
+                            }, r), r = new A4(m, n, D, "_" + B4++, r)), c.push(r), D = m, l = 0; l < v.length; l++) H = v[l], 0 == l % 2 ? (L = g.ks("<html>" + H + "</html>"), L.getElementsByTagName("parsererror").length ?
+                            (S = L.createElement("span"), S.appendChild(L.createTextNode(H))) : S = L.firstChild, rCa(this, D, n - (D - m), p, r, 0 < l, S, f, c)) : D = h5(H) + k
                 }
                 B5.lastIndex = 0
             }
@@ -2317,15 +2089,14 @@ Array.prototype.clean = function(deleteValue) {
         g.M.prototype.X.call(this);
         this.Xd()
     };
-    i5.prototype.bE = function() {
+    i5.prototype.cE = function() {
         return !1
     };
     g.t(j5, i5);
     g.h = j5.prototype;
     g.h.Yt = function(a, b) {
         var c = this.Pl(a),
-            d = (0,
-                g.A)(function(c) {
+            d = (0, g.A)(function(c) {
                 this.B = null;
                 b(c.responseText, a)
             }, this);
@@ -2339,16 +2110,13 @@ Array.prototype.clean = function(deleteValue) {
     g.h.Zt = function(a, b, c, d) {
         this.C = c;
         if (d)
-            for (b = g.q(d.captionTracks),
-                c = b.next(); !c.done; c = b.next())
-                f5(this.A, c.value);
+            for (b = g.q(d.captionTracks), c = b.next(); !c.done; c = b.next()) f5(this.A, c.value);
         a()
     };
     g.h.Pl = function(a) {
         var b = a.Wa(),
             c = {};
-        if (this.C || a.B)
-            c.fmt = this.C || "srv" + a.B;
+        if (this.C || a.B) c.fmt = this.C || "srv" + a.B;
         a.o && (c.tlang = a.o.languageCode);
         return g.wE(b, c)
     };
@@ -2375,29 +2143,19 @@ Array.prototype.clean = function(deleteValue) {
     };
     g.h.ZB = function(a) {
         var b = this;
-        if (this.H.kk())
-            var c = this.D.R(this.C, "progresssync", function() {
-                b.H.index.Lb() && (b.reset(),
-                    b.o = null,
-                    wCa(b, b.C.getCurrentTime()),
-                    b.D.Ha(c))
-            });
-        else
-            wCa(this, a)
+        if (this.H.kk()) var c = this.D.R(this.C, "progresssync", function() {
+            b.H.index.Lb() && (b.reset(), b.o = null, wCa(b, b.C.getCurrentTime()), b.D.Ha(c))
+        });
+        else wCa(this, a)
     };
     g.h.reset = function() {
         this.F = new k5;
-        this.B && (this.B.cancel(),
-            this.B = null)
+        this.B && (this.B.cancel(), this.B = null)
     };
     g.h.TA = function() {
         var a;
-        if (a = null !== this.o)
-            a = this.o,
-            a = a.o.Rg(a);
-        !a || this.B || this.o && 30 < this.o.startTime - this.C.getCurrentTime() || (a = this.o,
-            a = a.o.rk(a), !g.Y(this.C).experiments.o("disable_captions_unknown_requests") && !a.o[0].duration) || (this.F.contains(a.o[0].ya) || xCa(this, a),
-            this.o = g.Ja(a.o));
+        if (a = null !== this.o) a = this.o, a = a.o.Rg(a);
+        !a || this.B || this.o && 30 < this.o.startTime - this.C.getCurrentTime() || (a = this.o, a = a.o.rk(a), !g.Y(this.C).experiments.o("disable_captions_unknown_requests") && !a.o[0].duration) || (this.F.contains(a.o[0].ya) || xCa(this, a), this.o = g.Ja(a.o));
         this.K.start()
     };
     g.h.uU = function(a) {
@@ -2428,39 +2186,36 @@ Array.prototype.clean = function(deleteValue) {
             var e = g.Y(this.C).Ma;
             this.D = new l5(new g.zL, this.C, c, function(c, e, l) {
                 b(c, a, e, d, l)
-            }, e || g.pI(c.info), (0,
-                g.A)(function() {
+            }, e || g.pI(c.info), (0, g.A)(function() {
                 this.D && this.D.reset();
                 this.o && this.o.reset();
                 this.F = !0
             }, this))
         }
     };
-    g.h.bE = function() {
+    g.h.cE = function() {
         var a = this.F;
         this.F = !1;
         return a
     };
     g.h.Zt = function(a) {
-        if (g.Y(this.C).Ma)
-            f5(this.A, new g.bI({
-                format: 1,
-                languageCode: "rawcc",
-                languageName: "CC1",
-                name: "",
-                is_servable: !0,
-                is_default: !0,
-                is_translateable: !1
-            })),
-            f5(this.A, new g.bI({
-                format: 1,
-                languageCode: "rawcc",
-                languageName: "CC3",
-                name: "",
-                is_servable: !0,
-                is_default: !0,
-                is_translateable: !1
-            }));
+        if (g.Y(this.C).Ma) f5(this.A, new g.bI({
+            format: 1,
+            languageCode: "rawcc",
+            languageName: "CC1",
+            name: "",
+            is_servable: !0,
+            is_default: !0,
+            is_translateable: !1
+        })), f5(this.A, new g.bI({
+            format: 1,
+            languageCode: "rawcc",
+            languageName: "CC3",
+            name: "",
+            is_servable: !0,
+            is_default: !0,
+            is_translateable: !1
+        }));
         else
             for (var b in this.B.o) {
                 var c = this.B.o[b];
@@ -2468,10 +2223,8 @@ Array.prototype.clean = function(deleteValue) {
                     var d = "en",
                         e = "English",
                         f = ".en";
-                    if (c = c.info.captionTrack)
-                        d = c.languageCode,
-                        e = c.displayName,
-                        f = c.vssId;
+                    if (c =
+                        c.info.captionTrack) d = c.languageCode, e = c.displayName, f = c.vssId;
                     f5(this.A, new g.bI({
                         format: 1,
                         languageCode: d,
@@ -2488,8 +2241,7 @@ Array.prototype.clean = function(deleteValue) {
     };
     g.h.Xd = function() {
         i5.prototype.Xd.call(this);
-        this.D && (this.D.dispose(),
-            this.D = null)
+        this.D && (this.D.dispose(), this.D = null)
     };
     g.h.Pl = function() {
         return ""
@@ -2504,8 +2256,7 @@ Array.prototype.clean = function(deleteValue) {
         D4.prototype.Br.call(this, a);
         for (a = a.length; a < b.length; a++) {
             var c = b[a];
-            if (f && c.A == e)
-                var d = f;
+            if (f && c.A == e) var d = f;
             else {
                 d = {};
                 g.Ga(d, c.A);
@@ -2521,7 +2272,7 @@ Array.prototype.clean = function(deleteValue) {
     };
     g.t(p5, D4);
     g.h = p5.prototype;
-    g.h.uE = function() {
+    g.h.vE = function() {
         g.qu(this.da)
     };
     g.h.zU = function() {
@@ -2537,8 +2288,7 @@ Array.prototype.clean = function(deleteValue) {
     g.h.kj = function(a, b) {
         this.sa = a;
         if (q5(this)) {
-            for (var c = 0, d = 0; d < this.D.length && c < a.length; d++)
-                this.D[d] == a[c] && c++;
+            for (var c = 0, d = 0; d < this.D.length && c < a.length; d++) this.D[d] == a[c] && c++;
             0 < c && c < a.length && (a = this.D.concat(a.slice(c)));
             c = this.L;
             this.L = 0;
@@ -2546,21 +2296,16 @@ Array.prototype.clean = function(deleteValue) {
             d = this.C.offsetWidth + 1;
             this.L = Math.max(zCa(this), c, d);
             c = this.H.params.oq * q5(this) - this.C.offsetHeight;
-            c != this.Z && (b || (0,
-                    window.isNaN)(this.Z) || (g.T(this.element, "ytp-rollup-mode"),
-                    g.pu(this.da)),
-                g.Ch(this.C, "transform", c ? "translateY(" + c + "px)" : ""),
-                this.Z = c);
+            c != this.Z && (b || (0, window.isNaN)(this.Z) || (g.T(this.element, "ytp-rollup-mode"), g.pu(this.da)), g.Ch(this.C, "transform", c ? "translateY(" + c + "px)" : ""), this.Z = c);
             D4.prototype.kj.call(this, a)
-        } else
-            D4.prototype.kj.call(this, a)
+        } else D4.prototype.kj.call(this,
+            a)
     };
     g.t(r5, i5);
     g.h = r5.prototype;
     g.h.Yt = function(a, b) {
         var c = this.Pl(a),
-            d = (0,
-                g.A)(function(c) {
+            d = (0, g.A)(function(c) {
                 this.B = null;
                 b(c.responseText, a)
             }, this);
@@ -2582,8 +2327,7 @@ Array.prototype.clean = function(deleteValue) {
         };
         this.zA && (b.asrs = 1);
         d = g.wE(d, b);
-        b = (0,
-            g.A)(function(b) {
+        b = (0, g.A)(function(b) {
             this.B = null;
             if ((b = b.responseXML) && b.firstChild) {
                 for (var d = this.A, e = g.q(b.getElementsByTagName("track")), l = e.next(); !l.done; l = e.next()) {
@@ -2613,21 +2357,13 @@ Array.prototype.clean = function(deleteValue) {
                 }
                 b = b.getElementsByTagName("target");
                 d = b.length;
-                for (e = 0; e < d; e++)
-                    l = b[e].getAttribute("lang_code"),
-                    n = b[e].getAttribute("lang_translated"),
-                    p = b[e].getAttribute("lang_original"),
-                    r = b[e].getAttribute("id"),
-                    v = "true" == b[e].getAttribute("lang_default"),
-                    l = {
-                        languageCode: l,
-                        languageName: n,
-                        languageOriginal: p,
-                        id: r,
-                        is_default: v
-                    },
-                    this.F[l.languageCode] = l.languageName,
-                    this.G.push(new g.aI(l))
+                for (e = 0; e < d; e++) l = b[e].getAttribute("lang_code"), n = b[e].getAttribute("lang_translated"), p = b[e].getAttribute("lang_original"), r = b[e].getAttribute("id"), v = "true" == b[e].getAttribute("lang_default"), l = {
+                    languageCode: l,
+                    languageName: n,
+                    languageOriginal: p,
+                    id: r,
+                    is_default: v
+                }, this.F[l.languageCode] = l.languageName, this.G.push(new g.aI(l))
             }
             a()
         }, this);
@@ -2665,8 +2401,7 @@ Array.prototype.clean = function(deleteValue) {
         if (this.G) {
             var a = g.AU(this.K);
             a && a.Fj()
-        } else
-            FCa(this, !1);
+        } else FCa(this, !1);
         g.GU.prototype.X.call(this)
     };
     g.h.uB = function() {
@@ -2675,28 +2410,20 @@ Array.prototype.clean = function(deleteValue) {
     g.h.load = function(a) {
         g.GU.prototype.load.call(this);
         this.J = this.o.getAudioTrack();
-        if (this.D || a)
-            this.A && (this.G && !this.C.experiments.o("disable_native_caption_api") ? BCa(this, !0) : a ? this.KD(a, this.A) : 3 != this.o.Ra() && this.D.Yt(this.A, (0,
-                g.A)(this.KD, this))),
-            this.A && this.A != w5(this) ? this.o.xa("captionschanged", x4(this.A)) : this.o.xa("onCaptionsTrackListChanged");
+        if (this.D || a) this.A && (this.G && !this.C.experiments.o("disable_native_caption_api") ? BCa(this, !0) : a ? this.LD(a, this.A) : 3 != this.o.Ra() && this.D.Yt(this.A, (0, g.A)(this.LD, this))), this.A && this.A != w5(this) ? this.o.xa("captionschanged", x4(this.A)) : this.o.xa("onCaptionsTrackListChanged");
         else {
             var b;
-            n5(this.B, this.K) ? b = new m5(this.B.pa, this.o) : this.B.captionTracks.length ? b = new j5(this.B) : b = new r5(this.B.Wn, this.B.videoId, this.B.lh || this.C.lh || g.JP(this.B, "yt:cc_default_lang") || this.C.za, this.B.Vn);
+            n5(this.B, this.K) ? b = new m5(this.B.pa, this.o) : this.B.captionTracks.length ? b = new j5(this.B) : b = new r5(this.B.Wn, this.B.videoId, this.B.lh ||
+                this.C.lh || g.JP(this.B, "yt:cc_default_lang") || this.C.za, this.B.Vn);
             this.D = b;
-            b.Zt((0,
-                g.A)(this.cV, this), !0, this.G ? "vtt" : void 0, this.o.getAudioTrack())
+            b.Zt((0, g.A)(this.cV, this), !0, this.G ? "vtt" : void 0, this.o.getAudioTrack())
         }
     };
     g.h.unload = function() {
-        this.G ? this.C.experiments.o("disable_native_caption_api") ? g.AU(this.K).Fj() : this.A && BCa(this, !1) : (this.ha && g.ru(this.ha),
-            g.xU(this.o, "captions"),
-            this.O = [],
-            this.D && this.D.Xd(),
-            this.L && g.uU(this.o, this.L),
-            this.ew());
+        this.G ? this.C.experiments.o("disable_native_caption_api") ? g.AU(this.K).Fj() : this.A && BCa(this, !1) : (this.ha && g.ru(this.ha), g.xU(this.o, "captions"), this.O = [], this.D && this.D.Xd(), this.L && g.uU(this.o, this.L), this.gw());
         g.GU.prototype.unload.call(this);
         var a = g.fU(this.o.app);
-        a && a.F && g.aQ(a.F.B);
+        a && a.F && g.$P(a.F.B);
         this.o.xa("captionschanged", {})
     };
     g.h.cV = function() {
@@ -2717,56 +2444,40 @@ Array.prototype.clean = function(deleteValue) {
             }
             g.AU(this.K).ql(c);
             (a = g.AU(this.K).na()) && a.textTracks && a.textTracks.addEventListener && !this.C.experiments.o("disable_native_caption_api") && this.Y.R(a.textTracks, "change", this.dV)
-        } else
-            !this.A && a && z5(this, a),
-            this.o.xa("onCaptionsTrackListChanged"),
-            this.o.xa("onApiChange")
+        } else !this.A && a &&
+            z5(this, a), this.o.xa("onCaptionsTrackListChanged"), this.o.xa("onApiChange")
     };
     g.h.dV = function() {
         for (var a = g.AU(this.K).na().textTracks, b = null, c = 0; c < a.length; c++)
-            if ("showing" == a[c].mode)
-                a: {
-                    b = e5(this.D.A, !0);
-                    for (var d = 0; d < b.length; d++)
-                        if (b[d].toString() == a[c].id) {
-                            b = b[d];
-                            break a
-                        }
-                    b = null
-                }
-                (this.loaded ? this.A : null) != b && z5(this, b, !0)
+            if ("showing" == a[c].mode) a: {
+                b = e5(this.D.A, !0);
+                for (var d = 0; d < b.length; d++)
+                    if (b[d].toString() == a[c].id) {
+                        b = b[d];
+                        break a
+                    }
+                b = null
+            }(this.loaded ? this.A : null) != b && z5(this, b, !0)
     };
     g.h.kX = function() {
         this.C.experiments.o("disable_native_caption_api") ? this.loaded && !this.G && this.unload() : !this.A && this.G || this.unload()
     };
-    g.h.KD = function(a, b, c, d, e) {
-        a && (this.D.bE() && (this.O = [],
-                g.xU(this.K, "captions"),
-                this.da.Wj()),
-            a = vCa(this.D, a, b, c, d),
-            this.C.experiments.o("debug_web_player_live_captions_segment_numbers") && c && e && (c = a.reduce(function(a, b) {
-                    return b.start < a ? b.start : a
-                }, Number.MAX_SAFE_INTEGER),
-                b = a.reduce(function(a, b) {
-                    return b.end > a ? b.end : a
-                }, c) - c,
-                d = new A4(c, b, 0, "_" + B4++, {
-                    Mf: 2,
-                    Xe: 100,
-                    rg: 0
-                }),
-                a.push(d),
-                e = new z4(c, b, 0, d.id, "sq=" + e),
-                a.push(e)),
-            g.uU(this.o, a),
-            this.M && !this.ia && CCa(this),
-            this.M = !1)
+    g.h.LD = function(a, b, c, d, e) {
+        a && (this.D.cE() && (this.O = [], g.xU(this.K, "captions"), this.da.Wj()), a = vCa(this.D, a, b, c, d), this.C.experiments.o("debug_web_player_live_captions_segment_numbers") && c && e && (c = a.reduce(function(a, b) {
+            return b.start < a ? b.start : a
+        }, Number.MAX_SAFE_INTEGER), b = a.reduce(function(a, b) {
+            return b.end > a ? b.end : a
+        }, c) - c, d = new A4(c, b, 0, "_" + B4++, {
+            Mf: 2,
+            Xe: 100,
+            rg: 0
+        }), a.push(d), e = new z4(c, b, 0, d.id, "sq=" + e), a.push(e)), g.uU(this.o, a), this.M && !this.ia && CCa(this), this.M = !1)
     };
-    g.h.EN = function(a) {
+    g.h.FN = function(a) {
         this.O.push(a);
         this.da.Wj()
     };
-    g.h.FN = function(a) {
+    g.h.GN = function(a) {
         g.Ua(this.O, a);
         var b = n5(this.B, this.K) && this.C.Ma;
         !this.C.experiments.o("disable_remove_displayed_close_caption_cue") && b && g.wU(this.o, [a]);
@@ -2775,40 +2486,30 @@ Array.prototype.clean = function(deleteValue) {
     g.h.ZV = function(a) {
         if (a instanceof A4) {
             var b = this.T[a.id];
-            b && b.H != a && (b.dispose(),
-                delete this.T[a.id],
-                b = null);
+            b && b.H != a && (b.dispose(), delete this.T[a.id], b = null);
             b || (b = DCa(this, a)) && (this.T[a.id] = b)
-        } else
-            b = a.windowId,
-            this.ba[b] || (this.ba[b] = []),
-            this.ba[b].push(a)
+        } else b = a.windowId, this.ba[b] || (this.ba[b] = []), this.ba[b].push(a)
     };
     g.h.jW = function() {
         ECa(this, this.Z);
         this.Z = null
     };
-    g.h.EF = function() {
+    g.h.FF = function() {
         this.da.stop();
         g.ac(this.ba);
-        this.O.sort(g.QQ);
+        this.O.sort(g.PQ);
         var a = this.O;
         if (this.L) {
-            var b = (0,
-                g.Ud)(a, function(a) {
+            var b = (0, g.Ud)(a, function(a) {
                 return -1 == this.L.indexOf(a)
             }, this);
             b.length && (a = b)
-        }
-        (0,
-            g.C)(a, this.ZV, this);
+        }(0, g.C)(a, this.ZV, this);
         g.Mb(this.T, function(a, b) {
-            this.ba[b] ? (a.element.parentNode || g.zU(this.o, a.element, 4),
-                a.kj(this.ba[b])) : (a.dispose(),
-                delete this.T[b])
+            this.ba[b] ? (a.element.parentNode || g.zU(this.o, a.element, 4), a.kj(this.ba[b])) : (a.dispose(), delete this.T[b])
         }, this)
     };
-    g.h.tE = function() {
+    g.h.uE = function() {
         s5(this, {}, !0)
     };
     g.h.Gs = function() {
@@ -2827,32 +2528,28 @@ Array.prototype.clean = function(deleteValue) {
         };
         var b = t5(this, "display-settings"),
             c;
-        for (c in b)
-            null != b[c] && (a[c] = b[c]);
+        for (c in b) null != b[c] && (a[c] = b[c]);
         return a
     };
-    g.h.iw = function(a, b) {
+    g.h.jw = function(a, b) {
         var c = {};
         g.Ga(c, t5(this, "display-settings"));
         g.Ga(c, a);
         s5(this, c, b);
         this.o.V("captionssettingschanged")
     };
-    g.h.ew = function() {
+    g.h.gw = function() {
         !this.G && this.loaded && (g.Mb(this.T, function(a, b) {
-                a.dispose();
-                delete this.T[b]
-            }, this),
-            this.EF())
+            a.dispose();
+            delete this.T[b]
+        }, this), this.FF())
     };
     g.h.nu = function(a, b) {
         switch (a) {
             case "fontSize":
-                if ((0,
-                        window.isNaN)(b))
-                    break;
+                if ((0, window.isNaN)(b)) break;
                 var c = g.ld(b, -2, 4);
-                this.iw({
+                this.jw({
                     fontSizeIncrement: c
                 });
                 return c;
@@ -2863,13 +2560,10 @@ Array.prototype.clean = function(deleteValue) {
                 void 0 != b && this.C.Gb && y5(this, "module-enabled", !!b);
                 break;
             case "track":
-                if (!this.D)
-                    return {};
+                if (!this.D) return {};
                 if (b) {
-                    if (this.G)
-                        break;
-                    if (!g.Ca(b))
-                        break;
+                    if (this.G) break;
+                    if (!g.Ca(b)) break;
                     if (g.$b(b)) {
                         z5(this, null, !0);
                         break
@@ -2878,14 +2572,13 @@ Array.prototype.clean = function(deleteValue) {
                     c = e5(this.D.A, !0);
                     for (var e = 0; e < c.length; e++) {
                         var f = c[e];
-                        f.A != b.languageCode || d && f.D != b.languageName || (d = b.translationLanguage ? SBa(f, b.translationLanguage) : f)
+                        f.A != b.languageCode || d && f.D != b.languageName || (d = b.translationLanguage ?
+                            SBa(f, b.translationLanguage) : f)
                     }!d || d == this.A && this.loaded || z5(this, d, !0)
-                } else
-                    return this.loaded && this.A && this.A != w5(this) ? x4(this.A) : {};
+                } else return this.loaded && this.A && this.A != w5(this) ? x4(this.A) : {};
                 return "";
             case "tracklist":
-                return this.D ? (0,
-                    g.I)(e5(this.D.A, !(!b || !b.includeAsr)), function(a) {
+                return this.D ? (0, g.I)(e5(this.D.A, !(!b || !b.includeAsr)), function(a) {
                     return x4(a)
                 }) : [];
             case "translationLanguages":
@@ -2893,40 +2586,37 @@ Array.prototype.clean = function(deleteValue) {
             case "displaySettings":
                 d = this.Gs();
                 if (g.zN(this.C) && b && g.Ca(b))
-                    if (b.reset)
-                        this.tE();
+                    if (b.reset) this.uE();
                     else {
                         f = {};
-                        for (c in b)
-                            switch (c) {
-                                case "color":
-                                case "background":
-                                case "windowColor":
-                                    f[c] = GCa(b[c], d[c]);
-                                    break;
-                                case "textOpacity":
-                                case "backgroundOpacity":
-                                case "windowOpacity":
-                                    f[c] = HCa(b[c], d[c]);
-                                    break;
-                                case "charEdgeStyle":
-                                    var k = g.p1[b[c]];
-                                    f[c] = g.ta(k) ? k : d[c];
-                                    break;
-                                case "fontSizeIncrement":
-                                    f[c] = ICa(b[c], d[c]);
-                                    break;
-                                case "fontFamilyOption":
-                                    k = g.o1[b[c]];
-                                    f.fontFamily = g.ta(k) ? k : d[c];
-                                    break;
-                                case "fontStyle":
-                                    k = g.q1[b[c]],
-                                        f[c] = g.ta(k) ? k : d[c]
-                            }
-                        for (e in f)
-                            f[e + "Override"] = !0;
-                        this.iw(f, !0);
+                        for (c in b) switch (c) {
+                            case "color":
+                            case "background":
+                            case "windowColor":
+                                f[c] = GCa(b[c], d[c]);
+                                break;
+                            case "textOpacity":
+                            case "backgroundOpacity":
+                            case "windowOpacity":
+                                f[c] = HCa(b[c], d[c]);
+                                break;
+                            case "charEdgeStyle":
+                                var k = g.p1[b[c]];
+                                f[c] = g.ta(k) ? k : d[c];
+                                break;
+                            case "fontSizeIncrement":
+                                f[c] = ICa(b[c], d[c]);
+                                break;
+                            case "fontFamilyOption":
+                                k = g.o1[b[c]];
+                                f.fontFamily =
+                                    g.ta(k) ? k : d[c];
+                                break;
+                            case "fontStyle":
+                                k = g.q1[b[c]], f[c] = g.ta(k) ? k : d[c]
+                        }
+                        for (e in f) f[e + "Override"] = !0;
+                        this.jw(f, !0);
                         d = this.Gs()
                     }
                 d.fontFamilyOption = g.zxa[d.fontFamily];
@@ -2942,26 +2632,23 @@ Array.prototype.clean = function(deleteValue) {
                 }), !1, b.xml))
         }
     };
-    g.h.CN = function() {
+    g.h.DN = function() {
         var a = "reload fontSize track tracklist translationLanguages displaySettings sampleSubtitle".split(" ");
         this.C.Gb && a.push("stickyLoading", "xmlTrack");
         return a
     };
-    g.h.DN = function() {
+    g.h.EN = function() {
         var a = this.A;
         return a ? {
             cc: a.G
         } : {}
     };
-    g.h.uF = function() {
-        this.loaded && this.A && this.A != w5(this) ? (y5(this, "module-enabled", !1),
-            this.unload(),
-            v5(this, !0) && z5(this, w5(this), !1)) : z5(this, this.A == w5(this) ? x5(this, !0) : this.A, !0)
+    g.h.vF = function() {
+        this.loaded && this.A && this.A != w5(this) ? (y5(this, "module-enabled", !1), this.unload(), v5(this, !0) && z5(this, w5(this), !1)) : z5(this, this.A == w5(this) ? x5(this, !0) : this.A, !0)
     };
-    g.h.sR = function() {
+    g.h.tR = function() {
         var a = this.A == w5(this);
-        v5(this, a) ? z5(this, this.o.getAudioTrack().wo, !1) : this.B.captionTracks.length && (this.loaded && this.unload(),
-            this.uB() && (a ? z5(this, x5(this), !1) : this.load()))
+        v5(this, a) ? z5(this, this.o.getAudioTrack().wo, !1) : this.B.captionTracks.length && (this.loaded && this.unload(), this.uB() && (a ? z5(this, x5(this), !1) : this.load()))
     };
     g.xX.captions = u5;
 })(_yt_player);
