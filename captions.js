@@ -29,7 +29,7 @@ function getRemoteDictionary() {
 			console.log(data.length);
 		});
 	
-	if(localStorage.dictionary.length>0){
+	if(localStorage.dictionary){
 		dictionary = getLocalStorageDictionary();
 		console.log("GET DICTIONARY FROM LOCAL STORAGE");
 	}else {
