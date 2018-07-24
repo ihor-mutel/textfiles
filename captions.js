@@ -1,4 +1,4 @@
-//  entry point checkDictionary(text, true)
+// entry point checkDictionary(text, true)
 // YouTube iPlayerElementName = '#player-container'
 // YouTube togglePlayButtonName =  '.ytp-play-button'
 // OpenLoad iPlayerElementName = '#mediaspace_wrapper'
