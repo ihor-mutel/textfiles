@@ -13,19 +13,21 @@ var dictionary;
 
 if(hrefCheck("youtube.com")){
 	iPlayerElementName = '#player-container';
-} else if (hrefCheck("youtube.com") || hrefCheck("hdeuropix.com")){
+} else if (hrefCheck("oload.download") || hrefCheck("hdeuropix.com")){
 	iPlayerElementName = '#mediaspace_wrapper';
 }
 	
 // check location 
 function hrefCheck(currentLocation){
 	if(window.location.href.includes(currentLocation)){
+		console.log("Applying script for: " + currentLocation)
 		return true;
 	}
 	else{
 		return false;
 	}
 }	
+
 	
 // add jQuery
 
