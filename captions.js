@@ -17,8 +17,9 @@ function addjQuery() {
 // get dictionary
 
 function getRemoteDictionary() {
+	var dictionaryRemote;
     $.getJSON(dictionaryLink, function(data) {
-        var dictionaryRemote = data;
+        dictionaryRemote = data;
         console.log("Dictionary was downloaded");
         console.log(data.length);
     });
