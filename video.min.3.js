@@ -73,7 +73,7 @@ function showSubtitles(word) {
     iSub.className = 'iblock';
     iSub.innerText = word;
     iSub.style.position = "absolute";
-    iSub.style.zIndex = "9999";
+    iSub.style.zIndex = "2147483647";
     iSub.style.color = "white";
     iSub.style.fontSize = "1.3em";
     iSub.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
