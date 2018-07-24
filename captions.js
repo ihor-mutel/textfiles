@@ -567,9 +567,9 @@ Array.prototype.clean = function(deleteValue) {
                 }
                 l && (m = a.F, m.parentNode && m.parentNode.insertBefore(k ? g.Od(l) : l, m))
             }
+			checkDictionary(f.innerText, true);
             a.G.push(d);
             a.J.push(f);
-			checkDictionary(f.innerText, true);
             a.D.push(b)
         },
         WBa = function() {},
