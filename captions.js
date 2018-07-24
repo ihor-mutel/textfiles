@@ -19,10 +19,14 @@ function addjQuery() {
 
 function getRemoteDictionary() {
     $.getJSON(dictionaryLink, function(data) {
-        dictionary = data;
+        dictionaryRemote = data;
         console.log("Dictionary was downloaded");
         console.log(data.length);
     });
+	if(!localStorage.dictionary){
+		console.log("remote dictionary was saved to local storage")
+		localStorage.dictionary = dictionaryRemote
+	}
 }
 
 try {
@@ -123,8 +127,8 @@ function toggleDictionary(data, word) {
     if (checkWord(word)) {
         var element = checkWord(word);
         // debugger;
-        var index = dictionary.indexOf(element);
-        dictionary.splice(index, 1);
+        var index = localStorage.dictionary.indexOf(element);
+        localStorage.dictionary.splice(index, 1);
         console.log("Remove from dictionary");
         checkDictionary(iCurrentSubs, false)
         return
@@ -135,7 +139,7 @@ function toggleDictionary(data, word) {
     }
     console.log("add into dictionary")
     console.log(translation);
-    dictionary.push(translation);
+    localStorage.dictionary.push(translation);
     checkDictionary(iCurrentSubs, false)
 }
 
@@ -182,9 +186,9 @@ function checkDictionary(word, firstCall) {
 
 function checkWord(word) {
     // debugger;
-    for (var i = 0; i < dictionary.length; i++) {
-        if (dictionary[i].word.trim().toLowerCase() == word.trim().toLowerCase()) {
-            return (dictionary[i])
+    for (var i = 0; i < localStorage.dictionary.length; i++) {
+        if (localStorage.dictionary[i].word.trim().toLowerCase() == word.trim().toLowerCase()) {
+            return (localStorage.dictionary[i])
         }
     }
 }
