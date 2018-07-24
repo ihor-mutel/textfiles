@@ -1,8 +1,9 @@
 // entry point checkDictionary(text, true)
+// '.ytp-play-button'
 
 var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
 var iPlayerElementName = '#player-container'
-var togglePlayButtonName = '.ytp-play-button'
+var togglePlayButtonName;
 var togglePlayState;
 var iCurrentSubs;
 var dictionary;
@@ -244,13 +245,14 @@ function checkDictionary(word, firstCall) {
             if (!word.includes(translationMessage)) {
                 console.log(word)
                 console.log("Replace with: " + translation)
-                word = word + translationMessage;
+				var upperCaseWord = word.replaceAll(wordsArray[i],wordsArray[i].toUpperCase());				
+                word = upperCaseWord + translationMessage;
             }
 
         }
     }
     showSubtitles(word)
-    return word
+    //return word
 };
 
 function checkWord(word) {
