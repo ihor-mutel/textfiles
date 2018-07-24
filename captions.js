@@ -559,17 +559,16 @@ Array.prototype.clean = function(deleteValue) {
                 if (0 < e || 0 == a.D.length || !b.D) {
                     if (0 < e || 0 != a.D.length) {
                         var m = g.Md("BR");
-                        //f.appendChild(m)
+                        f.appendChild(m)
                     }
-                    //f.appendChild(g.Od("\u00a0"));
+                    f.appendChild(g.Od("\u00a0"));
                     a.F = g.Od("\u00a0");
-                    //f.appendChild(a.F)
+                    f.appendChild(a.F)
                 }
                 l && (m = a.F, m.parentNode && m.parentNode.insertBefore(k ? g.Od(l) : l, m))
             }
-			checkDictionary(f.innerText, true);
             a.G.push(d);
-            a.J.push(f);
+            //a.J.push(f);
             a.D.push(b)
         },
         WBa = function() {},
