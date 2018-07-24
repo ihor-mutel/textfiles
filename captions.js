@@ -1,5 +1,8 @@
-// entry point checkDictionary(text, true)
-// '.ytp-play-button'
+//  entry point checkDictionary(text, true)
+
+// YouTube iPlayerElementName = '#player-container'
+// YouTube togglePlayButtonName =  '.ytp-play-button'
+// OpenLoad iPlayerElementName = '#mediaspace_wrapper'
 
 var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
 var iPlayerElementName = '#player-container'
