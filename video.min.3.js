@@ -9243,7 +9243,6 @@ function(a) {
 					d = b[h], 
 					globalVtt = b[h];
 					c = new k(a, d, i),
-					// c = preEditDiv(c),
 					//e.appendChild(c.div),
 					m(a, c, g, f),
 					d.displayState = c.div,
@@ -9251,7 +9250,7 @@ function(a) {
 				}
             }()
         } else
-            //for (var j = 0; j < b.length; j++) e.appendChild(b[j].displayState)
+            for (var j = 0; j < b.length; j++) e.appendChild(b[j].displayState)
     }, n.Parser = function(a, b, c) {
         c || (c = b, b = {}), b || (b = {}), this.window = a, this.vttjs = b, this.state = "INITIAL", this.buffer = "", this.decoder = c || new TextDecoder("utf8"), this.regionList = []
     }, n.Parser.prototype = {
