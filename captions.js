@@ -4,12 +4,29 @@
 // OpenLoad iPlayerElementName = '#mediaspace_wrapper'
 
 var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
-var iPlayerElementName = '#player-container'
+var iPlayerElementName;
 var togglePlayButtonName;
 var togglePlayState;
 var iCurrentSubs;
 var dictionary;
 
+
+if(hrefCheck("youtube.com")){
+	iPlayerElementName = '#player-container';
+} else if (hrefCheck("youtube.com") || hrefCheck("hdeuropix.com")){
+	iPlayerElementName = '#mediaspace_wrapper';
+}
+	
+// check location 
+function hrefCheck(currentLocation){
+	if(window.location.href.includes(currentLocation)){
+		return true;
+	}
+	else{
+		return false;
+	}
+}	
+	
 // add jQuery
 
 function addjQuery() {
@@ -43,6 +60,8 @@ function getRemoteDictionary() {
 
 }
 
+// local storage operations
+
 function setStorageDictionary(dictionary) {
     console.log("save to local storage")
     localStorage.setItem('dictionary', JSON.stringify(dictionary));
@@ -53,8 +72,6 @@ function getLocalStorageDictionary() {
     var retrievedObject = localStorage.getItem('dictionary');
     return JSON.parse(retrievedObject);
 }
-
-
 
 
 try {

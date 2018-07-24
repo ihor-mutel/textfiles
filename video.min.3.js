@@ -10,15 +10,35 @@
  * <https://github.com/mozilla/vtt.js/blob/master/LICENSE>
  */
  
-// entry point checkDictionary(text, true)
+//  entry point checkDictionary(text, true)
+// YouTube iPlayerElementName = '#player-container'
+// YouTube togglePlayButtonName =  '.ytp-play-button'
+// OpenLoad iPlayerElementName = '#mediaspace_wrapper'
 
 var dictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json"
-var iPlayerElementName = '#mediaspace_wrapper'
+var iPlayerElementName;
 var togglePlayButtonName;
 var togglePlayState;
 var iCurrentSubs;
 var dictionary;
 
+
+if(hrefCheck("youtube.com")){
+	iPlayerElementName = '#player-container';
+} else if (hrefCheck("youtube.com") || hrefCheck("hdeuropix.com")){
+	iPlayerElementName = '#mediaspace_wrapper';
+}
+	
+// check location 
+function hrefCheck(currentLocation){
+	if(window.location.href.includes(currentLocation)){
+		return true;
+	}
+	else{
+		return false;
+	}
+}	
+	
 // add jQuery
 
 function addjQuery() {
@@ -36,17 +56,35 @@ function addjQuery() {
 function getRemoteDictionary() {
 
     $.getJSON(dictionaryLink, function(data) {
-        dictionary = data;
+        if (!localStorage.dictionary) {
+            console.log("USE REMOTE DICTIONARY")
+            dictionary = data;
+			setStorageDictionary(dictionary);
+        }
         console.log("Dictionary was downloaded");
         console.log(data.length);
     });
-	// if(!localStorage.dictionary){
-		// console.log("remote dictionary was saved to local storage")
-		// localStorage.dictionary = dictionaryRemote
-	// }else {
-		// console.log("dictionary is already in local storage")
-	// }
+
+    if (localStorage.dictionary) {
+        dictionary = getLocalStorageDictionary();
+        console.log("USE LOCAL DICTIONARY");
+    } 
+
 }
+
+// local storage operations
+
+function setStorageDictionary(dictionary) {
+    console.log("save to local storage")
+    localStorage.setItem('dictionary', JSON.stringify(dictionary));
+}
+
+function getLocalStorageDictionary() {
+    console.log("get from local storage")
+    var retrievedObject = localStorage.getItem('dictionary');
+    return JSON.parse(retrievedObject);
+}
+
 
 try {
     getRemoteDictionary();
@@ -77,31 +115,31 @@ function showSubtitles(word) {
     iSub.style.position = "absolute";
     iSub.style.zIndex = "2147483647";
     iSub.style.color = "white";
-    iSub.style.fontFamily= "Roboto, Arial, sans-serif";
+    iSub.style.fontFamily = "Roboto, Arial, sans-serif";
     iSub.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
     iSub.style.textAlign = "center";
     // iSub.style.left = (iPlayerContainer.css('width').replace("px","") / 4.7) + "px";
-	
-	
-	if((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height)) {
-		//console.log(window.innerWidth)
-		iSub.style.width = screen.width + "px";
-		iSub.style.left = 0;
-		iSub.style.top = (screen.height / 1.38) + "px";
-		console.log("You entered fullscreen");
-		iSub.style.fontSize = "24px";
-	} else {
-		iSub.style.left = 0;
-		iSub.style.width = $(iPlayerElementName).css('width');
-		iSub.style.top = ($(iPlayerElementName).css('height').replace("px", "") / 1.38) + "px";
-		iSub.style.fontSize = "1.3em";
-	}
+
+
+    if ((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height)) {
+        //console.log(window.innerWidth)
+        iSub.style.width = screen.width + "px";
+        iSub.style.left = 0;
+        iSub.style.top = (screen.height / 1.38) + "px";
+        console.log("You entered fullscreen");
+        iSub.style.fontSize = "24px";
+    } else {
+        iSub.style.left = 0;
+        iSub.style.width = $(iPlayerElementName).css('width');
+        iSub.style.top = ($(iPlayerElementName).css('height').replace("px", "") / 1.38) + "px";
+        iSub.style.fontSize = "1.3em";
+    }
 
 
 
     $(iPlayerElementName)[0].appendChild(iSub);
     addClickListener();
-	addMouseenterListener();
+    addMouseenterListener();
 }
 
 // configure toggle button
@@ -109,22 +147,24 @@ function showSubtitles(word) {
 function togglePlayButton() {
     if (togglePlayState === false) {
         togglePlayState = true;
-		$(togglePlayButtonName).click()
+        $(togglePlayButtonName).click()
     } else {
         togglePlayState = true;
-		$(togglePlayButtonName).click()
+        $(togglePlayButtonName).click()
     }
 }
 
-function addMouseenterListener(){
-	if(togglePlayButtonName){
-		$('#iblock').mouseenter(function() {
-		  togglePlayButton();
-		});
-		$('#iblock').mouseout(function() {
-		  togglePlayButton();
-		});
-	}
+function addMouseenterListener() {
+    if (togglePlayButtonName) {
+        togglePlayState = false;
+
+        $('#iblock').mouseenter(function() {
+            togglePlayButton();
+        });
+        $('#iblock').mouseout(function() {
+            togglePlayButton();
+        });
+    }
 }
 
 // check selection
@@ -147,7 +187,7 @@ function addClickListener() {
 
 }
 
-// conver translation object into string
+// convert translation object into string
 
 function cleanTranslations(data) {
     var translation = ""
@@ -185,7 +225,8 @@ function toggleDictionary(data, word) {
         var index = dictionary.indexOf(element);
         dictionary.splice(index, 1);
         console.log("Remove from dictionary index: " + index);
-        checkDictionary(iCurrentSubs, false)
+        checkDictionary(iCurrentSubs, false);
+        setStorageDictionary(dictionary);
         return
     }
     var translation = {
@@ -195,7 +236,8 @@ function toggleDictionary(data, word) {
     console.log("add into dictionary")
     console.log(translation);
     dictionary.push(translation);
-    checkDictionary(iCurrentSubs, false)
+    checkDictionary(iCurrentSubs, false);
+    setStorageDictionary(dictionary);
 }
 
 // get selected text
@@ -230,13 +272,14 @@ function checkDictionary(word, firstCall) {
             if (!word.includes(translationMessage)) {
                 console.log(word)
                 console.log("Replace with: " + translation)
-                word = word + translationMessage;
+                var upperCaseWord = word.replaceAll(wordsArray[i], wordsArray[i].toUpperCase());
+                word = upperCaseWord + translationMessage;
             }
 
         }
     }
     showSubtitles(word)
-    return word
+    //return word
 };
 
 function checkWord(word) {
@@ -263,9 +306,6 @@ Array.prototype.clean = function(deleteValue) {
     }
     return this;
 };
-
-
-
 
 ! function(a) {
     if ("object" == typeof exports && "undefined" != typeof module) module.exports = a();
