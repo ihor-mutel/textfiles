@@ -41,10 +41,12 @@ function getRemoteDictionary() {
 }
 
 function setStorageDictionary(dictionary){
+	console.log("save to local storage")
 	localStorage.setItem('dictionary', JSON.stringify(dictionary));
 }
 
 function getLocalStorageDictionary(){
+	console.log("get from local storage")
 	var retrievedObject = localStorage.getItem('dictionary');
 	return JSON.parse(retrievedObject);	
 }
@@ -192,7 +194,8 @@ function toggleDictionary(data, word) {
         var index = dictionary.indexOf(element);
         dictionary.splice(index, 1);
         console.log("Remove from dictionary index: " + index);
-        checkDictionary(iCurrentSubs, false)
+        checkDictionary(iCurrentSubs, false);
+		setStorageDictionary(dictionary);
         return
     }
     var translation = {
@@ -202,7 +205,8 @@ function toggleDictionary(data, word) {
     console.log("add into dictionary")
     console.log(translation);
     dictionary.push(translation);
-    checkDictionary(iCurrentSubs, false)
+    checkDictionary(iCurrentSubs, false);
+	setStorageDictionary(dictionary);
 }
 
 // get selected text
