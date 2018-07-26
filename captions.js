@@ -18,13 +18,21 @@ if(hrefCheck("youtube.com")){
 	jQueryiSubtitlesElementName = "." + iSubtitlesElementName
 	init();
 		
-} else if (hrefCheck("oload.download") || hrefCheck("hdeuropix.com")){
+} else if (hrefCheck("oload.download") || hrefCheck("openload.co")){
 	iPlayerElementName = '#mediaspace_wrapper';
 	iSubtitlesElementName  = 'vjs-text-track-display' 
 	jQueryiSubtitlesElementName = "." + iSubtitlesElementName
 	
 	init();
 }
+
+// else if (hrefCheck("hdeuropix.com")){
+	// iPlayerElementName = '#mediaspace_wrapper';
+	// iSubtitlesElementName  = 'vjs-text-track-display' 
+	// jQueryiSubtitlesElementName = "." + iSubtitlesElementName
+	
+	// init();
+// }
 	
 // check location 
 function hrefCheck(currentLocation){
@@ -83,17 +91,20 @@ function addSubtitleInterceptor(){
 // get dictionary
 
 function getRemoteDictionary() {
-
-    $.getJSON(dictionaryLink, function(data) {
-        if (!localStorage.dictionary) {
-            console.log("USE REMOTE DICTIONARY")
-            dictionary = data;
-			setStorageDictionary(dictionary);
-        }
-        console.log("Dictionary was downloaded");
-        console.log(data.length);
-    });
-
+	try{
+		$.getJSON(dictionaryLink, function(data) {
+			if (!localStorage.dictionary) {
+				console.log("USE REMOTE DICTIONARY")
+				dictionary = data;
+				setStorageDictionary(dictionary);
+			}
+			console.log("Dictionary was downloaded");
+			console.log(data.length);
+		});
+	} catch(err){
+		console.log(err);
+	}
+	
     if (localStorage.dictionary) {
         dictionary = getLocalStorageDictionary();
         console.log("USE LOCAL DICTIONARY");
@@ -149,11 +160,13 @@ function showSubtitles(word) {
         iSub.style.top = (screen.height / 1.38) + "px";
         //console.log("You entered fullscreen");
         iSub.style.fontSize = "24px";
+        // iSub.style.fontSize = ($(iPlayerElementName).css('height').replace("px", "") / 25) + "px";
     } else {
         iSub.style.left = 0;
         iSub.style.width = $(iPlayerElementName).css('width');
         iSub.style.top = ($(iPlayerElementName).css('height').replace("px", "") / 1.38) + "px";
-        iSub.style.fontSize = "1.3em";
+        // iSub.style.fontSize = ($(iPlayerElementName).css('height').replace("px", "") / 25) + "px";
+        iSub.style.fontSize = "1.5em";
     }
 
 
