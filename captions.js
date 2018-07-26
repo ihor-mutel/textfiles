@@ -552,23 +552,26 @@ Array.prototype.clean = function(deleteValue) {
                 a.G.length = e
             } else a.J.length = 0, a.G.length = 0, f = g.Md("SPAN"), g.Ch(f, E4(a, d)), a.C.appendChild(f);
             a.F && a.F.parentNode != f && (g.Td(a.F),f.appendChild(a.F));
-				checkDictionary(b.text, true);
+			//checkDictionary(b.text, true);
             c = (k = g.w(b.text)) ? b.text.split("\n") : [b.text];
             for (e = 0; e < c.length; e++) {
                 var l = c[e];
                 if (0 < e || 0 == a.D.length || !b.D) {
                     if (0 < e || 0 != a.D.length) {
                         var m = g.Md("BR");
-                        f.appendChild(m)
+                        //f.appendChild(m)
                     }
-                    f.appendChild(g.Od("\u00a0"));
+                    //f.appendChild(g.Od("\u00a0"));
                     a.F = g.Od("\u00a0");
-                    f.appendChild(a.F)
+                    //f.appendChild(a.F)
                 }
                 l && (m = a.F, m.parentNode && m.parentNode.insertBefore(k ? g.Od(l) : l, m))
             }
+			console.log($('.caption-window').text())
+			checkDictionary($('.caption-window').text(), true);
+			// $('.caption-window').hide()
             a.G.push(d);
-            //a.J.push(f);
+            a.J.push(f);
             a.D.push(b)
         },
         WBa = function() {},
