@@ -37,6 +37,8 @@ if (hrefCheck("youtube.com")) {
     iSubtitlesElementName = 'vjs-text-track-display';
     iTogglePlayButtonName = ".vjs-play-control";
     iSubtitlesElementNamejQuery = "." + iSubtitlesElementName;
+	iDelayerOn = false;
+    iDelayerTime = 4;
     init();
 }
 
@@ -321,7 +323,8 @@ function cleanTranslations(data) {
 
     for (var i = 0; i < data.translate.length; i++) {
 
-        translation += "," + data.translate[i].value.replaceAll(/[A-Za-z]/, "").trim();
+        //translation += "," + data.translate[i].value.replaceAll(/[A-Za-z]/, "").trim();
+        translation += "," + data.translate[i].value.replaceAll(/[^А-Яа-я\,]/, "").trim();
 
     }
     var translations = translation.split(",");
@@ -514,7 +517,7 @@ function init() {
 	
 	if(!iDelayerOn) {
 		iDelayerOn = false;
-		iDelayerTime = 0;
+		iDelayerTime = 4;
 	}
 
 }
