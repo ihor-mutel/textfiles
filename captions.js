@@ -292,7 +292,8 @@ function checkState() {
 
 function addClickListener() {
     $("#iblock").click(function(event) {
-        var currentText = getSelectionText().trim().replace(/ /g, '+');
+        var currentText = getSelectionText().trim();
+		var currentRequestText = currentText.replace(/ /g, '+')
         if (currentText !== '' && checkWord(currentText)) {
             removeFromDictionary(currentText);
             iTogglePlayState = false;
@@ -308,7 +309,7 @@ function addClickListener() {
                     // iTogglePlayState = false;
                 // }
             // });
-            $.getJSON("https://cors.io/?https://api.lingualeo.com/gettranslates?word=" + encodeURIComponent(currentText), function(data) {
+            $.getJSON("https://cors.io/?https://api.lingualeo.com/gettranslates?word=" + currentRequestText, function(data) {
             console.log(data)
 			addIntoDictionary(data, currentText);
             });
@@ -409,8 +410,18 @@ function checkDictionary(sentence, firstCall) {
         iCurrentSubs = sentence;
     }
     var translationsFound = false;
+	var wordsSingles = sentence.replaceAll("\n", " ").replaceAll(/\s\s+/g, " ").replaceAll(/[^A-Za-z\s\'\-]/, "").split(" ");
+	var wordsPairs = [];
+    var wordsArray = [];
+	
+	for(var i=0;i<wordsSingles.length;i++){
+		if(wordsSingles[i] && wordsSingles[i+1]) {
+			wordsPairs.push(wordsSingles[i].trim() + " " + wordsSingles[i+1].trim());
+		}
+	}
 
-    var wordsArray = sentence.replaceAll("\n", " ").replaceAll(/\s\s+/g, " ").replaceAll(/[^A-Za-z\s\'\-]/, "").split(" ");
+	wordsArray = wordsPairs.concat(wordsSingles);
+	
     for (var i = 0; i < wordsArray.length; i++) {
         var currentWord = wordsArray[i].trim();
         var entry = checkWord(currentWord);
@@ -418,18 +429,13 @@ function checkDictionary(sentence, firstCall) {
             translationsFound = true;
             // debugger;
             var translation = entry.translation;
-            var translationMessage = "\n" + currentWord.toUpperCase() + ": " + translation.toLowerCase();
+            var translationMessage = "\n" + currentWord.toUpperCase() + ": " + translation.toString().toLowerCase();
             if (!sentence.includes(translationMessage)) {
                 // console.log(sentence)
                 // console.log("Replace with: " + translation)
                 var upperCaseWord = sentence.replaceAll(currentWord, currentWord.toUpperCase());
                 sentence = upperCaseWord + translationMessage;
             }
-            // else if(sentence.match(/\n/g) && sentence.match(/\n/g).length > 3) {
-            // sentence = sentence + " ..."
-            // break;
-            // }
-
         }
     }
     showSubtitles(sentence, translationsFound);
