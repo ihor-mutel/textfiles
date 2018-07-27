@@ -33,6 +33,17 @@
     "repetition": 4
   },
   {
+    "word": "pillow",
+    "translation": "подушка,подкладка,подшипник,подложить подушку,",
+    "level": 5,
+    "learned": 1,
+    "id": 27,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 4
+  },
+  {
     "word": "bridge",
     "translation": "мост,переносица,",
     "level": 23,
@@ -99,6 +110,28 @@
     "repetition": 18
   },
   {
+    "word": "Coin",
+    "translation": "монета,чеканить,штамповать,перефразировать,",
+    "level": 3,
+    "learned": 1,
+    "id": 34,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 5
+  },
+  {
+    "word": "throat",
+    "translation": "горло,глотка,  горло,гортань,",
+    "level": 30,
+    "learned": 1,
+    "id": 35,
+    "date": "2018-07-26",
+    "sent": 0,
+    "new": 0,
+    "repetition": 17
+  },
+  {
     "word": "a bowl",
     "translation": "чаша,миска,глибока миска,глубокая чашка,глубокая тарелка,",
     "level": 1,
@@ -130,6 +163,17 @@
     "sent": 0,
     "new": 0,
     "repetition": 0
+  },
+  {
+    "word": "responsive",
+    "translation": "чуткий,отзывчивый,",
+    "level": 0,
+    "learned": 1,
+    "id": 40,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 9
   },
   {
     "word": "reduce",
@@ -185,6 +229,17 @@
     "sent": 0,
     "new": 0,
     "repetition": 0
+  },
+  {
+    "word": "shadows",
+    "translation": "тени,защита,сумерки,полумрак,полумраке,",
+    "level": 19,
+    "learned": 1,
+    "id": 46,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 5
   },
   {
     "word": "rid",
@@ -253,6 +308,17 @@
     "repetition": 5
   },
   {
+    "word": "golden",
+    "translation": "золотой,свойствам,из золота,золотистый,",
+    "level": 48,
+    "learned": 1,
+    "id": 53,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 4
+  },
+  {
     "word": "consistency",
     "translation": "связность,логичность,",
     "level": 10,
@@ -262,6 +328,17 @@
     "sent": 0,
     "new": 0,
     "repetition": 7
+  },
+  {
+    "word": "goal",
+    "translation": "гол,цель,задача,спорт. ворота,",
+    "level": 56,
+    "learned": 1,
+    "id": 55,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 5
   },
   {
     "word": "adhere",
@@ -295,6 +372,17 @@
     "sent": 1,
     "new": 0,
     "repetition": 8
+  },
+  {
+    "word": "child",
+    "translation": "дитя,дитина,ребёнок,",
+    "level": 216,
+    "learned": 1,
+    "id": 59,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 4
   },
   {
     "word": "recently",
@@ -440,6 +528,17 @@
     "repetition": 0
   },
   {
+    "word": "achieve",
+    "translation": "достигать,добиваться,успешно выполнять,",
+    "level": 2,
+    "learned": 1,
+    "id": 75,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 22
+  },
+  {
     "word": "associate",
     "translation": "коллега,товарищ,партнёр,связывать,соединять,",
     "level": 8,
@@ -460,6 +559,17 @@
     "sent": 1,
     "new": 0,
     "repetition": 0
+  },
+  {
+    "word": "shadow",
+    "translation": "тень,уныние,призрак,полумрак,(полу)мрак,",
+    "level": 63,
+    "learned": 1,
+    "id": 78,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 4
   },
   {
     "word": "pot",
@@ -704,6 +814,17 @@
     "repetition": 2
   },
   {
+    "word": "split",
+    "translation": "трещина,разбивать,трескаться,раскалывать,делить на части,",
+    "level": 40,
+    "learned": 1,
+    "id": 101,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 10
+  },
+  {
     "word": "exploring",
     "translation": "осмотр,исследование,исследования,",
     "level": 2,
@@ -779,6 +900,17 @@
     "sent": 0,
     "new": 1,
     "repetition": 0
+  },
+  {
+    "word": "near",
+    "translation": "рядом,около,близко,близкий,ближний,",
+    "level": 81,
+    "learned": 1,
+    "id": 109,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 1
   },
   {
     "word": "circle",
@@ -878,6 +1010,17 @@
     "sent": 0,
     "new": 1,
     "repetition": 0
+  },
+  {
+    "word": "notice",
+    "translation": "замечать,извещение,уведомление,обращать внимание,",
+    "level": 78,
+    "learned": 1,
+    "id": 119,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 11
   },
   {
     "word": "slightly",
@@ -1188,6 +1331,17 @@
     "repetition": 0
   },
   {
+    "word": "mask",
+    "translation": "маска,личина,скрывать,маскировать,",
+    "level": 40,
+    "learned": 1,
+    "id": 148,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 2
+  },
+  {
     "word": "rename",
     "translation": "переименовать,переименование,дать новое имя,переименовывать,",
     "level": 0,
@@ -1351,6 +1505,17 @@
     "sent": 0,
     "new": 0,
     "repetition": 1
+  },
+  {
+    "word": "catch",
+    "translation": "ловить,поймать,догнать,схватить,",
+    "level": 161,
+    "learned": 1,
+    "id": 164,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 4
   },
   {
     "word": "embossed",
@@ -1727,6 +1892,17 @@
     "repetition": 1
   },
   {
+    "word": "ugly",
+    "translation": "опасный,уродливый,некрасивый,угрожающий,безобразный,",
+    "level": 60,
+    "learned": 1,
+    "id": 199,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 3
+  },
+  {
     "word": "cascading",
     "translation": "литься,стекать,каскадные,низвергаться,",
     "level": 0,
@@ -1758,6 +1934,17 @@
     "sent": 0,
     "new": 1,
     "repetition": 0
+  },
+  {
+    "word": "sake",
+    "translation": "ради,польза,ради кого-либо,",
+    "level": 50,
+    "learned": 1,
+    "id": 203,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 6
   },
   {
     "word": "pardon",
@@ -5478,6 +5665,17 @@
     "repetition": 0
   },
   {
+    "word": "repeatedly",
+    "translation": "неоднократно, повторно, неоднократно, несколько раз, многократно,",
+    "level": 0,
+    "learned": 1,
+    "id": 648,
+    "date": "2018-07-26",
+    "sent": 1,
+    "new": 0,
+    "repetition": 7
+  },
+  {
     "word": "remarkable",
     "translation": "замечательный, удивительный, поразительный, замечательный, примечательный,",
     "level": 4,
@@ -6565,8 +6763,5 @@
     "sent": 0,
     "new": 1,
     "repetition": 0
-  },
-  {
-    "word": "foundation",
-    "translation": "фундамент, основание, фундамент, основание, учреждение,",
-    "level": 
+  }
+]  

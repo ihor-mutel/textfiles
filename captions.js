@@ -20,6 +20,7 @@ var dictionary;
 
 if (hrefCheck("youtube.com")) {
 	iDictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json";
+	//iDictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_401005908.json";
     iPlayerName = "youtube";
     iPlayerElementName = '#player-container';
     iSubtitlesElementName = 'caption-window';
@@ -32,6 +33,7 @@ if (hrefCheck("youtube.com")) {
 
 } else if (hrefCheck("oload.download") || hrefCheck("openload.co")) {
 	iDictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_415092182.json";
+	//iDictionaryLink = "https://rawgit.com/web1991t/textfiles/master/DICTIONARY_chat_401005908.json";
     iPlayerName = "openload";
     iPlayerElementName = '#mediaspace_wrapper';
     iSubtitlesElementName = 'vjs-text-track-display';
