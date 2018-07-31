@@ -601,6 +601,30 @@ function delayPauseTroggle() {
     });
 }
 
+
+function rewind(direction){
+	var eventObj = document.createEventObject ? document.createEventObject() : document.createEvent("Events");
+	var keyCode;  
+		if(eventObj.initEvent){
+		  eventObj.initEvent("keydown", true, true);
+		}
+		
+		if(direction == "backwards"){
+			keyCode = 37
+		}else if (direction == "forward") {
+			keyCode = 39
+		} else {
+			console.log("keyCode weren't found");
+			return;
+		}
+	  
+		eventObj.keyCode = keyCode;
+		eventObj.which = keyCode;
+		eventObj.returnValue = true;
+
+	$(iSubtitlesElementNamejQuery)[0].dispatchEvent(eventObj)
+}
+
 function init() {
     if (!window.jQuery) {
         addjQuery();
