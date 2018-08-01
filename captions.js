@@ -185,11 +185,11 @@ function showSubtitles(word, translationsFound) {
     // }
     iSub.id = 'iblock';
     iSub.className = 'iblock';
-    iSub.innerText = word;
     iSub.style.position = "absolute";
 
     iSub.style.color = "white";
-    iSub.style.display = "block";
+    iSub.style.display = "table";
+    iSub.style.tableLayout = "fixed";
     iSub.style.fontFamily = "Roboto, Arial, sans-serif";
     iSub.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
 
@@ -218,13 +218,77 @@ function showSubtitles(word, translationsFound) {
 
     }
 
+	var rewindBack = document.createElement('div');
+	rewindBack.click(function(){
+		alert("The paragraph was clicked.");
+	});
+	var rewindForw = document.createElement('div');
+	var content = document.createElement('div');
+	
+	rewindBack.className = 'rewindBack column';
+	rewindBack.onclick = function(){rewind("backwards")};
+	rewindForw.className = 'rewindForw column';
+	rewindForw.onclick = function(){rewind("forward")};
+	content.className = 'subContent column';
+
+	content.innerText = word;
+	
+	
+	iSub.appendChild(rewindBack);
+	iSub.appendChild(content);
+	iSub.appendChild(rewindForw);
     $(iPlayerElementName)[0].appendChild(iSub);
 
+
+	$(".iblock").css({
+		"border-collapse": "collapse"
+	})	
+	
+	$(".rewindBack,.rewindForw").css({
+		"width":"7%",
+		"display":"table-cell"
+	})
+
+	$(".rewindBack,.rewindForw").hover(function(){
+    $(this).css("background-color", "grey");
+    }, function(){
+    $(this).css("background-color", "transparent");
+	});
+	
     addClickListener();
     addMouseenterListener();
 
     delayPause(iDelayerTime, translationsFound);
 
+}
+
+
+function rewind(direction){
+	var eventObj = document.createEventObject ? document.createEventObject() : document.createEvent("Events");
+	var keyCode;  
+		if(eventObj.initEvent){
+		  eventObj.initEvent("keydown", true, true);
+		}
+		
+		if(direction == "backwards"){
+			keyCode = 37
+			console.log("keyCode: " + keyCode);
+		}else if (direction == "forward") {
+			keyCode = 39
+			console.log("keyCode: " + keyCode);
+		} else {
+			console.log("keyCode weren't found");
+			return;
+		}
+	  
+		eventObj.keyCode = keyCode;
+		eventObj.which = keyCode;
+		eventObj.returnValue = true;
+		
+	if($("#olvideo").length){	
+	$("#olvideo")[0].focus()
+	}
+	$(iTogglePlayButtonName)[0].dispatchEvent(eventObj)
 }
 
 // check if subtitles auto generated
@@ -602,28 +666,6 @@ function delayPauseTroggle() {
 }
 
 
-function rewind(direction){
-	var eventObj = document.createEventObject ? document.createEventObject() : document.createEvent("Events");
-	var keyCode;  
-		if(eventObj.initEvent){
-		  eventObj.initEvent("keydown", true, true);
-		}
-		
-		if(direction == "backwards"){
-			keyCode = 37
-		}else if (direction == "forward") {
-			keyCode = 39
-		} else {
-			console.log("keyCode weren't found");
-			return;
-		}
-	  
-		eventObj.keyCode = keyCode;
-		eventObj.which = keyCode;
-		eventObj.returnValue = true;
-
-	$(iSubtitlesElementNamejQuery)[0].dispatchEvent(eventObj)
-}
 
 function init() {
     if (!window.jQuery) {
