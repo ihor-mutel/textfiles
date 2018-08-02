@@ -13,8 +13,9 @@ var iEventAttachedBool;
 var iCurrentHref;
 var iTogglePlayState;
 var iCurrentSubs;
+var iOriginalForm;
 var dictionary;
-
+var blockToggleBack;
 
 // ========================= CONFIGURATION =========================== //
 
@@ -42,7 +43,8 @@ if (hrefCheck("youtube.com")) {
     iSubtitlesElementName = 'vjs-text-track-display';
     iTogglePlayButtonName = ".vjs-play-control";
     iSubtitlesElementNamejQuery = "." + iSubtitlesElementName;
-    iDelayerOn = false;
+    iDelayerOn = true;
+	blockToggleBack = true;
     iDelayerTime = 4;
     init();
 }
@@ -340,14 +342,22 @@ function addMouseenterListener() {
                 iTogglePlayState = false;
                 $(iTogglePlayButtonName)[0].click();
             }
+			
+			//test ()
+			if (cY > subPosition.top && cY < subPosition.bottom && !checkState()){
+				iTogglePlayState = false;
+                $(iTogglePlayButtonName)[0].click();
+			} 
+			
+			
             // start
-            if ((cY < subPosition.top || cY > subPosition.bottom) && !iTogglePlayState && checkState()) {
+            if ((cY < subPosition.top || cY > subPosition.bottom) && !iTogglePlayState && checkState() && !blockToggleBack) {
 
                 iTogglePlayState = true;
 
                 $(iTogglePlayButtonName)[0].click();
             }
-            if (cY < subPosition.top || cY > subPosition.bottom) {}
+
         };
     }
 }
@@ -452,13 +462,17 @@ function pushToErrorBuffer(word, action) {
 function cleanTranslations(data) {
     var translation = "";
     var sliceIndex;
+	if(data.translate){
+		for (var i = 0; i < data.translate.length; i++) {
 
-    for (var i = 0; i < data.translate.length; i++) {
+			//translation += "," + data.translate[i].value.replaceAll(/[A-Za-z]/, "").trim();
+			translation += "," + data.translate[i].value.replaceAll(/[^А-Яа-я\,\s]/, "").trim();
 
-        //translation += "," + data.translate[i].value.replaceAll(/[A-Za-z]/, "").trim();
-        translation += "," + data.translate[i].value.replaceAll(/[^А-Яа-я\,\s]/, "").trim();
-
-    }
+		}
+	} else {
+		translation = data.translation.toString().replaceAll(/[^А-Яа-я\,\s]/, "").trim();;
+	}
+	
     var translations = translation.split(",");
 
     var uniqueTranslations = [];
@@ -468,9 +482,9 @@ function cleanTranslations(data) {
 
     uniqueTranslations.clean("");
 
-    uniqueTranslations.sort(function(a, b) {
-        return b.length - a.length;
-    });
+    // uniqueTranslations.sort(function(a, b) {
+        // return b.length - a.length;
+    // });
 
     uniqueTranslations.sort(function(a, b) {
         return a.length - b.length;
@@ -483,7 +497,7 @@ function cleanTranslations(data) {
             break;
         }
 
-        sliceIndex = b;
+        sliceIndex = b+1;
     }
 
     uniqueTranslations = uniqueTranslations.slice(0, sliceIndex);
@@ -544,6 +558,7 @@ function checkDictionary(sentence, firstCall) {
     var wordsTriple = [];
     var wordsArray = [];
 
+
     if (checkAutoSubtitles()) {
         wordsArray = wordsSingles;
     } else {
@@ -568,11 +583,18 @@ function checkDictionary(sentence, firstCall) {
         var entry = checkWord(currentWord);
         if (entry) {
             translationsFound = true;
-            var translation = entry.translation;
+            // var translation = entry.translation;
+            var translation = cleanTranslations(entry).toString();
             var translationMessage = "\n" + currentWord.toUpperCase() + ": " + translation.toString().toLowerCase();
             if (!sentence.includes(translationMessage)) {
                 // console.log(sentence)
                 // console.log("Replace with: " + translation)
+				
+				var shortForm = currentWord.replaceAll(/(ing$|s$|ed$|d$)/,"")
+				if(iOriginalForm == shortForm ){
+					currentWord = shortForm;
+				}
+				
                 var upperCaseWord = sentence.replaceAll(currentWord, currentWord.toUpperCase());
                 sentence = upperCaseWord + translationMessage;
             }
@@ -593,7 +615,7 @@ function checkDictionary(sentence, firstCall) {
 function checkWord(currentWord) {
     // debugger;
 
-
+	
     if (checkAutoSubtitles()) {
         for (var i = 0; i < dictionary.length; i++) {
             if (dictionary[i].word.trim().toLowerCase() == currentWord.trim().toLowerCase()) {
@@ -605,10 +627,12 @@ function checkWord(currentWord) {
             var wordDictionary = dictionary[i].word.trim().toLowerCase();
             currentWord = currentWord.trim().toLowerCase();
             var wordDictionaryForms = [];
+			iOriginalForm = wordDictionary
 
             wordDictionaryForms.push(wordDictionary);
             wordDictionaryForms.push(wordDictionary + "s");
             wordDictionaryForms.push(wordDictionary + "ed");
+            wordDictionaryForms.push(wordDictionary + "d");
             wordDictionaryForms.push(wordDictionary + "ing");
 
             if (wordDictionaryForms.includes(currentWord)) {
@@ -647,7 +671,7 @@ function syncRemoteDictionaryJob() {
     getRemoteDictionary();
     setTimeout(function() {
         syncRemoteDictionaryJob();
-    }, 300000);
+    }, 2000000);
 }
 
 function delayPauseTroggle() {
@@ -711,9 +735,8 @@ function init() {
     if (!iDelayerOn) {
         iDelayerOn = false;
         iDelayerTime = 4;
-    }
-
-
+	}
+	
     syncRemoteDictionaryJob();
     delayPauseTroggle();
 }
