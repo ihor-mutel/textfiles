@@ -34,7 +34,7 @@ if (hrefCheck("youtube.com")) {
 
     init();
 
-} else if (hrefCheck("oload.download") || hrefCheck("openload.co")) {
+} else if (hrefCheck("oload.download") || hrefCheck("openload.co") || hrefCheck("offline.html")) {
     iDictionaryId = 415092182;
     // iDictionaryId = 401005908;
     iDictionaryLink = "https://ss.lt-center.info/test/" + iDictionaryId + "/";
@@ -47,6 +47,8 @@ if (hrefCheck("youtube.com")) {
 	blockToggleBack = true;
     iDelayerTime = 4;
     init();
+} else {
+    throw new Error("Subtitle inteceptor isn't applicable for this website!");
 }
 
 // =================================================================== //
