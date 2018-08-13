@@ -34,7 +34,7 @@ if (hrefCheck("youtube.com")) {
 
     init();
 
-} else if (hrefCheck("oload.download") || hrefCheck("openload.co") || hrefCheck("offline.html")) {
+} else if (hrefCheck("oload.download") || hrefCheck("openload.co") || hrefCheck("offline.html") || hrefCheck("streamango.com")) {
     iDictionaryId = 415092182;
     // iDictionaryId = 401005908;
     iDictionaryLink = "https://ss.lt-center.info/test/" + iDictionaryId + "/";
