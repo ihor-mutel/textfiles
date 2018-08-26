@@ -682,10 +682,13 @@ function delayPauseTroggle() {
         if (e.which == 120) {
             if (iDelayerOn) {
                 iDelayerOn = false;
-                alert("Studying mode is off")
+                sentence = "Studying mode is off"
+				showSubtitles(sentence, false);
+				
             } else {
                 iDelayerOn = true;
-                alert("Studying mode is on")
+                sentence = "Studying mode is on"
+				showSubtitles(sentence, false);
             }
         }
     });
