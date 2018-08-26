@@ -33,8 +33,8 @@ if (hrefCheck("youtube.com")) {
     iDelayerTime = 5;
 
     init();
-
-} else if (hrefCheck("oload.download") || hrefCheck("openload.co") || hrefCheck("offline.html") || hrefCheck("streamango.com")) {
+//|| hrefCheck("vev.io")
+} else if (hrefCheck("oload.download") || hrefCheck("openload.co") || hrefCheck("streamango.com")) {
     iDictionaryId = 415092182;
     // iDictionaryId = 401005908;
     iDictionaryLink = "https://ss.lt-center.info/test/" + iDictionaryId + "/";
