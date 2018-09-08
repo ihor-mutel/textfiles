@@ -16,7 +16,7 @@ var iCurrentSubs;
 var iOriginalForm;
 var dictionary;
 var blockToggleBack;
-
+var speakArray;
 // ========================= CONFIGURATION =========================== //
 
 if (hrefCheck("youtube.com")) {
@@ -368,8 +368,13 @@ function addMouseenterListener() {
 
 function delayPause(seconds, translationsFound) {
     if (iDelayerOn && translationsFound) {
-        if (!checkState()) {
+		if (!checkState()) {
             $(iTogglePlayButtonName)[0].click();
+			
+			if(speakArray) {
+			speak(speakArray.join(","));
+			}
+			
             setTimeout(function() {
                 if (checkState()) {
                     $(iTogglePlayButtonName)[0].click();
@@ -559,7 +564,7 @@ function checkDictionary(sentence, firstCall) {
     var wordsPairs = [];
     var wordsTriple = [];
     var wordsArray = [];
-
+	speakArray = []
 
     if (checkAutoSubtitles()) {
         wordsArray = wordsSingles;
@@ -589,6 +594,7 @@ function checkDictionary(sentence, firstCall) {
             var translation = cleanTranslations(entry).toString();
             var translationMessage = "\n" + currentWord.toUpperCase() + ": " + translation.toString().toLowerCase();
             if (!sentence.includes(translationMessage)) {
+				speakArray.push(currentWord)
                 // console.log(sentence)
                 // console.log("Replace with: " + translation)
 				
@@ -745,3 +751,30 @@ function init() {
     syncRemoteDictionaryJob();
     delayPauseTroggle();
 }
+
+function speak(inputTxt){
+	
+	var synth = window.speechSynthesis;
+	
+    if (synth.speaking) {
+        console.error('speechSynthesis.speaking');
+        return;
+    }
+    if (inputTxt !== '') {
+    var utterThis = new SpeechSynthesisUtterance(inputTxt);
+    utterThis.onend = function (event) {
+        console.log('SpeechSynthesisUtterance.onend');
+    }
+    utterThis.onerror = function (event) {
+        console.error('SpeechSynthesisUtterance.onerror');
+    }
+
+        utterThis.voice = synth.getVoices()[3];
+
+    }
+    utterThis.pitch = "1"
+    utterThis.rate = "0.7";
+    utterThis.volume = "0.3"
+    
+    synth.speak(utterThis);
+ }
