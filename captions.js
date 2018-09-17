@@ -30,7 +30,7 @@ if (hrefCheck("youtube.com")) {
     iSubtitlesElementNamejQuery = "." + iSubtitlesElementName;
     iTogglePlayButtonName = '.ytp-play-button';
     iDelayerOn = false;
-    iDelayerTime = 5;
+    iDelayerTime = 10;
 
     init();
 //|| hrefCheck("vev.io")
@@ -45,7 +45,7 @@ if (hrefCheck("youtube.com")) {
     iSubtitlesElementNamejQuery = "." + iSubtitlesElementName;
     iDelayerOn = true;
 	blockToggleBack = true;
-    iDelayerTime = 4;
+    iDelayerTime = 10;
     init();
 } else {
     throw new Error("Subtitle inteceptor isn't applicable for this website!");
@@ -372,7 +372,12 @@ function delayPause(seconds, translationsFound) {
             $(iTogglePlayButtonName)[0].click();
 			
 			if(speakArray) {
-			speak(speakArray.join(","));
+			// defSpeak(speakArray[0])
+			 synSpeak(speakArray[0])
+			
+			//speak(speakArray.join(","));
+			//speakFromUrl(speakArray.join(","));
+
 			}
 			
             setTimeout(function() {
@@ -778,3 +783,51 @@ function speak(inputTxt){
     
     synth.speak(utterThis);
  }
+ 
+ function defSpeak(text){
+	var settings = {
+	  "async": true,
+	  "crossDomain": true,
+	  "url": "https://ss.lt-center.info/test/definitions/" + text,
+	  "method": "GET",
+	  "headers": {
+		"cache-control": "no-cache",
+		"postman-token": "80c5bd5a-4f41-8b1d-0a0f-238465c25e70"
+	  }
+	}
+
+	$.ajax(settings).done(function (response) {
+	  speak(response);
+	});
+	
+}
+
+ function synSpeak(text){
+	var settings = {
+	  "async": true,
+	  "crossDomain": true,
+	  "url": "https://ss.lt-center.info/test/synonyms/" + text,
+	  "method": "GET",
+	  "headers": {
+		"cache-control": "no-cache",
+		"postman-token": "80c5bd5a-4f41-8b1d-0a0f-238465c25e70"
+	  }
+	}
+
+	$.ajax(settings).done(function (response) {
+	  speakFromUrl(response);
+	});
+	
+}
+
+
+			function speakFromUrl(request){
+				$.getJSON("https://cors.io/?https://api.lingualeo.com/gettranslates?word=" + request, function(data) {
+					console.log(data)
+					var audio = new Audio(data.sound_url)
+					audio.volume = 0.2;
+					audio.playbackRate = 0.9
+					audio.play()
+					//addIntoDictionary(data, currentText.trim());
+				});
+			}
