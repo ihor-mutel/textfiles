@@ -373,7 +373,7 @@ function delayPause(seconds, translationsFound) {
 			
 			if(speakArray) {
 			// defSpeak(speakArray[0])
-			synSpeak(speakArray[0])
+			 synSpeak(speakArray[0])
 			remoteDictionaryTransaction(speakArray,"history")
 			//speak(speakArray.join(","));
 			//speakFromUrl(speakArray.join(","));
@@ -750,7 +750,7 @@ function init() {
 
     if (!iDelayerOn) {
         iDelayerOn = false;
-        iDelayerTime = 4;
+        //iDelayerTime = 4;
 	}
 	
     syncRemoteDictionaryJob();
