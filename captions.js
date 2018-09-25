@@ -828,6 +828,13 @@ function speak(inputTxt){
 					audio.volume = 0.2;
 					audio.playbackRate = 0.9
 					audio.play()
+					
+					audio.onended = function() {
+    			         if (checkState()) {
+                             $(iTogglePlayButtonName)[0].click();
+                        }
+		            };
+					
 					//addIntoDictionary(data, currentText.trim());
 				});
 			}
