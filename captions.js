@@ -162,6 +162,45 @@ function getLocalStorageDictionary() {
 }
 
 
+var subtitlesHistory = {
+    cues: [],
+    getCues: function() {
+        return this.cues
+    },
+	getCuesNL: function() {
+        return this.cues.join("\n\n")
+    },
+    addCue: function(cue) {
+		
+		if(!this.checkIfInCues(cue)){
+	
+			if (this.cues.length > 2) {
+				var cuesLength = this.cues.length
+				this.cues.splice(0, cuesLength - 2)
+				this.cues.push(cue)
+			} else {
+				this.cues.push(cue)
+			}
+		}
+        console.log(this.cues)
+    },
+    checkIfInCues: function(cue) {
+        for (var i = 0; i < this.cues.length; i++) {
+            var checkBoolean = this.cues[i].includes(cue)
+            if (checkBoolean) {
+                return true
+            }
+        }
+        return false
+    }
+};
+
+function showHistory(){
+	var cueText = $(".subContent")[0].innerText
+	if(!cueText.includes(subtitlesHistory.getCuesNL()))
+	$(".subContent")[0].innerText = subtitlesHistory.getCuesNL()
+}
+
 
 // show subtitles
 
@@ -343,6 +382,7 @@ function addMouseenterListener() {
 
                 iTogglePlayState = false;
                 $(iTogglePlayButtonName)[0].click();
+                showHistory()
             }
 			
 			//test ()
@@ -382,7 +422,7 @@ function delayPause(seconds, translationsFound) {
 			
             setTimeout(function() {
                 if (checkState()) {
-                    $(iTogglePlayButtonName)[0].click();
+                   // $(iTogglePlayButtonName)[0].click();
                 }
             }, seconds * 1000);
         }
@@ -614,6 +654,7 @@ function checkDictionary(sentence, firstCall) {
         }
     }
     showSubtitles(sentence, translationsFound);
+    subtitlesHistory.addCue(sentence)
     //return sentence
 }
 
