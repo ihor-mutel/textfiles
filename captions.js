@@ -107,7 +107,9 @@ function addThreeChecker() {
 
         if (tempSubs.trim() != iCurrentSubsBoolean && tempSubs.trim() !== "") {
             iCurrentSubs = tempSubs;
+
             //console.log(iCurrentSubs);
+			subtitlesHistory.addCue(tempSubs)
             checkDictionary(iCurrentSubs, true);
         }
 
@@ -174,9 +176,9 @@ var subtitlesHistory = {
 		
 		if(!this.checkIfInCues(cue)){
 	
-			if (this.cues.length > 2) {
+			if (this.cues.length > 1) {
 				var cuesLength = this.cues.length
-				this.cues.splice(0, cuesLength - 2)
+				this.cues.splice(0, cuesLength - 1)
 				this.cues.push(cue)
 			} else {
 				this.cues.push(cue)
@@ -192,14 +194,14 @@ var subtitlesHistory = {
             }
         }
         return false
-    }
+    },
+	showHistory: function(){
+		var cueText = $(".subContent")[0].innerText
+		if(!cueText.includes(this.getCuesNL()))
+		$(".subContent")[0].innerText = this.getCuesNL()
+	}
 };
 
-function showHistory(){
-	var cueText = $(".subContent")[0].innerText
-	if(!cueText.includes(subtitlesHistory.getCuesNL()))
-	$(".subContent")[0].innerText = subtitlesHistory.getCuesNL()
-}
 
 
 // show subtitles
@@ -382,7 +384,7 @@ function addMouseenterListener() {
 
                 iTogglePlayState = false;
                 $(iTogglePlayButtonName)[0].click();
-                showHistory()
+                checkDictionary(subtitlesHistory.getCuesNL(), false);
             }
 			
 			//test ()
@@ -564,7 +566,8 @@ function removeFromDictionary(word) {
     dictionary.splice(index, 1);
     remoteDictionaryTransaction(word, "delete")
     //console.log("Remove from dictionary index: " + index);
-    checkDictionary(iCurrentSubs, false);
+    //checkDictionary(iCurrentSubs, false);
+	checkDictionary(subtitlesHistory.getCuesNL(), false);
     setStorageDictionary(dictionary);
 }
 
@@ -578,7 +581,8 @@ function addIntoDictionary(data, word) {
     //console.log(translation);
     dictionary.push(translation);
     remoteDictionaryTransaction(word, "add")
-    checkDictionary(iCurrentSubs, false);
+    //checkDictionary(iCurrentSubs, false);
+	checkDictionary(subtitlesHistory.getCuesNL(), false);
     setStorageDictionary(dictionary);
 }
 
@@ -654,7 +658,6 @@ function checkDictionary(sentence, firstCall) {
         }
     }
     showSubtitles(sentence, translationsFound);
-    subtitlesHistory.addCue(sentence)
     //return sentence
 }
 
