@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>Title of the document</title>
+</head>
+
+<body>
+<button onclick="convert()"> convert </button>
+<button onclick="merge()"> merge </button>
+<textarea id="input" rows="50" cols="100">
+
+</textarea>
+
+<textarea id="output" rows="50" cols="100">
+
+</textarea>
+
+
+<textarea id="mergeOutput" rows="50" cols="100">
+</textarea>
+
+<script>
+function convert() {
+    let input = document.getElementById("input").value;
+    let output = document.getElementById("output").value;
+    let textArray = input.split(/\n/);
+    for (let i=0;i<textArray.length; i++) {
+
+        let wordsArray = textArray[i].split(" ");
+        let sentence = "";
+        for (let b=0;b<wordsArray.length; b++) {
+            sentence = sentence + " " + wordsArray[b];
+            document.getElementById("output").value += sentence  + "\n";
+            console.log(sentence)
+        }
+        console.log(textArray[i]);
+        document.getElementById("output").value += textArray[i].toString() + "\n";
+    }
+}
+
+function merge() {
+    document.getElementById("mergeOutput").value = "";
+    let input = document.getElementById("input").value;
+    let output = document.getElementById("output").value;
+    let textArrayInput = input.split(/\n/);
+    let textArrayOutput = output.split(/\n/);
+    for (let i=0;i<textArrayInput.length; i++) {
+        document.getElementById("mergeOutput").value += textArrayInput[i].trim()  + "\n";
+        document.getElementById("mergeOutput").value += textArrayOutput[i].trim()  + "\n";
+        document.getElementById("mergeOutput").value += "\n";
+    }
+}
+</script>
+</body>
+</html>
